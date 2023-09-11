@@ -1,5 +1,5 @@
 <?php
-echo 1;
+session_start();
 class User {
     private $firstname,$lastname;
 //function to connect to the site
@@ -9,12 +9,9 @@ class User {
         $sql->execute(array($mail));
         $res=$sql->fetch();
         if (password_verify($mdp,$res[0])){
-            echo 5;
             $sql=$db->prepare("SELECT firstname,lastname FROM Users WHERE ?=mail");
-            echo 6;
             $sql->execute($mail);
             $res=$sql->fetchAll();
-            echo 7;
             $this->firstname=$res[0];
             $this->lastname=$res[1];
         }
@@ -40,5 +37,6 @@ class User {
     }
 }
 
-$currentUser=new User()
+$currentUser=new User();
+$_SESSION['user']=$currentUser;
 ?>
