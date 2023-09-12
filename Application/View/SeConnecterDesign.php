@@ -11,7 +11,7 @@
     <input type="text" class="form-control" id="user" placeholder="Entrez votre nom d'utilisateur" name="Nom d'utilsateur" required>
     <div>
     <div class="mb-3"></div>
-        <label for="pwd" class="form-label">Mot de passe :</label>
+        <label for="pwd" class="form-label" >Mot de passe :</label>
         <input type="password" class="form-control" id="pwd" placeholder="Entrez votre mot de passe" name="pwd" required>
     </div>
     <button name="Valider" class="btn btn-primary" disabled>Valider</button>
