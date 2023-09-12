@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Installation bootstrap" />
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Installation bootstrap">
+      <change afterPath="$PROJECT_DIR$/Application/Controller/ConnexionController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/View/HomePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,9 +26,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2VFeoJDDRkTKtXcQNiQp7deBHYc" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -35,7 +39,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Connection",
+    "git-widget-placeholder": "Connexion",
     "last_opened_file_path": "C:/Users/leoha/PhpstormProjects/untitled9",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
