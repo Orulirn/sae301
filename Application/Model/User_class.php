@@ -15,7 +15,7 @@ class User {
             $this->firstname=$res[0];
             $this->lastname=$res[1];
         }
-        
+        header("../Controller/HomePageController");
     }
 
 //setter and getter 

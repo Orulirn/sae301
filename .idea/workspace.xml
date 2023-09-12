@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Installation bootstrap">
-      <change afterPath="$PROJECT_DIR$/Application/Controller/ConnexionController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/View/HomePage.html" afterDir="false" />
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Création du controller pour lier le controller à la view">
+      <change afterPath="$PROJECT_DIR$/Application/Controller/HomePageController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/ConnexionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/ConnexionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/User_class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/User_class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/View/SeConnecterDesign.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/SeConnecterDesign.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +68,15 @@
       <option name="project" value="LOCAL" />
       <updated>1694437953751</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Création du controller pour lier le controller à la view">
+      <option name="closed" value="true" />
+      <created>1694507961554</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1694507961554</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -74,6 +84,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Installation bootstrap" />
-    <option name="LAST_COMMIT_MESSAGE" value="Installation bootstrap" />
+    <MESSAGE value="Création du controller pour lier le controller à la view" />
+    <option name="LAST_COMMIT_MESSAGE" value="Création du controller pour lier le controller à la view" />
   </component>
 </project>

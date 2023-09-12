@@ -14,10 +14,10 @@
         <label for="pwd" class="form-label" >Mot de passe :</label>
         <input type="password" class="form-control" id="pwd" placeholder="Entrez votre mot de passe" name="pwd" required>
     </div>
-    <button name="Valider" class="btn btn-primary" disabled>Valider</button>
+    <button id="login" name="Valider" class="btn btn-primary" disabled>Valider</button>
 </form>
 <script>
-    let button= document.querySelector("#Mdp")
+    let button= document.querySelector("#login")
     button.addEventListener("click",window.replace('home.html'))//Quand on clique sur le bouton, il nous redirige vers la page si les identifiants sont corrects
 </script>
 </body>
