@@ -63,13 +63,14 @@
     // Add event listeners to make the table cells editable
     const editableCells = document.querySelectorAll('.editable');
     editableCells.forEach(cell => {
-        cell.addEventListener('click', () => {
-            const id = cell.getAttribute('data-id');
-            const field = cell.getAttribute('data-field');
-            const value = cell.textContent;
+        cell.addEventListener('dblclick', () => {
+            let id = cell.getAttribute('data-id');
+            let field = cell.getAttribute('data-field');
+            let value = cell.textContent;
+            let old_value = cell.textContent;
 
             // Create an input field to edit the value
-            const input = document.createElement('input');
+            let input = document.createElement('input');
             input.setAttribute('type', 'text');
             input.setAttribute('value', value);
 
@@ -80,9 +81,14 @@
             // Focus on the input field
             input.focus();
 
+
             // Add an event listener to save the edited value
             input.addEventListener('blur', () => {
-                const newValue = input.value;
+                let newValue = input.value;
+
+                if (newValue === ""){
+                    newValue = old_value;
+                }
 
                 // Send the updated value to the server (you'll need to implement this)
                 // For now, we'll just update the cell's content
