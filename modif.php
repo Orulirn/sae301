@@ -38,6 +38,7 @@
         </thead>
         <tbody>
         <?php
+
         global $db;
         include "Database_connection.php";
 
@@ -59,9 +60,11 @@
     </table>
 </div>
 
+<button id="but">Save</button>
+
 <script>
     // Add event listeners to make the table cells editable
-    const editableCells = document.querySelectorAll('.editable');
+    let editableCells = document.querySelectorAll('.editable');
     editableCells.forEach(cell => {
         cell.addEventListener('dblclick', () => {
             let id = cell.getAttribute('data-id');
@@ -96,6 +99,27 @@
             });
         });
     });
+
+</script>
+
+
+<script>
+    let button = document.getElementById("but");
+    button.addEventListener("click", confirmation);
+
+    function confirmation() {
+        let value = confirm ("Etes-vous sûr de vouloir enregistrer les modifications ?");
+        if (value === false){
+            alert("Modification annulée")
+        }
+        else {
+            <?php
+            //update de la BDD
+            ?>
+        }
+    }
+
+
 
 </script>
 
