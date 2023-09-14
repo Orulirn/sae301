@@ -1,3 +1,11 @@
+<?php
+
+
+global $db;
+include "Database_connection.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -24,6 +32,18 @@
     </style>
 </head>
 <body>
+
+<header>
+
+    <div class="container-fluid p-3 bg-dark text-white text-center">
+        <h1>Modification</h1>
+    </div>
+
+</header>
+
+<div class="container py-3">
+
+
 <div style="overflow-y: scroll; height: 300px;">
     <table class="table table-dark table-hover">
         <thead>
@@ -37,10 +57,8 @@
         </tr>
         </thead>
         <tbody>
-        <?php
 
-        global $db;
-        include "Database_connection.php";
+        <?php
 
         $sql = $db->prepare("SELECT * FROM Users");
         $sql->execute();
@@ -48,7 +66,7 @@
 
         foreach ($res as $row): ?>
             <tr>
-                <td class="editable" data-field="idUser" data-id="<?php echo $row['idUser']; ?>"><?php echo $row['idUser']; ?></td>
+                <td data-field="idUser" data-id="<?php echo $row['idUser']; ?>"><?php echo $row['idUser']; ?></td>
                 <td class="editable" data-field="firstname" data-id="<?php echo $row['firstname']; ?>"><?php echo $row['firstname']; ?></td>
                 <td class="editable" data-field="lastname" data-id="<?php echo $row['lastname']; ?>"><?php echo $row['lastname']; ?></td>
                 <td class="editable" data-field="mail" data-id="<?php echo $row['mail']; ?>"><?php echo $row['mail']; ?></td>
@@ -58,9 +76,24 @@
         <?php endforeach; ?>
         </tbody>
     </table>
+
+</div>
 </div>
 
-<button id="but">Save</button>
+<div class="container py-3">
+    <button id='but' type="button" class="btn btn-dark">Save</button>
+    <button id='reset' type="button" class="btn btn-dark">Reset</button>
+</div>
+
+<footer class="bg-dark">
+
+    <div class="container-fluid p-3 bg-dark text-white text-center">
+    </div>
+
+</footer>
+
+
+
 
 <script>
     // Add event listeners to make the table cells editable
@@ -114,7 +147,6 @@
         }
         else {
             <?php
-            //update de la BDD
             ?>
         }
     }
