@@ -1,5 +1,5 @@
 <?php
-include("../View/SeConnecterDesign.php");
+include("../View/ConnexionView.html");
 include ("../Model/User_class.php");
 global $db;
 include("../Model/Database_connection.php");
