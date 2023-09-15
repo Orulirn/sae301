@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="amélioration page connexion">
-      <change afterPath="$PROJECT_DIR$/Application/View/img/icon_connexion.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/View/img/logoSite.png" afterDir="false" />
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="début de création de la bannière (temporairement dans le HomePageView) dépot des images du logo et de la connexion. Rename de SeConnecterDesign.php en ConnexionView.html">
+      <change afterPath="$PROJECT_DIR$/Application/View/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Controller/ConnexionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/ConnexionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/HomePageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/HomePageController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/View/HomePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/HomePage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/View/SeConnecterDesign.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/ConnexionView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/View/img/logoSite.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/img/logoSite.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index" beforeDir="false" afterPath="$PROJECT_DIR$/index" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +20,13 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -27,6 +34,20 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Orulirn"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="e542a386-2ee6-49fc-9d8a-e011fe19499f" />
+        <option name="url" value="https://github.com/Orulirn/sae301.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectColorInfo">{
@@ -37,20 +58,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Connexion&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/leoha/PhpstormProjects/sae301&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Connexion",
+    "last_opened_file_path": "C:/Users/leoha/PhpstormProjects/sae301",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ewenc\PhpstormProjects\sae301\Application\View\img" />
@@ -67,7 +89,7 @@
       <workItem from="1694436429550" duration="10884000" />
       <workItem from="1694503447126" duration="18119000" />
       <workItem from="1694685642914" duration="6539000" />
-      <workItem from="1694779451952" duration="2961000" />
+      <workItem from="1694779451952" duration="9941000" />
     </task>
     <task id="LOCAL-00001" summary="Installation bootstrap">
       <option name="closed" value="true" />
@@ -101,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1694513193456</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="début de création de la bannière (temporairement dans le HomePageView) dépot des images du logo et de la connexion. Rename de SeConnecterDesign.php en ConnexionView.html">
+      <option name="closed" value="true" />
+      <created>1694782726652</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1694782726652</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,6 +153,7 @@
     <MESSAGE value="début design de la page de connection" />
     <MESSAGE value="début design de la page de connection+bootstrap" />
     <MESSAGE value="amélioration page connexion" />
-    <option name="LAST_COMMIT_MESSAGE" value="amélioration page connexion" />
+    <MESSAGE value="début de création de la bannière (temporairement dans le HomePageView) dépot des images du logo et de la connexion. Rename de SeConnecterDesign.php en ConnexionView.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="début de création de la bannière (temporairement dans le HomePageView) dépot des images du logo et de la connexion. Rename de SeConnecterDesign.php en ConnexionView.html" />
   </component>
 </project>
