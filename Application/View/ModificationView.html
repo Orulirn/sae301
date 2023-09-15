@@ -1,10 +1,4 @@
-<?php
 
-
-global $db;
-include "Database_connection.php";
-
-?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -34,6 +28,8 @@ include "Database_connection.php";
 </head>
 <body>
 
+
+
 <header>
 
     <div class="container-fluid p-3 bg-white text-dark text-center">
@@ -58,15 +54,8 @@ include "Database_connection.php";
         </thead>
         <tbody>
 
-        <?php
-
-        $sql = $db->prepare("SELECT * FROM Users");
-        $sql->execute();
-        $res = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-        foreach ($res as $row): ?>
             <tr>
-                <td data-field="idUser" data-id="<?php echo $row['idUser']; ?>"><?php echo $row['idUser']; ?></td>
+                <td data-field="idUser" data-id="<?php echo $_POST['idUser']; ?>"><?php echo $_POST['idUser']; ?></td>
                 <td class="editable" data-field="firstname" data-id="<?php echo $row['firstname']; ?>"><?php echo $row['firstname']; ?></td>
                 <td class="editable" data-field="lastname" data-id="<?php echo $row['lastname']; ?>"><?php echo $row['lastname']; ?></td>
                 <td class="editable" data-field="mail" data-id="<?php echo $row['mail']; ?>"><?php echo $row['mail']; ?></td>
@@ -92,9 +81,13 @@ include "Database_connection.php";
 </footer>
 
 
+<script>
+    let table =
+</script>
 
 
 <script>
+
     // Add event listeners to make the table cells editable
     let editableCells = document.querySelectorAll('.editable');
     editableCells.forEach(cell => {
