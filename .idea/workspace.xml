@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Création du controller pour lier le controller à la view">
-      <change afterPath="$PROJECT_DIR$/Application/Controller/HomePageController.php" afterDir="false" />
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="amélioration page connexion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Controller/ConnexionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/ConnexionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/HomePageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/HomePageController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Model/User_class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/User_class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/View/SeConnecterDesign.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/SeConnecterDesign.php" afterDir="false" />
     </list>
@@ -22,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Connection" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,7 +42,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "Connexion",
-    "last_opened_file_path": "C:/Users/leoha/PhpstormProjects/untitled9",
+    "last_opened_file_path": "C:/Users/leoha/PhpstormProjects/sae301",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -59,6 +59,8 @@
       <option name="presentableId" value="Default" />
       <updated>1694436428497</updated>
       <workItem from="1694436429550" duration="10884000" />
+      <workItem from="1694503447126" duration="18119000" />
+      <workItem from="1694685642914" duration="6539000" />
     </task>
     <task id="LOCAL-00001" summary="Installation bootstrap">
       <option name="closed" value="true" />
@@ -68,23 +70,52 @@
       <option name="project" value="LOCAL" />
       <updated>1694437953751</updated>
     </task>
-    <task id="LOCAL-00002" summary="Création du controller pour lier le controller à la view">
+    <task id="LOCAL-00002" summary="début design de la page de connection">
       <option name="closed" value="true" />
-      <created>1694507961554</created>
+      <created>1694503562116</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1694507961554</updated>
+      <updated>1694503562116</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="début design de la page de connection+bootstrap">
+      <option name="closed" value="true" />
+      <created>1694508385732</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1694508385732</updated>
+    </task>
+    <task id="LOCAL-00004" summary="amélioration page connexion">
+      <option name="closed" value="true" />
+      <created>1694513193456</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1694513193456</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Installation bootstrap" />
-    <MESSAGE value="Création du controller pour lier le controller à la view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Création du controller pour lier le controller à la view" />
+    <MESSAGE value="début design de la page de connection" />
+    <MESSAGE value="début design de la page de connection+bootstrap" />
+    <MESSAGE value="amélioration page connexion" />
+    <option name="LAST_COMMIT_MESSAGE" value="amélioration page connexion" />
   </component>
 </project>

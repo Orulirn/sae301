@@ -1,3 +1,4 @@
 <?php
-    include ("../View/HomePage.html")
+include("../View/HomePage.html");
+
 ?>
