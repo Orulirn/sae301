@@ -11,12 +11,12 @@ class User {
     }
 
     function  login ($mail,$mdp,$db){
-        $sql=$db->prepare("SELECT password FROM Users WHERE  mail = ? ");
-        $sql->execute(array($mail));
+        $sql=$db->prepare("SELECT password FROM Users WHERE  mail = :mail ");
+        $sql->execute(array(['mail']=>$mail));
         $res=$sql->fetch();
         if (password_verify($mdp,$res[0])){
-            $sql=$db->prepare("SELECT idUser,firstname,lastname FROM Users WHERE ?=mail");
-            $sql->execute(array($mail));
+            $sql=$db->prepare("SELECT idUser,firstname,lastname FROM Users WHERE mail=:mail");
+            $sql->execute(array(['mail']=>$mail));
             $res=$sql->fetch();
             $this->id=$res[0];
             $this->firstname=$res[1];

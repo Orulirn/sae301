@@ -6,6 +6,7 @@
  * 
  * @version 1.0
  * @author LERMIGEAUX Nathan <nathan.lermigeaux@uphf.fr>
+ * @author MASSE Océane <oceane.masse2@uphf.fr>
  */
 include ("../Model/Database_connection.php");
 include ("../Model/User_class.php");
