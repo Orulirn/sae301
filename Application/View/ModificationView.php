@@ -1,4 +1,7 @@
-
+<?php
+global $res;
+include "../Controller/ModificationController.php"
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -41,36 +44,27 @@
 <div class="container py-3">
 
 
-<div style="overflow-y: scroll; height: 300px;">
-    <table class="table table-white text-dark table-hover border-black border-1">
-        <thead>
+    <table>
         <tr>
-            <th>idUser</th>
+            <th>id</th>
             <th>Prénom</th>
             <th>Nom</th>
-            <th>mail</th>
-            <th>cotisation</th>
+            <th>Email</th>
+            <th>Cotisation</th>
+            <th>Edit</th>
         </tr>
-        </thead>
-        <tbody>
-
-            <tr>
-                <td data-field="idUser" data-id="<?php echo $_POST['idUser']; ?>"><?php echo $_POST['idUser']; ?></td>
-                <td class="editable" data-field="firstname" data-id="<?php echo $row['firstname']; ?>"><?php echo $row['firstname']; ?></td>
-                <td class="editable" data-field="lastname" data-id="<?php echo $row['lastname']; ?>"><?php echo $row['lastname']; ?></td>
-                <td class="editable" data-field="mail" data-id="<?php echo $row['mail']; ?>"><?php echo $row['mail']; ?></td>
-                <td class="editable" data-field="cotisation" data-id="<?php echo $row['cotisation']; ?>"><?php echo $row['cotisation']; ?></td>
-            </tr>
-        <?php endforeach; ?>
-        </tbody>
+        <tr>
+        <?php foreach ($res as $row) { ?>
+            <td data-field="idUser"><?php echo $row['idUser']; ?></td>
+            <td class="editable"><?php echo $row['firstname']; ?></td>
+            <td class="editable"><?php echo $row['lastname']; ?></td>
+            <td class="editable"><?php echo $row['mail']; ?></td>
+            <td class="editable"><?php echo $row['cotisation']; ?></td>
+            <td><button id="editButton" type="button" class="btn btn-white border-black border-1">Edit</button></td>
+        </tr>
+        <?php } ?>
     </table>
 
-</div>
-</div>
-
-<div class="container py-3">
-    <button id='but' type="button" class="btn btn-white border-black border-1">Save</button>
-    <button id='reset' type="button" class="btn btn-white border-black border-1 ">Reset</button>
 </div>
 
 <footer class="bg-white">
@@ -81,7 +75,7 @@
 </footer>
 
 
-<script type="text/javascript" src="../Controller/ModificationController.php"></script>
+
 
 
 <script>
@@ -90,8 +84,6 @@
     let editableCells = document.querySelectorAll('.editable');
     editableCells.forEach(cell => {
         cell.addEventListener('dblclick', () => {
-            let id = cell.getAttribute('data-id');
-            let field = cell.getAttribute('data-field');
             let value = cell.textContent;
             let old_value = cell.textContent;
 
@@ -127,20 +119,15 @@
 
 
 <script>
-    let button = document.getElementById("but");
+    let button = document.getElementById("editButton");
     button.addEventListener("click", confirmation);
 
     function confirmation() {
-        let value = confirm ("Etes-vous sûr de vouloir enregistrer les modifications ?");
-        if (value === false){
-            alert("Modification annulée")
-        }
-        else {
-            //php
+        let value = confirm ("Etes-vous sûr de vouloir modifier ces informations ?");
+        if (value === true){
+            alert("Ouvre une nouvelle page !!")
         }
     }
-
-
 
 </script>
 

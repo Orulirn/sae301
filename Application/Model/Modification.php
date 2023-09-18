@@ -1,5 +1,6 @@
 <?php
 
+
 include "Database_connection.php";
 
 function getTable(){
@@ -8,8 +9,6 @@ function getTable(){
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
-
-header("Location: ../Controller/ModificationController.php");
 
 ?>
 
