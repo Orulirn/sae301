@@ -55,11 +55,11 @@ include "../Controller/ModificationController.php"
         </tr>
         <tr>
         <?php foreach ($res as $row) { ?>
-            <td data-field="idUser"><?php echo $row['idUser']; ?></td>
-            <td class="editable"><?php echo $row['firstname']; ?></td>
-            <td class="editable"><?php echo $row['lastname']; ?></td>
-            <td class="editable"><?php echo $row['mail']; ?></td>
-            <td class="editable"><?php echo $row['cotisation']; ?></td>
+            <td><?php echo $row['idUser']; ?></td>
+            <td><?php echo $row['firstname']; ?></td>
+            <td><?php echo $row['lastname']; ?></td>
+            <td><?php echo $row['mail']; ?></td>
+            <td><?php echo $row['cotisation']; ?></td>
             <td><button id="editButton" type="button" class="btn btn-white border-black border-1">Edit</button></td>
         </tr>
         <?php } ?>
