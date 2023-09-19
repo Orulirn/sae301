@@ -54,15 +54,17 @@ include "../Controller/ModificationController.php"
             <th>Edit</th>
         </tr>
         <tr>
-        <?php foreach ($res as $row) { ?>
+        <?php $i=0;
+        foreach ($res as $row) { ?>
             <td><?php echo $row['idUser']; ?></td>
             <td><?php echo $row['firstname']; ?></td>
             <td><?php echo $row['lastname']; ?></td>
             <td><?php echo $row['mail']; ?></td>
             <td><?php echo $row['cotisation']; ?></td>
-            <td><button id="editButton" type="button" class="btn btn-white border-black border-1">Edit</button></td>
+            <td><button id="<?php echo "$i"?>" type="button" class="btn btn-white border-black border-1" name="editButton">Edit</button></td>
         </tr>
-        <?php } ?>
+        <?php $i = $i+1;
+        } ?>
     </table>
 
 </div>
@@ -119,13 +121,19 @@ include "../Controller/ModificationController.php"
 
 
 <script>
-    let button = document.getElementById("editButton");
-    button.addEventListener("click", confirmation);
 
-    function confirmation() {
+    for (let i = 0; i < <?php echo $i?>; i++) {
+        let button = document.getElementsByName("editButton")[i];
+        button.addEventListener("click", function() {
+            confirmation(i); // Passez la valeur de 'i' à la fonction confirmation
+        });
+    }
+
+
+    function confirmation(buttonIndex) {
         let value = confirm ("Etes-vous sûr de vouloir modifier ces informations ?");
         if (value === true){
-            window.location.href = "updateData.php";
+            window.location.href = "updateData.php?buttonIndex=" + buttonIndex;
         }
     }
 
