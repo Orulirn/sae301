@@ -23,11 +23,8 @@ class User {
 
 //fonction qui permet la création du user 
     function login ($mail,$mdp,$db){
-        echo('1');
         $sql=$db->prepare("SELECT password FROM users WHERE  mail = :userMail ");
-        echo'2';
         $sql->execute(array('userMail'=>$mail));
-        echo '3';
         $res=$sql->fetch();
         if (password_verify($mdp,$res[0])){
             $sql=$db->prepare("SELECT idUser,firstname,lastname FROM Users WHERE mail=:userMail");
