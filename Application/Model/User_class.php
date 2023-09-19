@@ -1,4 +1,14 @@
 <?php
+/**
+ * fonctions utilisant la table users
+ *
+ * PHP version 8.1.0
+ *
+ * @version 2.0
+ *
+ * @author LERMIGEAUX Nathan <nathan.lermigeaux@uphf.fr>
+ * @author MASSE Océane <oceane.masse2@uphf.fr>
+ */
 
 class User {
     private $id,$firstname,$lastname;
@@ -10,26 +20,22 @@ class User {
         $this->id= null;
     }
 
-    function  login ($mail,$mdp,$db){
-        if ($db != null) {
-            echo "ça marche btw";
-        }else{
-           echo "ça marche pas btw";
-        }
-        $sql=$db->prepare("SELECT password FROM Users WHERE  mail = ? ");
-        $sql->execute(array($mail));
+
+//fonction qui permet la création du user
+    function login ($mail,$mdp,$db){
+        $sql=$db->prepare("SELECT password FROM users WHERE  mail = :userMail ");
+        $sql->execute(array('userMail'=>$mail));
         $res=$sql->fetch();
         if (password_verify($mdp,$res[0])){
-            $sql=$db->prepare("SELECT idUser,firstname,lastname FROM Users WHERE ?=mail");
-            $sql->execute(array($mail));
+            $sql=$db->prepare("SELECT idUser,firstname,lastname FROM Users WHERE mail=:userMail");
+            $sql->execute(array('userMail'=>$mail));
             $res=$sql->fetch();
             $this->id=$res[0];
             $this->firstname=$res[1];
             $this->lastname=$res[2];
-            echo "je suis connecté";
             header("Location: ../Controller/HomePageController.php");
         }
-        echo '<script>alert("Votre mail et/ou mot de passe est/sont incorrect(s)")</script>';
+
     }
 
 //setter and getter
@@ -60,4 +66,5 @@ class User {
 }
 
 $currentUser=new User();
+$_SESSION['user'] = $currentUser;
 ?>
