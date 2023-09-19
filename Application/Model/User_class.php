@@ -1,27 +1,44 @@
 <?php
-echo 1;
+/**
+ * fonctions utilisant la table users
+ *
+ * PHP version 8.1.0
+ *
+ * @version 2.0
+ *
+ * @author LERMIGEAUX Nathan <nathan.lermigeaux@uphf.fr>
+ * @author MASSE Océane <oceane.masse2@uphf.fr>
+ */
+
 class User {
-    private $firstname,$lastname;
+    private $id,$firstname,$lastname;
 //function to connect to the site
-    
-    function login ($mail,$mdp,$db){
-        $sql=$db->prepare("SELECT password FROM Users WHERE  mail = ? ");
-        $sql->execute(array($mail));
-        $res=$sql->fetch();
-        if (password_verify($mdp,$res[0])){
-            echo 5;
-            $sql=$db->prepare("SELECT firstname,lastname FROM Users WHERE ?=mail");
-            echo 6;
-            $sql->execute($mail);
-            $res=$sql->fetchAll();
-            echo 7;
-            $this->firstname=$res[0];
-            $this->lastname=$res[1];
-        }
-        
+
+    function __construct(){
+        $this->firstname='john';
+        $this->lastname='doe';
+        $this->id= null;
     }
 
-//setter and getter 
+
+//fonction qui permet la création du user
+    function login ($mail,$mdp,$db){
+        $sql=$db->prepare("SELECT password FROM users WHERE  mail = :userMail ");
+        $sql->execute(array('userMail'=>$mail));
+        $res=$sql->fetch();
+        if (password_verify($mdp,$res[0])){
+            $sql=$db->prepare("SELECT idUser,firstname,lastname FROM Users WHERE mail=:userMail");
+            $sql->execute(array('userMail'=>$mail));
+            $res=$sql->fetch();
+            $this->id=$res[0];
+            $this->firstname=$res[1];
+            $this->lastname=$res[2];
+            header("Location: ../Controller/HomePageController.php");
+        }
+        echo '<script>alert("Votre mail et/ou mot de passe est/sont incorrect(s)")</script>';
+    }
+
+//setter and getter
 
     function setFirstname($fn){
         $this->firstname=$fn;
@@ -31,6 +48,10 @@ class User {
         $this->lastname=$ln;
     }
 
+    function setId($i){
+        $this->id=$i;
+    }
+
     function getFirstname(){
         return $this->firstname;
     }
@@ -38,7 +59,12 @@ class User {
     function getLastname(){
         return $this->lastname;
     }
+
+    function getId(){
+        return $this->id;
+    }
 }
 
-$currentUser=new User()
+$currentUser=new User();
+$_SESSION['user'] = $currentUser;
 ?>
