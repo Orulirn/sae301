@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Amélioration du design de la page de connexion">
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="ajout d'un pop up pour informer l'utilisateur que son mdp n'est pas correct">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Controller/ConnexionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/ConnexionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/User_class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/User_class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/View/ConnexionView.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/ConnexionView.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/View/HomePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/HomePage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,20 +34,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Connexion",
-    "last_opened_file_path": "C:/Users/leoha/PhpstormProjects/sae301",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Connexion&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/leoha/PhpstormProjects/sae301&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ewenc\PhpstormProjects\sae301\Application\View\img" />
@@ -67,7 +65,7 @@
       <workItem from="1694503447126" duration="18119000" />
       <workItem from="1694685642914" duration="6539000" />
       <workItem from="1694779451952" duration="2961000" />
-      <workItem from="1695020582869" duration="7245000" />
+      <workItem from="1695020582869" duration="8371000" />
     </task>
     <task id="LOCAL-00001" summary="Installation bootstrap">
       <option name="closed" value="true" />
@@ -101,7 +99,23 @@
       <option name="project" value="LOCAL" />
       <updated>1694513193456</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="patch pour refaire marcher la connexion.">
+      <option name="closed" value="true" />
+      <created>1695113483113</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1695113483113</updated>
+    </task>
+    <task id="LOCAL-00006" summary="ajout d'un pop up pour informer l'utilisateur que son mdp n'est pas correct">
+      <option name="closed" value="true" />
+      <created>1695113553090</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1695113553090</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,6 +138,8 @@
     <MESSAGE value="début design de la page de connection+bootstrap" />
     <MESSAGE value="amélioration page connexion" />
     <MESSAGE value="Amélioration du design de la page de connexion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Amélioration du design de la page de connexion" />
+    <MESSAGE value="patch pour refaire marcher la connexion." />
+    <MESSAGE value="ajout d'un pop up pour informer l'utilisateur que son mdp n'est pas correct" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout d'un pop up pour informer l'utilisateur que son mdp n'est pas correct" />
   </component>
 </project>

@@ -1,5 +1,6 @@
 <?php
 include("../Model/Database_connection.php");
+include("../View/index.html");
 include("../View/ConnexionView.html");
 include ("../Model/User_class.php");
 global $db;
