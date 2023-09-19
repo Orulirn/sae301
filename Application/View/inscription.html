@@ -10,18 +10,24 @@
     Inscription
 </h1>
 
-<form>
-    <label for="nom">Nom :</label><br>
-    <input type="text" id="nom" name="nom"><br>
-    <label for="prenom">Prénom :</label><br>
-    <input type="text" id="prenom" name="prenom"><br>
+<form method="POST">
+    <label for="lastname">Nom :</label><br>
+    <input type="text" id="lastname" name="lastname"><br>
+    <label for="firstname">Prénom :</label><br>
+    <input type="text" id="firstname" name="firstname"><br>
     <label for="mail">Adresse mail :</label><br>
     <input type="text" id="mail" name="mail"><br>
-    <label for="mdp">Mot de passe :</label><br>
-    <input type="text" id="mdp" name="mdp"><br>
+    <label for="password">Mot de passe :</label><br>
+    <input type="text" id="password" name="password"><br>
     <label for="verif">Vérification mot de passe :</label><br>
     <input type="text" id="verif" name="verif"><br>
-    <input type="submit" name="bouton">
+    <input type="radio" id="player" name="usertype">
+    <label for="player">Joueur</label>
+    <input type="radio" id="admin" name="usertype">
+    <label for="admin">Administrateur</label>
+    <input type="radio" id="both" name="usertype">
+    <label for="both">Les deux</label><br>
+    <input type="submit" name="button">
 </form>
 
 </body>
