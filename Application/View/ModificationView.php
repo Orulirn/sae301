@@ -125,7 +125,7 @@ include "../Controller/ModificationController.php"
     function confirmation() {
         let value = confirm ("Etes-vous sûr de vouloir modifier ces informations ?");
         if (value === true){
-            alert("Ouvre une nouvelle page !!")
+            window.location.href = "updateData.php";
         }
     }
 
