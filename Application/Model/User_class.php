@@ -35,7 +35,7 @@ class User {
             $this->lastname=$res[2];
             header("Location: ../Controller/HomePageController.php");
         }
-
+        echo '<script>alert("Votre mail et/ou mot de passe est/sont incorrect(s)")</script>';
     }
 
 //setter and getter
