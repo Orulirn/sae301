@@ -11,18 +11,26 @@
  */
 
 class User {
+    private static $instance=null;
     private $id,$firstname,$lastname;
 //function to connect to the site
     
-    function __construct(){
+    private function __construct(){
         $this->firstname='john';
         $this->lastname='doe';
         $this->id= null;
     }
 
+    public static function getInstance(){
+        if(is_null(self::$instance)){
+            self::$instance;
+        }
+        return self::$instance;
+    }
 
 //fonction qui permet la création du user 
-    function login ($mail,$mdp,$db){
+    function login ($mail,$mdp){
+        global $db;
         $sql=$db->prepare("SELECT password FROM users WHERE  mail = :userMail ");
         $sql->execute(array('userMail'=>$mail));
         $res=$sql->fetch();
@@ -63,4 +71,5 @@ class User {
         return $this->id;
     }
 }
+
 ?>
