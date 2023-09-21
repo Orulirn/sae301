@@ -31,7 +31,6 @@ class User {
 
 //fonction qui permet la création du user
     function login ($mail,$mdp,$db){
-        echo "test";
         $sql=$db->prepare("SELECT password FROM users WHERE  mail = :userMail ");
         $sql->execute(array('userMail'=>$mail));
         $res=$sql->fetch();
