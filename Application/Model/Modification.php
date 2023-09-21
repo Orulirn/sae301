@@ -9,6 +9,5 @@ function getTable(){
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
-
 ?>
 
