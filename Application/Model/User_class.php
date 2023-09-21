@@ -11,15 +11,23 @@
  */
 
 class User {
-    private $id,$firstname,$lastname;
+    private static $instance;
+    private $id,$firstname,$lastname,$log;
 //function to connect to the site
 
-    function __construct(){
+    private function __construct(){
         $this->firstname='john';
         $this->lastname='doe';
         $this->id= null;
+        $this->log= false;
     }
 
+    public static function getInstance(){
+        if(is_null(self::$instance)){
+            self::$instance = new User();
+        }
+        return self::$instance;
+}
 
 //fonction qui permet la création du user
     function login ($mail,$mdp,$db){
@@ -34,6 +42,7 @@ class User {
             $this->id=$res[0];
             $this->firstname=$res[1];
             $this->lastname=$res[2];
+            $this->log=true;
             header("Location: ../Controller/HomePageController.php");
         }
         echo '<script>alert("Votre mail et/ou mot de passe est/sont incorrect(s)")</script>';
@@ -63,6 +72,11 @@ class User {
 
     function getId(){
         return $this->id;
+    }
+
+    function getLog()
+    {
+        return $this->log;
     }
 }
 
