@@ -9,18 +9,20 @@
  * @author LERMIGEAUX Nathan <nathan.lermigeaux@uphf.fr>
  * @author MASSE Océane <oceane.masse2@uphf.fr>
  */
-
+include('../Model/User_class.php');
+include('../Model/Database_connection.php');
 //Il faut tester avec des transactions en requete sql
 function signUp($firstname, $lastname, $mail, $password, $verification, $db){
     $sql=$db->prepare("INSERT INTO users( firstname, lastname, mail, password) VALUES (:firstname,:lastname,:mail,:password)");
     $sql->execute(array('firstname'=>$firstname,'lastname'=>$lastname,'mail'=>$mail,'password'=>password_hash($password,PASSWORD_DEFAULT)));
     $sql=$db->prepare("INSERT INTO users_role (idRole,idUser) VALUES (:idRole,:idUser)");
     $lastid=$db->lastInsertID();
-    if($verification=="both"){
+    echo $_POST['usertype'];
+    if($_POST['usertype']=="both"){
         $sql->execute(array('idRole'=>0,'idUser'=>$lastid));
         $sql->execute(array('idRole'=>1,'idUser'=>$lastid));
     }
-    elseif ($verification == "admin"){
+    elseif ($_POST['usertype'] == "admin"){
         $sql->execute(array('idRole'=>0,'idUser'=>$lastid));
     }
     else {
@@ -39,5 +41,7 @@ function signUp($firstname, $lastname, $mail, $password, $verification, $db){
   $sql=$db->prepare("UPDATE users SET cotisation = 1 WHERE idUser = :id ");
   $sql->execute(array('id'=>$user->getId()));
 }
-
+$currentUser= User::getInstance();
+$currentUser->login("nathanlermigeaux@gmail.com",'Khyra2020+');
+echo $currentUser->getLastname();
 ?>
