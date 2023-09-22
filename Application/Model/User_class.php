@@ -1,36 +1,37 @@
 <?php
 /**
  * fonctions utilisant la table users
- *
+ * 
  * PHP version 8.1.0
- *
+ * 
  * @version 2.0
- *
+ * 
  * @author LERMIGEAUX Nathan <nathan.lermigeaux@uphf.fr>
  * @author MASSE Océane <oceane.masse2@uphf.fr>
  */
-
+include("../Model/Database_connection.php");
 class User {
-    private static $instance;
+    private static $instance=null;
     private $id,$firstname,$lastname,$log;
 //function to connect to the site
-
+    
     private function __construct(){
         $this->firstname='john';
         $this->lastname='doe';
-        $this->id= null;
-        $this->log= false;
+        $this->id=null;
+        $this->log=false;
     }
 
     public static function getInstance(){
         if(is_null(self::$instance)){
-            self::$instance = new User();
+            self::$instance=new User();
         }
         return self::$instance;
-}
+    }
 
-//fonction qui permet la création du user
-    function login ($mail,$mdp,$db){
+//fonction qui permet la création du user 
+    function login ($mail,$mdp){
+        global $db;
         $sql=$db->prepare("SELECT password FROM users WHERE  mail = :userMail ");
         $sql->execute(array('userMail'=>$mail));
         $res=$sql->fetch();
@@ -42,12 +43,19 @@ class User {
             $this->firstname=$res[1];
             $this->lastname=$res[2];
             $this->log=true;
-            header("Location: ../Controller/HomePageController.php");
+            //header('Location: ../Controller/HomePageController.php');
         }
-        echo '<script>alert("Votre mail et/ou mot de passe est/sont incorrect(s)")</script>';
+        
     }
 
-//setter and getter
+    public function resetUser(){
+        $this->firstname='john';
+        $this->lastname='doe';
+        $this->id=null;
+        $this->log=false;
+    }
+
+//setter and getter 
 
     function setFirstname($fn){
         $this->firstname=$fn;
@@ -72,11 +80,7 @@ class User {
     function getId(){
         return $this->id;
     }
-
-    function getLog()
-    {
-        return $this->log;
-    }
 }
-
+session_start();
+$_SESSION['user'] = User::getInstance();
 ?>

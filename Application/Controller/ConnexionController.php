@@ -5,9 +5,9 @@ include("../View/index.html");
 include("../View/ConnexionView.html");
 include ("../Model/User_class.php");
 $_SESSION['user'] = User::getInstance();
-global $db;
 
 if(isset($_POST['Valider'])){
-    $_SESSION['user']->login($_POST['mail'],$_POST['pwd'],$db);
+    $_SESSION['user']->login($_POST['mail'],$_POST['pwd']);
 }
+var_dump($_SESSION['user']);
 ?>
