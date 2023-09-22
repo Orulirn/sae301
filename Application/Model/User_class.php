@@ -9,7 +9,6 @@
  * @author LERMIGEAUX Nathan <nathan.lermigeaux@uphf.fr>
  * @author MASSE Océane <oceane.masse2@uphf.fr>
  */
-include("../Model/Database_connection.php");
 class User {
     private static $instance=null;
     private $id,$firstname,$lastname,$log;
@@ -24,7 +23,9 @@ class User {
 
     public static function getInstance(){
         if(is_null(self::$instance)){
+
             self::$instance=new User();
+
         }
         return self::$instance;
     }
