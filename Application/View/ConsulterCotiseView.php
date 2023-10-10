@@ -145,6 +145,12 @@ include "../Controller/ConsulterCotiseController.php"
         var selectedRows = sourceTable.querySelectorAll('tr.selected');
 
         selectedRows.forEach(function (selectedRow) {
+
+            var email = selectedRow[2].textContent;
+
+            // CYRANO TU FAIS ça FAUT JUSTE RECUP LA VARIABLE D'AU DESSUS email POUR LA METTRE DANS LE PHP en DESSOUS email.
+            <?php updateLine(email)  ?>
+
             // Clone la ligne sélectionnée
             var newRow = selectedRow.cloneNode(true);
 

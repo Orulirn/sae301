@@ -16,4 +16,11 @@ function getTableNonCotise(){
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function updateLine($email,$cotisation){
+    global $db;
+    $sql = $db->prepare("UPDATE `users` SET 'cotisation'=$cotisation WHERE `email`='$email'");
+    $sql->execute();
+    return true;
+}
 ?>
