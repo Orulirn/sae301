@@ -22,6 +22,13 @@ include "../Controller/ConsulterCotiseController.php"
             padding: 8px;
             text-align: left;
         }
+        tr{
+            border: 2px solid #000000;
+        }
+             /* CSS pour mettre en surbrillance la ligne sélectionnée */
+         table tr.selected {
+             border: 4px solid #0a53be;
+         }
     </style>
 </head>
 <body>
@@ -36,17 +43,21 @@ include "../Controller/ConsulterCotiseController.php"
 
 </header>
 
+
 <div class="container p-3 text-center">
     <div class="row">
         <div class="col">
             <h1>Cotisé</h1>
 
-            <table>
+            <table id="cotiseTable">
+                <thead>
                 <tr>
                     <th>Prénom</th>
                     <th>Nom</th>
                     <th>Email</th>
                 </tr>
+                </thead>
+                <tbody>
                 <tr>
                     <?php foreach ($listCotise as $row) { ?>
                     <td><?php echo $row['firstname']; ?></td>
@@ -54,17 +65,32 @@ include "../Controller/ConsulterCotiseController.php"
                     <td><?php echo $row['mail']; ?></td>
                 </tr>
                 <?php }?>
+                </tbody>
             </table>
+        </div>
+        <div class="col pt-5">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <button><img src="gauche.png" alt="left" id="moveLeftBtn"></button>
+            <button><img src="droite.png" alt="right" id="moveRightBtn"></button>
         </div>
         <div class="col">
             <h1>Non cotisé</h1>
 
-            <table>
+            <table id="nonCotiseTable">
+                <thead>
                 <tr>
                     <th>Prénom</th>
                     <th>Nom</th>
                     <th>Email</th>
                 </tr>
+                </thead>
+                <tbody>
                 <tr>
                     <?php foreach ($listNonCotise as $row) { ?>
                     <td><?php echo $row['firstname']; ?></td>
@@ -72,6 +98,7 @@ include "../Controller/ConsulterCotiseController.php"
                     <td><?php echo $row['mail']; ?></td>
                 </tr>
                 <?php }?>
+                </tbody>
             </table>
         </div>
     </div>
@@ -84,5 +111,72 @@ include "../Controller/ConsulterCotiseController.php"
     </div>
 
 </footer>
+
+
+<script>
+    // Fonction pour gérer la sélection/désélection de lignes
+    function toggleRowSelection(event) {
+        var selectedRow = event.currentTarget;
+
+        if (selectedRow.classList.contains('selected')) {
+            // Si la ligne est déjà sélectionnée, la désélectionner
+            selectedRow.classList.remove('selected');
+        } else {
+            // Sinon, la sélectionner
+            selectedRow.classList.add('selected');
+        }
+    }
+
+    // Ajoutez des gestionnaires d'événements à toutes les lignes des tables
+    var cotiseTableRows = document.querySelectorAll('#cotiseTable tr');
+    var nonCotiseTableRows = document.querySelectorAll('#nonCotiseTable tr');
+
+    cotiseTableRows.forEach(function (row) {
+        row.addEventListener('click', toggleRowSelection);
+    });
+
+    nonCotiseTableRows.forEach(function (row) {
+        row.addEventListener('click', toggleRowSelection);
+    });
+
+
+    // Fonction pour déplacer les lignes sélectionnées de sourceTable vers destinationTable
+    function moveSelectedRows(sourceTable, destinationTable) {
+        var selectedRows = sourceTable.querySelectorAll('tr.selected');
+
+        selectedRows.forEach(function (selectedRow) {
+            // Clone la ligne sélectionnée
+            var newRow = selectedRow.cloneNode(true);
+
+            // Ajoute la nouvelle ligne au tableau de destination
+            destinationTable.querySelector('tbody').appendChild(newRow);
+
+            // Supprime la ligne du tableau source
+            sourceTable.querySelector('tbody').removeChild(selectedRow);
+
+            newRow.addEventListener('click', toggleRowSelection);
+        });
+
+    }
+
+    var cotiseTable = document.getElementById('cotiseTable');
+    var nonCotiseTable = document.getElementById('nonCotiseTable');
+
+    // Ajoutez des gestionnaires d'événements aux boutons "Right" et "Left"
+    var moveRightBtn = document.getElementById('moveRightBtn');
+    var moveLeftBtn = document.getElementById('moveLeftBtn');
+
+    moveRightBtn.addEventListener('click', function () {
+        moveSelectedRows(cotiseTable, nonCotiseTable);
+    });
+
+    moveLeftBtn.addEventListener('click', function () {
+        moveSelectedRows(nonCotiseTable, cotiseTable);
+    });
+
+
+</script>
+
+
 </body>
 </html>
