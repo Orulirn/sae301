@@ -11,7 +11,7 @@
  */
 class User {
     private static $instance=null;
-    private $id,$firstname,$lastname,$log;
+    private $role,$firstname,$lastname,$log;
 //function to connect to the site
     
     private function __construct(){
@@ -67,7 +67,7 @@ class User {
     }
 
     function setRole($i){
-        $this->id=$i;
+        $this->role=$i;
     }
 
     function getFirstname(){
@@ -79,7 +79,7 @@ class User {
     }
 
     function getRole(){
-        return $this->id;
+        return $this->role;
     }
 }
 session_start();
