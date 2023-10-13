@@ -25,10 +25,10 @@ include "../Controller/ConsulterCotiseController.php"
         tr{
             border: 2px solid #000000;
         }
-             /* CSS pour mettre en surbrillance la ligne sélectionnée */
-         table tr.selected {
-             border: 4px solid #0a53be;
-         }
+        /* CSS pour mettre en surbrillance la ligne sélectionnée */
+        table tr.selected {
+            border: 4px solid #0a53be;
+        }
     </style>
 </head>
 <body>
@@ -76,8 +76,14 @@ include "../Controller/ConsulterCotiseController.php"
             <br>
             <br>
             <br>
-            <button><img src="gauche.png" alt="left" id="moveLeftBtn"></button>
-            <button><img src="droite.png" alt="right" id="moveRightBtn"></button>
+            <button style="border: solid 1px #146c43; background: none;">
+                <img src="gauche.png" alt="left" id="moveLeftBtn" style="width: 35px; height: 35px;">
+            </button>
+
+            <button style="border: solid 1px #b02a37; background: none;">
+                <img src="droite.png" alt="right" id="moveRightBtn" style="width: 35px; height: 35px;">
+            </button>
+
         </div>
         <div class="col">
             <h1>Non cotisé</h1>
@@ -144,12 +150,23 @@ include "../Controller/ConsulterCotiseController.php"
     function moveSelectedRows(sourceTable, destinationTable) {
         var selectedRows = sourceTable.querySelectorAll('tr.selected');
 
+        var listEmail = [];
+        var cot;
+
+        if (sourceTable === document.getElementById('cotiseTable'))
+            cot = 0;
+        else{
+            cot = 1;
+        }
+
+
         selectedRows.forEach(function (selectedRow) {
 
-            var email = selectedRow[2].textContent;
+
+            var email = selectedRow.cells[2].textContent;
 
             // CYRANO TU FAIS ça FAUT JUSTE RECUP LA VARIABLE D'AU DESSUS email POUR LA METTRE DANS LE PHP en DESSOUS email.
-            <?php updateLine(email)  ?>
+
 
             // Clone la ligne sélectionnée
             var newRow = selectedRow.cloneNode(true);
@@ -161,8 +178,15 @@ include "../Controller/ConsulterCotiseController.php"
             sourceTable.querySelector('tbody').removeChild(selectedRow);
 
             newRow.addEventListener('click', toggleRowSelection);
+
+            listEmail.push(email);
+
         });
 
+
+        console.log(listEmail);
+        var queryString = "listEmail=" + encodeURIComponent(listEmail) + "&cotisation=" + encodeURIComponent(cot);
+        window.location.replace("updateTable.php?" + queryString);
     }
 
     var cotiseTable = document.getElementById('cotiseTable');
