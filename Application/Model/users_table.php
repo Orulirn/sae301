@@ -6,6 +6,8 @@
 
 
 //Il faut tester avec des transactions en requete sql
+
+//Permet d'ajouter à la table user et user_role les informations du formulaire d'inscription
 function signUpAdmin($firstname, $lastname, $mail, $usertype, $password, $verification)
 {
     global $db;

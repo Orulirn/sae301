@@ -3,6 +3,8 @@
 * @author LERMIGEAUX Nathan <nathan.lermigeaux@uphf.fr>
 * @author MASSE Océane <oceane.masse2@uphf.fr>
 */
+
+//Permet d'ajouter à la table verify les informations du formulaire d'inscription
 function signUpVerify($firstname, $lastname, $mail, $password, $verification)
 {
     global $db;
