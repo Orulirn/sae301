@@ -4,7 +4,7 @@
  * 
  * PHP version 8.1.0
  * 
- * @version 2.0
+ * @version 2.2
  * 
  * @author LERMIGEAUX Nathan <nathan.lermigeaux@uphf.fr>
  * @author MASSE Océane <oceane.masse2@uphf.fr>
@@ -17,7 +17,7 @@ class User {
     private function __construct(){
         $this->firstname='john';
         $this->lastname='doe';
-        $this->id=null;
+        $this->role=null;
         $this->log=false;
     }
 
@@ -40,11 +40,11 @@ class User {
             $sql=$db->prepare("SELECT idUser,firstname,lastname FROM Users WHERE mail=:userMail");
             $sql->execute(array('userMail'=>$mail));
             $res=$sql->fetch();
-            $this->id=$res[0];
+            $this->role=$res[0];
             $this->firstname=$res[1];
             $this->lastname=$res[2];
             $this->log=true;
-            //header('Location: ../Controller/HomePageController.php');
+            header('Location: ../Controller/HomePageController.php');
         }
         
     }
@@ -52,7 +52,7 @@ class User {
     public function resetUser(){
         $this->firstname='john';
         $this->lastname='doe';
-        $this->id=null;
+        $this->role=null;
         $this->log=false;
     }
 
@@ -66,7 +66,7 @@ class User {
         $this->lastname=$ln;
     }
 
-    function setId($i){
+    function setRole($i){
         $this->id=$i;
     }
 
@@ -78,7 +78,7 @@ class User {
         return $this->lastname;
     }
 
-    function getId(){
+    function getRole(){
         return $this->id;
     }
 }

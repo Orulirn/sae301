@@ -4,9 +4,10 @@
  * 
  * PHP version 8.1.0
  * 
- * @version 1.0
+ * @version 1.5
  * @author LERMIGEAUX Nathan <nathan.lermigeaux@uphf.fr>
  */
+
 class Database extends PDO
 {
     private static $instance;
