@@ -1,14 +1,15 @@
 <?php
-include("../Model/Database_connection.php");
+session_start();
+include_once("../Model/Database_connection.php");
 include("../View/index.html");
 include("../View/ConnexionView.html");
-include ("../Model/User_class.php");
-global $db;
+include_once("../Model/User_class.php");
 
-session_start();
-$_SESSION['user'] = new User();
+$user = $_SESSION['user'];
 
 if(isset($_POST['Valider'])){
-    $_SESSION['user']->login($_POST['mail'],$_POST['pwd'],$db);
+    $user->login($_POST['mail'],$_POST['pwd']);
 }
+
+$_SESSION['user']=$user;
 ?>
