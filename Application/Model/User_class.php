@@ -17,7 +17,7 @@ class User {
     private function __construct(){
         $this->firstname='john';
         $this->lastname='doe';
-        $this->id=null;
+        $this->id=0;
         $this->log=false;
     }
 
@@ -50,7 +50,7 @@ class User {
     public function resetUser(){
         $this->firstname='john';
         $this->lastname='doe';
-        $this->id=null;
+        $this->id=0;
         $this->log=false;
     }
 

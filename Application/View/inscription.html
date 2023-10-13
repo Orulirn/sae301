@@ -43,7 +43,7 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-6 mb-4">
+                                <div class="col-md-6 mb-4" id="type">
 
                                     <h6 class="mb-2 pb-1">Type d'utilisateur: </h6>
 
@@ -98,5 +98,10 @@
         </div>
     </div>
 </section>
+<script>
+    if (document.getElementById('userRole').outerText!="0"){
+        document.getElementById("type").style.visibility="hidden";
+    }
+</script>
 </body>
 </html>
