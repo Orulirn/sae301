@@ -10,6 +10,6 @@ foreach ($emailArray as $row) {
     updateLine($row, $cotisation);
 }
 
-header('Location: ConsulterCotiseView.php')
+header('Location: ConsulterCotiseController.php')
 
 ?>
