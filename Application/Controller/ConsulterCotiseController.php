@@ -102,7 +102,7 @@ echo'</div>';
 
     // Fonction pour déplacer les lignes sélectionnées de sourceTable vers destinationTable
     function moveSelectedRows(sourceTable, destinationTable) {
-        var selectedRows = sourceTable.querySelectorAll('tr.selected');
+        var selectedRows = sourceTable.querySelectorAll('tbody tr.selected');
 
         var listEmail = [];
         var cot;
