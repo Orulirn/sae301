@@ -4,25 +4,573 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Patch de la View pour la connexion">
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Installation phpMailer + création d'une classe qui permet l'envoi de mail de manière non sécurisé">
+      <change afterPath="$PROJECT_DIR$/Application/Model/Mailing.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/COMMITMENT" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/SECURITY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/VERSION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/get_oauth_token.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-af.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-ar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-az.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-ba.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-be.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-bg.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-ca.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-cs.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-da.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-de.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-el.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-eo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-es.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-et.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-fa.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-fi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-fo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-fr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-gl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-he.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-hi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-hr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-hu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-hy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-id.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-it.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-ja.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-ka.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-ko.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-lt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-lv.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-mg.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-mn.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-ms.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-nb.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-nl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-pl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-pt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-pt_br.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-ro.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-ru.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-si.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-sk.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-sl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-sr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-sr_latn.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-sv.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-tl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-tr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-uk.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-vi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-zh.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/language/phpmailer.lang-zh_cn.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/src/DSNConfigurator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/src/Exception.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/src/OAuth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/src/OAuthTokenProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/src/PHPMailer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/src/POP3.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/PHPMailer-master/src/SMTP.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/composer.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/autoload.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/ClassLoader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/InstalledVersions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_files.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_namespaces.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_real.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_static.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/installed.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/installed.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/platform_check.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/doctrine/deprecations/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/doctrine/deprecations/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/doctrine/deprecations/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/doctrine/deprecations/lib/Doctrine/Deprecations/Deprecation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/doctrine/deprecations/lib/Doctrine/Deprecations/PHPUnit/VerifyDeprecations.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/doctrine/lexer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/doctrine/lexer/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/doctrine/lexer/UPGRADE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/doctrine/lexer/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/doctrine/lexer/src/AbstractLexer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/doctrine/lexer/src/Token.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/EmailLexer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/EmailParser.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/EmailValidator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/MessageIDParser.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Parser.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Parser/Comment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Parser/CommentStrategy/CommentStrategy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Parser/CommentStrategy/DomainComment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Parser/CommentStrategy/LocalComment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Parser/DomainLiteral.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Parser/DomainPart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Parser/DoubleQuote.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Parser/FoldingWhiteSpace.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Parser/IDLeftPart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Parser/IDRightPart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Parser/LocalPart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Parser/PartParser.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/InvalidEmail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/MultipleErrors.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/AtextAfterCFWS.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/CRLFAtTheEnd.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/CRLFX2.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/CRNoLF.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/CharNotAllowed.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/CommaInDomain.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/CommentsInIDRight.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/ConsecutiveAt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/ConsecutiveDot.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/DetailedReason.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/DomainAcceptsNoMail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/DomainHyphened.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/DomainTooLong.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/DotAtEnd.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/DotAtStart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/EmptyReason.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/ExceptionFound.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/ExpectingATEXT.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/ExpectingCTEXT.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/ExpectingDTEXT.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/ExpectingDomainLiteralClose.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/LabelTooLong.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/LocalOrReservedDomain.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/NoDNSRecord.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/NoDomainPart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/NoLocalPart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/RFCWarnings.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/Reason.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/SpoofEmail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/UnOpenedComment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/UnableToGetDNSRecord.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/UnclosedComment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/UnclosedQuotedString.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Reason/UnusualElements.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/Result.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/SpoofEmail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Result/ValidEmail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Validation/DNSCheckValidation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Validation/DNSGetRecordWrapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Validation/DNSRecords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Validation/EmailValidation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Validation/Exception/EmptyValidationList.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Validation/Extra/SpoofCheckValidation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Validation/MessageIDValidation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Validation/MultipleValidationWithAnd.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Validation/NoRFCWarningsValidation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Validation/RFCValidation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/AddressLiteral.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/CFWSNearAt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/CFWSWithFWS.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/Comment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/DeprecatedComment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/DomainLiteral.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/EmailTooLong.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/IPV6BadChar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/IPV6ColonEnd.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/IPV6ColonStart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/IPV6Deprecated.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/IPV6DoubleColon.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/IPV6GroupCount.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/IPV6MaxGroups.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/LocalTooLong.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/NoDNSMXRecord.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/ObsoleteDTEXT.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/QuotedPart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/QuotedString.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/TLD.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/egulias/email-validator/src/Warning/Warning.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/COMMITMENT" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/SECURITY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/VERSION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/get_oauth_token.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-af.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-ar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-az.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-ba.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-be.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-bg.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-ca.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-cs.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-da.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-de.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-el.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-eo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-es.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-et.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-fa.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-fi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-fo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-fr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-gl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-he.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-hi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-hr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-hu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-hy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-id.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-it.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-ja.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-ka.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-ko.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-lt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-lv.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-mg.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-mn.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-ms.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-nb.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-nl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-pl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-pt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-pt_br.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-ro.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-ru.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-si.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-sk.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-sl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-sr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-sr_latn.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-sv.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-tl.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-tr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-uk.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-vi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-zh.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/language/phpmailer.lang-zh_cn.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/src/DSNConfigurator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/src/Exception.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/src/OAuth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/src/OAuthTokenProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/src/PHPMailer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/src/POP3.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/phpmailer/phpmailer/src/SMTP.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/.github/ISSUE_TEMPLATE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/.github/PULL_REQUEST_TEMPLATE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/.github/workflows/tests.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/.php_cs.dist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/CHANGES" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/doc/headers.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/doc/index.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/doc/introduction.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/doc/japanese.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/doc/messages.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/doc/plugins.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/doc/sending.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/AddressEncoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/AddressEncoder/IdnAddressEncoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/AddressEncoder/Utf8AddressEncoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/AddressEncoderException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Attachment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/ByteStream/AbstractFilterableInputStream.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/ByteStream/ArrayByteStream.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/ByteStream/FileByteStream.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/ByteStream/TemporaryFileByteStream.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterReader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterReader/GenericFixedWidthReader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterReader/UsAsciiReader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterReader/Utf8Reader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterReaderFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterReaderFactory/SimpleCharacterReaderFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterStream.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterStream/ArrayCharacterStream.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterStream/NgCharacterStream.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/ConfigurableSpool.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/DependencyContainer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/DependencyException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/EmbeddedFile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Encoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Encoder/Base64Encoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Encoder/QpEncoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Encoder/Rfc2231Encoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/CommandEvent.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/CommandListener.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/Event.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/EventDispatcher.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/EventListener.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/EventObject.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/ResponseEvent.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/ResponseListener.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/SendEvent.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/SendListener.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/SimpleEventDispatcher.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/TransportChangeEvent.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/TransportChangeListener.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/TransportExceptionEvent.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/TransportExceptionListener.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/FailoverTransport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/FileSpool.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/FileStream.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Filterable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/IdGenerator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Image.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/InputByteStream.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/IoException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/KeyCache.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/KeyCache/ArrayKeyCache.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/KeyCache/DiskKeyCache.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/KeyCache/KeyCacheInputStream.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/KeyCache/NullKeyCache.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/KeyCache/SimpleKeyCacheInputStream.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/LoadBalancedTransport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer/ArrayRecipientIterator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer/RecipientIterator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/MemorySpool.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Message.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Attachment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/CharsetObserver.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/ContentEncoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/ContentEncoder/Base64ContentEncoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/ContentEncoder/NativeQpContentEncoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/ContentEncoder/NullContentEncoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/ContentEncoder/PlainContentEncoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/ContentEncoder/QpContentEncoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/ContentEncoder/QpContentEncoderProxy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/ContentEncoder/RawContentEncoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/EmbeddedFile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/EncodingObserver.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Header.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/HeaderEncoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/HeaderEncoder/Base64HeaderEncoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/HeaderEncoder/QpHeaderEncoder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/AbstractHeader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/DateHeader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/IdentificationHeader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/MailboxHeader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/OpenDKIMHeader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/ParameterizedHeader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/PathHeader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/UnstructuredHeader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/IdGenerator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/MimePart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleHeaderFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleHeaderSet.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMimeEntity.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/MimePart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/NullTransport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/OutputByteStream.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/AntiFloodPlugin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/BandwidthMonitorPlugin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Decorator/Replacements.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/DecoratorPlugin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/ImpersonatePlugin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Logger.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/LoggerPlugin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Loggers/ArrayLogger.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Loggers/EchoLogger.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/MessageLogger.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Pop/Pop3Connection.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Pop/Pop3Exception.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/PopBeforeSmtpPlugin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/RedirectingPlugin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Reporter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/ReporterPlugin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Reporters/HitReporter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Reporters/HtmlReporter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Sleeper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/ThrottlerPlugin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Timer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Preferences.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/ReplacementFilterFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/RfcComplianceException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/SendmailTransport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/BodySigner.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/DKIMSigner.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/DomainKeySigner.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/HeaderSigner.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/OpenDKIMSigner.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/SMimeSigner.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/SmtpTransport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Spool.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/SpoolTransport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/StreamFilter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/StreamFilters/ByteArrayReplacementFilter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/StreamFilters/StringReplacementFilter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/StreamFilters/StringReplacementFilterFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/SwiftException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/Auth/CramMd5Authenticator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/Auth/LoginAuthenticator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/Auth/NTLMAuthenticator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/Auth/PlainAuthenticator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/Auth/XOAuth2Authenticator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/AuthHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/Authenticator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/EightBitMimeHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/SmtpUtf8Handler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/FailoverTransport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/IoBuffer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/LoadBalancedTransport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/NullTransport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/SendmailTransport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/SmtpAgent.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/SpoolTransport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/classes/Swift/TransportException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/dependency_maps/cache_deps.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/dependency_maps/message_deps.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/dependency_maps/mime_deps.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/dependency_maps/transport_deps.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/mime_types.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/preferences.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/swift_required.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/swiftmailer/swiftmailer/lib/swiftmailer_generate_mimes_config.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Iconv.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.big5.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp037.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp1006.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp1026.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp424.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp437.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp500.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp737.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp775.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp850.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp852.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp855.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp856.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp857.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp860.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp861.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp862.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp863.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp864.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp865.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp866.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp869.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp874.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp875.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp932.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp936.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp949.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.cp950.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-1.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-10.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-11.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-13.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-14.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-15.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-16.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-2.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-3.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-4.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-5.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-6.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-7.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-8.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-9.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.koi8-r.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.koi8-u.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.us-ascii.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.windows-1250.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.windows-1251.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.windows-1252.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.windows-1253.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.windows-1254.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.windows-1255.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.windows-1256.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.windows-1257.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/from.windows-1258.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/Resources/charset/translit.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/bootstrap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/bootstrap80.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-iconv/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-idn/Idn.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-idn/Info.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-idn/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-idn/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-idn/Resources/unidata/DisallowedRanges.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-idn/Resources/unidata/Regex.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-idn/Resources/unidata/deviation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-idn/Resources/unidata/disallowed.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-idn/Resources/unidata/disallowed_STD3_mapped.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-idn/Resources/unidata/disallowed_STD3_valid.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-idn/Resources/unidata/ignored.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-idn/Resources/unidata/mapped.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-idn/Resources/unidata/virama.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-idn/bootstrap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-idn/bootstrap80.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-idn/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-normalizer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-normalizer/Normalizer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-normalizer/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-normalizer/Resources/unidata/canonicalComposition.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-normalizer/Resources/unidata/canonicalDecomposition.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-normalizer/Resources/unidata/combiningClass.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-normalizer/Resources/unidata/compatibilityDecomposition.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-normalizer/bootstrap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-normalizer/bootstrap80.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-intl-normalizer/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-mbstring/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-mbstring/Mbstring.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-mbstring/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-mbstring/Resources/unidata/caseFolding.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-mbstring/Resources/unidata/lowerCase.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-mbstring/Resources/unidata/titleCaseRegexp.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-mbstring/Resources/unidata/upperCase.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-mbstring/bootstrap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-mbstring/bootstrap80.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-mbstring/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-php72/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-php72/Php72.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-php72/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-php72/bootstrap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/symfony/polyfill-php72/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/User_class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/User_class.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Connection" />
+        <entry key="$PROJECT_DIR$" value="mailer" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectColorInfo">{
@@ -35,15 +583,17 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Deconnexion&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;creerUnTournoi&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/leoha/PhpstormProjects/sae301&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -66,6 +616,8 @@
       <workItem from="1694779451952" duration="2961000" />
       <workItem from="1695020582869" duration="11882000" />
       <workItem from="1695276784267" duration="3558000" />
+      <workItem from="1697186776891" duration="22281000" />
+      <workItem from="1697551688033" duration="703000" />
     </task>
     <task id="LOCAL-00001" summary="Installation bootstrap">
       <option name="closed" value="true" />
@@ -149,6 +701,7 @@
     <MESSAGE value="patch pour refaire marcher la connexion." />
     <MESSAGE value="ajout d'un pop up pour informer l'utilisateur que son mdp n'est pas correct" />
     <MESSAGE value="Patch de la View pour la connexion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Patch de la View pour la connexion" />
+    <MESSAGE value="Installation phpMailer + création d'une classe qui permet l'envoi de mail de manière non sécurisé" />
+    <option name="LAST_COMMIT_MESSAGE" value="Installation phpMailer + création d'une classe qui permet l'envoi de mail de manière non sécurisé" />
   </component>
 </project>
