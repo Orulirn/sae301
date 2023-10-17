@@ -10,7 +10,6 @@ echo'<div class="container py-3">';
 
     echo'<table>';
         echo'<tr>';
-            echo'<th>id</th>';
             echo'<th>Prénom</th>';
             echo'<th>Nom</th>';
             echo'<th>Email</th>';
@@ -20,7 +19,6 @@ echo'<div class="container py-3">';
         echo'<tr>';
         $i=0;
         foreach ($res as $row) {
-            echo'<td>'.$row['idUser'].'</td>';
             echo'<td>'.$row['firstname'].'</td>';
             echo'<td>'.$row['lastname'].'</td>';
             echo'<td>'.$row['mail'].'</td>';
