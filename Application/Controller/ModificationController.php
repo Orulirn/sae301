@@ -1,7 +1,7 @@
 <?php
 
 
-include "../Model/Modification.php";
+include "../Model/UsersModel.php";
 $res = getTable();
 
 function updateUserInfo($buttonIndex, $firstname, $lastname, $mail, $cotisation) {

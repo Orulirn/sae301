@@ -1,6 +1,6 @@
 <?php
 
-include "../Model/ConsulterCotise.php";
+include "../Model/UsersModel.php";
 
 $listCotise = getTableCotise();
 

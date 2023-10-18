@@ -11,3 +11,10 @@ function signUpVerify($firstname, $lastname, $mail, $password, $verification)
     $sql = $db->prepare("INSERT INTO `verify`(`firstname`, `lastname`, `mail`, `idRole`, `password`) VALUES (:firstname, :lastname, :mail, :idRole, :password)");
     $sql->execute(array('firstname' => $firstname, 'lastname' => $lastname, 'mail' => $mail, 'idRole' => 1, 'password' => password_hash($password,PASSWORD_DEFAULT)));
 }
+
+function getTable(){
+    global $db;
+    $sql = $db->prepare("SELECT * FROM verify");
+    $sql->execute();
+    return $sql->fetchAll(PDO::FETCH_ASSOC);
+}

@@ -1,7 +1,5 @@
 <?php
-
-
-include "../Model/valideInscription.php";
+include "../Model/VerifyModel.php";
 $res = getTable();
 
 function valide($buttonIndex, $firstname, $lastname, $mail, $cotisation) {

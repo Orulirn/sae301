@@ -25,3 +25,24 @@ function signUpAdmin($firstname, $lastname, $mail, $usertype, $password, $verifi
     }
 }
 
+function getTable(){
+    global $db;
+    $sql = $db->prepare("SELECT * FROM Users");
+    $sql->execute();
+    return $sql->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+function getTableCotise(){
+    global $db;
+    $sql = $db->prepare("SELECT * FROM Users  WHERE `cotisation`=1");
+    $sql->execute();
+    return $sql->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getTableNonCotise(){
+    global $db;
+    $sql = $db->prepare("SELECT * FROM Users WHERE `cotisation`=0");
+    $sql->execute();
+    return $sql->fetchAll(PDO::FETCH_ASSOC);
+}

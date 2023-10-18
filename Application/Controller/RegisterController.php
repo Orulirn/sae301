@@ -6,12 +6,10 @@
  * @author MASSE Océane <oceane.masse2@uphf.fr>
  */
 session_start();
-global $db;
-
-include "../Model/Database_connection.php";
-include "../Model/users_table.php";
-include "../Model/verify_table.php";
-include ("../Model/User_class.php");
+include_once ("../Model/DatabaseConnection.php");
+include_once ("../Model/UsersModel.php");
+include ("../Model/VerifyModel.php");
+include ("../Model/User.php");
 echo ("<p id='userRole' visibility='hidden' style= 'display :none;'>".json_encode($_SESSION["user"]->getRole())."</p>");
 
 //Permet d'envoyer les informations du formulaire d'inscription à la bdd
@@ -27,6 +25,6 @@ if(isset($_POST['submit'])) {
         break; 
     }
 }
-require "../View/inscription.html";
+require "../View/RegisterView.html";
 ?>
 
