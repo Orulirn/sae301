@@ -25,6 +25,33 @@
     </div>
 </nav>
 
+<nav class="navbar navbar-expand-sm bg-dark-subtle">
+    <div class="container-fluid p-xl-2">
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="navbar-brand " id="backHome" href="#" >
+                    <img src="../View/img/logoSite.png" width="200px" height="133px">
+                </a>
+            </li>
+            <li class="nav-item mt-auto">
+                <a class="nav-link fw-bold" href="#">Les règles</a>
+            </li>
+            <li class="nav-item mt-auto">
+                <a class="nav-link fw-bold" href="#">Les matchs</a>
+            </li>
+            <li class="nav-item mt-auto">
+                <a class="nav-link fw-bold" href="#">mon profil</a>
+            </li>
+        </ul>
+    </div>
+    <div class="p-xl-4">
+        <a>
+            <img src="../View/img/icon_connexion.png" id="Connexion" height="50px" width="50px">
+        </a>
+    </div>
+</nav>
+
 <script>
     const backHome = document.querySelector("#backHome");
     const goConn = document.querySelector("#Connexion")
@@ -34,4 +61,6 @@
     goConn.addEventListener("click", function (){
         window.location.replace("ConnexionCOntroller.php");
     });
+
 </script>
+
