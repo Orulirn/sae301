@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
 </head>
 <body>
+<?php
+if(isset($_POST['Deconnexion'])){
+    unset($_SESSION['user']);
+}
+?>
 
 <nav class="navbar navbar-expand-sm bg-dark-subtle">
     <div class="container-fluid p-xl-2">
@@ -31,16 +35,16 @@
                 <button name="Connexion" id="Connexion" class="btn btn-primary" >Connexion</button>
             </li>
             <li class="nav-item p-xl-1">
-                <button name="Deconnexion" id="Deconnexion" class="btn btn-danger">Déconnexion</button>
+                <form method="post">
+                    <input name="Deconnexion" type="submit" value="Deconnexion" class="btn btn-danger">
+                </form>
             </li>
         </ul>
     </div>
 </nav>
-
 <script>
     const backHome = document.querySelector("#backHome");
     const goConn = document.querySelector("#Connexion")
-    const goDeco = document.querySelector("#Deconnexion")
     backHome.addEventListener("click",function (){
         window.location.replace("HomePageController.php");
     });
