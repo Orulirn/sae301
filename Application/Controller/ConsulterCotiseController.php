@@ -158,5 +158,43 @@ echo'</div>';
         moveSelectedRows(nonCotiseTable, cotiseTable);
     });
 
+    function filterTable() {
+        const filterValue = filterInput.value.toLowerCase();
+        const tableRows = document.querySelectorAll('#cotiseTable tbody tr');
+
+        tableRows.forEach(row => {
+            const firstName = row.querySelector('td:first-child').textContent.toLowerCase();
+            const lastName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+
+            if (firstName.includes(filterValue) || lastName.includes(filterValue)) {
+                row.style.display = ''; // Affiche la ligne si le filtre correspond.
+            } else {
+                row.style.display = 'none'; // Cache la ligne si le filtre ne correspond pas.
+            }
+        });
+    }
+
+    function filterTable2() {
+        const filterValue = filterInput.value.toLowerCase();
+        const tableRows = document.querySelectorAll('#nonCotiseTable tbody tr');
+
+        tableRows.forEach(row => {
+            const firstName = row.querySelector('td:first-child').textContent.toLowerCase();
+            const lastName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+
+            if (firstName.includes(filterValue) || lastName.includes(filterValue)) {
+                row.style.display = ''; // Affiche la ligne si le filtre correspond.
+            } else {
+                row.style.display = 'none'; // Cache la ligne si le filtre ne correspond pas.
+            }
+        });
+    }
+
+
+    const filterInput = document.getElementById('filterInput');
+    filterInput.addEventListener('input', filterTable);
+    filterInput.addEventListener('input', filterTable2);
+
+
 
 </script>
