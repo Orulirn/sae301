@@ -5,9 +5,11 @@
 </head>
 <body>
 <?php
+
 if(isset($_POST['Deconnexion'])){
     unset($_SESSION['user']);
 }
+
 ?>
 
 <nav class="navbar navbar-expand-sm bg-dark-subtle">
@@ -51,20 +53,22 @@ if(isset($_POST['Deconnexion'])){
     goConn.addEventListener("click", function (){
         window.location.replace("ConnexionController.php");
     });
-    //$connected = JSON.parse("connected");
-    function toggleButtonState(boolean) {
-        if (boolean === true) {
+    function toggleButtonState() {
+        
+        console.log(document.getElementById('userState').outerText);
+        if (document.getElementById('userState').outerText = "null") {
             //gestion du bouton de connexion
-            goConn.setAttribute("disabled");
-            goConn.classList.remove("btn-primary")
-            goConn.classList.add("btn-secondary")
+            goConn.setAttribute("disabled",true);
+            goConn.classList.remove("btn-primary");
+            goConn.classList.add("btn-secondary");
+        }
+        else {
             //gestion du bouton de déconnexion
-            goDeco.setAttribute("disabled", "disabled")
-            goConn.classList.remove("btn-secondary")
-            goConn.classList.add("btn-primary")
+            goDeco.setAttribute("disabled", true);
+            goConn.classList.remove("btn-secondary");
+            goConn.classList.add("btn-primary");
         }
     }
-    //toggleButtonState($connected);
 </script>
 
 </body>
