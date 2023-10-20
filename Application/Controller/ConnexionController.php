@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once("../Model/Database_connection.php");
-include("../View/index.html");
+include("../View/index.php");
 include("../View/ConnexionView.html");
 include_once("../Model/User_class.php");
 
