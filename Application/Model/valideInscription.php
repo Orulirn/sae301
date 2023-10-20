@@ -1,7 +1,7 @@
 <?php
-include "Database_connection.php";
+include "DatabaseConnection.php";
 
-function getTable(){
+function getTableVerif(){
     global $db;
     $sql = $db->prepare("SELECT * FROM verify");
     $sql->execute();
