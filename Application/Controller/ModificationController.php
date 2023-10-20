@@ -1,9 +1,9 @@
 <?php
-include "../Model/UsersModel.php";
-include "../View/index.php";
+include "../Model/Modification.php";
+include "../View/index.html";
 include "../View/ModificationView.html";
 
-$res = GetAllOfUsersTable();
+$res = getTable();
 
 echo'<div class="container py-3">';
 
