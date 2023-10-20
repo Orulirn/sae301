@@ -1,6 +1,5 @@
 <?php
 session_start();
-include_once("../Model/DatabaseConnection.php");
 include("../View/index.php");
 include("../View/ConnectionView.html");
 include_once("../Model/User.php");

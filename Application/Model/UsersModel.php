@@ -4,6 +4,7 @@
 * @author MASSE Océane <oceane.masse2@uphf.fr>
 */
 
+include_once ('../Model/DatabaseConnection.php');
 
 //Il faut tester avec des transactions en requete sql
 
@@ -25,7 +26,7 @@ function signUpAdmin($firstname, $lastname, $mail, $usertype, $password, $verifi
     }
 }
 
-function getTable(){
+function GetAllOfUsersTable(){
     global $db;
     $sql = $db->prepare("SELECT * FROM Users");
     $sql->execute();
@@ -46,3 +47,26 @@ function getTableNonCotise(){
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function updateLine($email, $cotisation){
+    global $db;
+    echo $email;
+    echo $cotisation;
+    try {
+        $sql = $db->prepare("UPDATE `users` SET `cotisation` = :cotisation WHERE `mail` = :email");
+        $sql->bindParam(':cotisation', $cotisation, PDO::PARAM_INT);
+        $sql->bindParam(':email', $email, PDO::PARAM_STR);
+        $sql->execute();
+    } catch (PDOException $erreur) {
+        die($erreur->getMessage());
+    }
+    return true;
+}
+
+function updateUserInfo($buttonIndex, $firstname, $lastname, $mail, $cotisation) {
+    global $db;
+    $sql = $db->prepare("UPDATE `users` SET `firstname`='$firstname',`lastname`='$lastname',`mail`='$mail',`cotisation`='$cotisation' WHERE `idUser`='$buttonIndex'");
+    $sql->execute();
+    return true;
+}
+?>

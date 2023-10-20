@@ -5,9 +5,9 @@
  * @author LERMIGEAUX Nathan <nathan.lermigeaux@uphf.fr>
  * @author MASSE Océane <oceane.masse2@uphf.fr>
  */
+
 session_start();
-include_once ("../Model/DatabaseConnection.php");
-include_once ("../Model/UsersModel.php");
+include ("../Model/UsersModel.php");
 include ("../Model/VerifyModel.php");
 include ("../Model/User.php");
 echo ("<p id='userRole' visibility='hidden' style= 'display :none;'>".json_encode($_SESSION["user"]->getRole())."</p>");
@@ -23,6 +23,7 @@ if(isset($_POST['submit'])) {
     default :
         signUpVerify($_POST['firstname'], $_POST['lastname'], $_POST['mail'], $_POST['password'], $_POST['verification']);
         break; 
+    header ('Location : ../Controller/ConnectionController.php');
     }
 }
 require "../View/RegisterView.html";

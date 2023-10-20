@@ -9,6 +9,9 @@
  * @author LERMIGEAUX Nathan <nathan.lermigeaux@uphf.fr>
  * @author MASSE Océane <oceane.masse2@uphf.fr>
  */
+
+include_once ('../Model/DatabaseConnection.php');
+
 class User {
     private static $instance=null;
     private $role,$firstname,$lastname,$log;
@@ -44,7 +47,7 @@ class User {
             $this->firstname=$res[1];
             $this->lastname=$res[2];
             $this->log=true;
-            header('Location: ../Controller/HomePageController.php');
+            header('Location: ../Controller/HomepageController.php');
         }
         
     }

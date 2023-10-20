@@ -4,6 +4,8 @@
 * @author MASSE Océane <oceane.masse2@uphf.fr>
 */
 
+include_once ('../Model/DatabaseConnection.php');
+
 //Permet d'ajouter à la table verify les informations du formulaire d'inscription
 function signUpVerify($firstname, $lastname, $mail, $password, $verification)
 {
@@ -12,7 +14,7 @@ function signUpVerify($firstname, $lastname, $mail, $password, $verification)
     $sql->execute(array('firstname' => $firstname, 'lastname' => $lastname, 'mail' => $mail, 'idRole' => 1, 'password' => password_hash($password,PASSWORD_DEFAULT)));
 }
 
-function getTable(){
+function GetAllOfVerifyTable(){
     global $db;
     $sql = $db->prepare("SELECT * FROM verify");
     $sql->execute();
