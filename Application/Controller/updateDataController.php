@@ -1,8 +1,8 @@
 <?php
-include "../Model/Modification.php";
-include "../View/updateDataView.html";
+include "../Model/UsersModel.php";
+include "../View/UpdateDataView.html";
 
-$res = getTable();
+$res = GetAllOfUsersTable();
 
 $buttonIndex = $_GET['buttonIndex'];
 

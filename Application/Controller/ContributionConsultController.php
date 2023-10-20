@@ -1,14 +1,11 @@
 <?php
-
-include "../Model/ConsulterCotise.php";
-include"../View/index.html";
-include"../View/ConsulterCotiseView.html";
-
+include "../Model/UsersModel.php";
+include "../View/index.php";
+include "../View/ContributionConsultView.html";
 
 $listCotise = getTableCotise();
 
 $listNonCotise = getTableNonCotise();
-
 
 echo'<div class="container p-3 text-center">';
     echo'<div class="row">';
@@ -37,11 +34,11 @@ echo'<div class="container p-3 text-center">';
         echo'<div class="col pt-5">';
             echo'<br><br><br><br><br><br><br>';
             echo'<button style="border: solid 1px #146c43; background: none;">';
-                echo'<img src="../View/gauche.png" alt="left" id="moveLeftBtn" style="width: 35px; height: 35px;">';
+                echo'<img src="../View/files/left.png" alt="left" id="moveLeftBtn" style="width: 35px; height: 35px;">';
             echo'</button>';
 
             echo'<button style="border: solid 1px #b02a37; background: none;">';
-                echo'<img src="../View/droite.png" alt="right" id="moveRightBtn" style="width: 35px; height: 35px;">';
+                echo'<img src="../View/files/right.png" alt="right" id="moveRightBtn" style="width: 35px; height: 35px;">';
             echo'</button>';
 
         echo'</div>';
@@ -140,7 +137,7 @@ echo'</div>';
 
         console.log(listEmail);
         var queryString = "listEmail=" + encodeURIComponent(listEmail) + "&cotisation=" + encodeURIComponent(cot);
-        window.location.replace("updateTable.php?" + queryString);
+        window.location.replace("UpdateTableController.php?" + queryString);
     }
 
     var cotiseTable = document.getElementById('cotiseTable');

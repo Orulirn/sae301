@@ -1,5 +1,5 @@
 <?php
-include "../Model/ConsulterCotise.php";
+include "../Model/UsersModel.php";
 
 $listEmail = $_GET['listEmail'];
 $cotisation = $_GET['cotisation'];
@@ -10,6 +10,6 @@ foreach ($emailArray as $row) {
     updateLine($row, $cotisation);
 }
 
-header('Location: ConsulterCotiseController.php')
+header('Location: ContributionConsultController.php')
 
 ?>
