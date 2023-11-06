@@ -10,7 +10,7 @@ $listNonCotise = getTableNonCotise();
 echo'<div class="container p-3 text-center">';
     echo'<div class="row">';
         echo'<div class="col">';
-            echo'<h1>Cotisé</h1>';
+            echo'<h1>Adhérents</h1>';
 
             echo'<table id="cotiseTable">';
                 echo'<thead>';
@@ -43,7 +43,7 @@ echo'<div class="container p-3 text-center">';
 
         echo'</div>';
         echo'<div class="col">';
-            echo'<h1>Non cotisé</h1>';
+            echo'<h1>Non Adhérents</h1>';
 
             echo'<table id="nonCotiseTable">';
                 echo'<thead>';
