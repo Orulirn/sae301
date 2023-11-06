@@ -37,7 +37,16 @@ echo'<center>';
 
         echo'<div class="w-50 p-3">';
             echo'<label>Cotisation</label>';
-            echo'<input type="text" class="form-control" name="cotisation" size="30" maxlength="225" required="true" value='.$res[$buttonIndex]["cotisation"]. '>';
+            echo'<br> 1 = Cotisé | 0 = Non cotisé';
+            echo'<input type="integer" class="form-control" name="cotisation" size="30" maxlength="1" required="true" value='.$res[$buttonIndex]["cotisation"]. '>';
+            echo'<div class="valid-feedback">Valid.</div>';
+            echo'<div class="invalid-feedback">Please fill out this field.</div>';
+        echo'</div>';
+
+        echo'<div class="w-50 p-3">';
+            echo'<label>Role</label>';
+            echo'<br>1 = Joueur | 2 = Admin';
+            echo'<input type="integer" class="form-control" name="role" size="30" maxlength="1" required="true" value='.$res[$buttonIndex]["idRole"]. '>';
             echo'<div class="valid-feedback">Valid.</div>';
             echo'<div class="invalid-feedback">Please fill out this field.</div>';
         echo'</div>';
@@ -57,7 +66,7 @@ echo'</center>';
     });
 
     function confirmation() {
-        <?php updateUserInfo($buttonIndex,$_POST["firstname"],$_POST["lastname"],$_POST["mail"],$_POST["cotisation"]);
+        <?php updateUserInfo($buttonIndex,$_POST["firstname"],$_POST["lastname"],$_POST["mail"],$_POST["cotisation"],$_POST["role"]);
         header("Location: ModificationController.php")?>
     }
 

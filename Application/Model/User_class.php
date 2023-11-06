@@ -17,7 +17,7 @@ class User {
     private function __construct(){
         $this->firstname='john';
         $this->lastname='doe';
-        $this->role=null;
+        $this->role=0;
         $this->log=false;
     }
 

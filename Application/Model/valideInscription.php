@@ -11,7 +11,7 @@ function getTableVerif(){
 function valide($mail) {
     global $db;
     try {
-        $sql = $db->prepare("SELECT `firstname`, `lastname`, `password` FROM `verify` WHERE `mail` = :mail");
+        $sql = $db->prepare("SELECT `firstname`, `lastname`, `password`,`idRole` FROM `verify` WHERE `mail` = :mail");
         $sql->bindParam(':mail', $mail, PDO::PARAM_STR);
         $sql->execute();
         $res = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -27,6 +27,14 @@ function valide($mail) {
             $sql->bindParam(':firstname', $row['firstname'], PDO::PARAM_STR);
             $sql->bindParam(':lastname', $row['lastname'], PDO::PARAM_STR);
             $sql->bindParam(':password', $row['password'], PDO::PARAM_STR);
+            $sql->execute();
+            $sql = $db->prepare("SELECT `iduser` FROM `users` WHERE `mail` = :mail");
+            $sql->bindParam(':mail', $mail, PDO::PARAM_STR);
+            $sql->execute();
+            $id = $sql->fetchAll(PDO::FETCH_ASSOC);
+            $sql = $db->prepare("INSERT INTO `users_role` (`idRole`, `idUser`) VALUES (:idrole, :iduser)");
+            $sql->bindParam(':idRole', $row['idRole'], PDO::PARAM_STR);
+            $sql->bindParam(':idUser', $id['idUser'], PDO::PARAM_STR);
             $sql->execute();
         }
     } catch (PDOException $erreur) {
