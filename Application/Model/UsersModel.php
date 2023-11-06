@@ -26,24 +26,26 @@ function signUpAdmin($firstname, $lastname, $mail, $usertype, $password, $verifi
     }
 }
 
+
+
 function GetAllOfUsersTable(){
     global $db;
-    $sql = $db->prepare("SELECT * FROM Users JOIN users_role on users.idUser = users_role.idUser");
+    $sql = $db->prepare("SELECT idUser,firstname,lastname,mail,cotisation FROM Users JOIN users_role on users.idUser = users_role.idUser");
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
 
 
-function getTableCotise(){
+function GetAllUserWithContribution(){
     global $db;
-    $sql = $db->prepare("SELECT * FROM Users  WHERE `cotisation`=1");
+    $sql = $db->prepare("SELECT idUser,firstname,lastname,mail,cotisation FROM Users  WHERE `cotisation`=1");
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getTableNonCotise(){
+function GetAllUserWithNoContribution(){
     global $db;
-    $sql = $db->prepare("SELECT * FROM Users WHERE `cotisation`=0");
+    $sql = $db->prepare("SELECT idUser,firstname,lastname,mail,cotisation FROM Users WHERE `cotisation`=0");
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -63,12 +65,12 @@ function updateLine($email, $cotisation){
     return true;
 }
 
-function updateUserInfo($buttonIndex, $firstname, $lastname, $mail, $cotisation, $role) {
+function UpdateUserInfo($buttonIndex, $firstname, $lastname, $mail, $cotisation, $role) {
     global $db;
-    $sql = $db->prepare("UPDATE `users` SET `firstname`='$firstname',`lastname`='$lastname',`mail`='$mail',`cotisation`='$cotisation' WHERE `idUser`='$buttonIndex'");
-    $sql->execute();
-    $sql = $db->prepare("UPDATE `users_role` SET `idRole`='$role' WHERE `idUser`='$buttonIndex'");
-    $sql->execute();
+    $sql = $db->prepare("UPDATE `users` SET `firstname`=:firstname,`lastname`=:lastname,`mail`=:mail,`cotisation`=:cotisation WHERE `idUser`=:btnIndex");
+    $sql->execute(array('firstname'=>$firstname,'lastname'=>$lastname,'mail'=>$mail,'cotisation'=>$cotisation,"btnIndex"=>$buttonIndex));
+    $sql = $db->prepare("UPDATE `users_role` SET `idRole`=:role WHERE `idUser`=:btnIndex");
+    $sql->execute(array('role'=>$role,"btnIndex"=>$buttonIndex));
     return true;
 }
 ?>

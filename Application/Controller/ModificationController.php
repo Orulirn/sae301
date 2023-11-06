@@ -1,9 +1,9 @@
 <?php
-include "../Model/Modification.php";
-include "../View/index.html";
+include "../Model/UsersModel.php";
+include "../View/index.php";
 include "../View/ModificationView.html";
 
-$res = getTable();
+$dataAllUsers = GetAllOfUsersTable();
 
 echo'<div class="container py-3">';
 
@@ -22,7 +22,7 @@ echo'<br><br>';
         echo'</tr>';
         echo'<tr>';
         $i=0;
-        foreach ($res as $row) {
+        foreach ($dataAllUsers as $row) {
             echo'<td>'.$row['firstname'].'</td>';
             echo'<td>'.$row['lastname'].'</td>';
             echo'<td>'.$row['mail'].'</td>';

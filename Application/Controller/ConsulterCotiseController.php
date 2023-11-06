@@ -5,9 +5,9 @@ include"../View/index.html";
 include"../View/ConsulterCotiseView.html";
 
 
-$listCotise = getTableCotise();
+$listUserContrib = GetAllUserWithContribution();
 
-$listNonCotise = getTableNonCotise();
+$listUserNoContrib = GetAllUserWithNoContribution();
 
 
 echo'<div class="container p-3 text-center">';
@@ -25,7 +25,7 @@ echo'<div class="container p-3 text-center">';
                 echo'</thead>';
                 echo'<tbody>';
                 echo'<tr>';
-                    foreach ($listCotise as $row) {
+                    foreach ($listUserContrib as $row) {
                     echo'<td>'.$row['firstname'].'</td>';
                     echo'<td>' .$row['lastname'].'</td>';
                     echo'<td>' .$row['mail'].'</td>';
@@ -58,7 +58,7 @@ echo'<div class="container p-3 text-center">';
                 echo'</thead>';
                 echo'<tbody>';
                 echo'<tr>';
-                    foreach ($listNonCotise as $row) {
+                    foreach ($listUserNoContrib as $row) {
                     echo'<td>'.$row['firstname'].'</td>';
                     echo'<td>'.$row['lastname'].'</td>';
                     echo'<td>'.$row['mail'].'</td>';
@@ -75,7 +75,7 @@ echo'</div>';
 
 <script>
     // Fonction pour gérer la sélection/désélection de lignes
-    function toggleRowSelection(event) {
+    function ToggleRowSelection(event) {
         var selectedRow = event.currentTarget;
 
         if (selectedRow.classList.contains('selected')) {
@@ -88,20 +88,20 @@ echo'</div>';
     }
 
     // Ajoutez des gestionnaires d'événements à toutes les lignes des tables
-    var cotiseTableRows = document.querySelectorAll('#cotiseTable tr');
-    var nonCotiseTableRows = document.querySelectorAll('#nonCotiseTable tr');
+    var contributionTableRows = document.querySelectorAll('#cotiseTable tr');
+    var noContributionTableRows = document.querySelectorAll('#nonCotiseTable tr');
 
-    cotiseTableRows.forEach(function (row) {
-        row.addEventListener('click', toggleRowSelection);
+    contributionTableRows.forEach(function (row) {
+        row.addEventListener('click', ToggleRowSelection);
     });
 
-    nonCotiseTableRows.forEach(function (row) {
-        row.addEventListener('click', toggleRowSelection);
+    noContributionTableRows .forEach(function (row) {
+        row.addEventListener('click', ToggleRowSelection);
     });
 
 
     // Fonction pour déplacer les lignes sélectionnées de sourceTable vers destinationTable
-    function moveSelectedRows(sourceTable, destinationTable) {
+    function MoveSelectedRows(sourceTable, destinationTable) {
         var selectedRows = sourceTable.querySelectorAll('tbody tr.selected');
 
         var listEmail = [];
@@ -119,9 +119,6 @@ echo'</div>';
 
             var email = selectedRow.cells[2].textContent;
 
-            // CYRANO TU FAIS ça FAUT JUSTE RECUP LA VARIABLE D'AU DESSUS email POUR LA METTRE DANS LE PHP en DESSOUS email.
-
-
             // Clone la ligne sélectionnée
             var newRow = selectedRow.cloneNode(true);
 
@@ -131,14 +128,14 @@ echo'</div>';
             // Supprime la ligne du tableau source
             sourceTable.querySelector('tbody').removeChild(selectedRow);
 
-            newRow.addEventListener('click', toggleRowSelection);
+            newRow.addEventListener('click', ToggleRowSelection);
 
             listEmail.push(email);
 
         });
 
 
-        console.log(listEmail);
+        
         var queryString = "listEmail=" + encodeURIComponent(listEmail) + "&cotisation=" + encodeURIComponent(cot);
         window.location.replace("updateTable.php?" + queryString);
     }
@@ -151,14 +148,14 @@ echo'</div>';
     var moveLeftBtn = document.getElementById('moveLeftBtn');
 
     moveRightBtn.addEventListener('click', function () {
-        moveSelectedRows(cotiseTable, nonCotiseTable);
+        MoveSelectedRows(cotiseTable, nonCotiseTable);
     });
 
     moveLeftBtn.addEventListener('click', function () {
-        moveSelectedRows(nonCotiseTable, cotiseTable);
+        MoveSelectedRows(nonCotiseTable, cotiseTable);
     });
 
-    function filterTable() {
+    function FirstFilterTable() {
         const filterValue = filterInput.value.toLowerCase();
         const tableRows = document.querySelectorAll('#cotiseTable tbody tr');
 
@@ -174,7 +171,7 @@ echo'</div>';
         });
     }
 
-    function filterTable2() {
+    function SecondFilterTable() {
         const filterValue = filterInput.value.toLowerCase();
         const tableRows = document.querySelectorAll('#nonCotiseTable tbody tr');
 
@@ -191,9 +188,9 @@ echo'</div>';
     }
 
 
-    const filterInput = document.getElementById('filterInput');
-    filterInput.addEventListener('input', filterTable);
-    filterInput.addEventListener('input', filterTable2);
+    const filterField = document.getElementById('filterInput');
+    filterField.addEventListener('input', FirstFilterTable);
+    filterField.addEventListener('input', SecondFilterTable);
 
 
 
