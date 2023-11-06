@@ -7,6 +7,9 @@ $res = GetAllOfUsersTable();
 
 echo'<div class="container py-3">';
 
+echo'Cotisation : 1 = Cotisé | 0 = Non cotisé <br> Role : 1 = Joueur | 2 = Admin';
+
+echo'<br><br>';
 
     echo'<table>';
         echo'<tr>';
@@ -14,6 +17,7 @@ echo'<div class="container py-3">';
             echo'<th>Nom</th>';
             echo'<th>Email</th>';
             echo'<th>Cotisation</th>';
+            echo'<th>Role</th>';
             echo'<th>Edit</th>';
         echo'</tr>';
         echo'<tr>';
@@ -23,6 +27,7 @@ echo'<div class="container py-3">';
             echo'<td>'.$row['lastname'].'</td>';
             echo'<td>'.$row['mail'].'</td>';
             echo'<td>'.$row['cotisation'].'</td>';
+            echo'<td>'.$row['idRole'].'</td>';
             echo'<td><button id=$i type="button" class="btn btn-white border-black border-1" name="editButton">Edit</button></td>';
         echo'</tr>';
         $i = $i+1;
