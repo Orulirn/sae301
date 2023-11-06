@@ -49,7 +49,7 @@ function GetAllUserWithNoContribution(){
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
-
+//tmp
 function updateLine($email, $cotisation){
     global $db;
     echo $email;

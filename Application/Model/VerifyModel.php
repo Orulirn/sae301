@@ -5,7 +5,7 @@
 */
 
 include_once ('../Model/DatabaseConnection.php');
-
+//tmp
 //Permet d'ajouter à la table verify les informations du formulaire d'inscription
 function signUpVerify($firstname, $lastname, $mail, $password, $verification)
 {

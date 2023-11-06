@@ -7,7 +7,7 @@ function getTableVerif(){
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
-
+//tmp
 function valide($mail) {
     global $db;
     try {

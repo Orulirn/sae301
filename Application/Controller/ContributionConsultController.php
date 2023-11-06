@@ -4,7 +4,7 @@ include "../View/index.php";
 include "../View/ContributionConsultView.html";
 
 $listUserContrib = GetAllUserWithContribution();
-
+//tmp
 $listUserNoContrib = GetAllUserWithNoContribution();
 
 echo'<div class="container p-3 text-center">';

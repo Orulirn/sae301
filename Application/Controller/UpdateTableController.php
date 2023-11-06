@@ -9,7 +9,7 @@ $emailArray = explode(',', $listEmail);
 foreach ($emailArray as $row) {
     updateLine($row, $cotisation);
 }
-
+//tmp
 header('Location: ContributionConsultController.php')
 
 ?>
