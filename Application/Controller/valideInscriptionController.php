@@ -1,9 +1,9 @@
 <?php
-include "../Model/valideInscription.php";
+include "../Model/VerifyModel.php";
 include "../View/index.php";
 include "../View/valideInscriptionView.html";
 
-$res = getTableVerif();
+$res = GetAllOfVerifyTable();
 //tmp
 
 echo '<div class="container py-3 d-flex justify-content-center">';
