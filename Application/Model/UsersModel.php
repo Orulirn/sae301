@@ -65,12 +65,12 @@ function updateLine($email, $cotisation){
     return true;
 }
 
-function UpdateUserInfo($buttonIndex, $firstname, $lastname, $mail, $cotisation, $role) {
+function updateUserInfo($buttonIndex, $firstname, $lastname, $mail, $cotisation, $role, $savedRole) {
     global $db;
     $sql = $db->prepare("UPDATE `users` SET `firstname`=:firstname,`lastname`=:lastname,`mail`=:mail,`cotisation`=:cotisation WHERE `idUser`=:btnIndex");
     $sql->execute(array('firstname'=>$firstname,'lastname'=>$lastname,'mail'=>$mail,'cotisation'=>$cotisation,"btnIndex"=>$buttonIndex));
-    $sql = $db->prepare("UPDATE `users_role` SET `idRole`=:role WHERE `idUser`=:btnIndex");
-    $sql->execute(array('role'=>$role,"btnIndex"=>$buttonIndex));
+    $sql = $db->prepare("UPDATE `users_role` SET `idRole`=:role WHERE `idUser`=:btnIndex AND `idUser` =:userID");
+    $sql->execute(array('role'=>$role,"btnIndex"=>$buttonIndex,"userID"=>$savedRole));
     return true;
 }
 ?>
