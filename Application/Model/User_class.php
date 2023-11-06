@@ -21,7 +21,7 @@ class User {
         $this->log=false;
     }
 
-    public static function getInstance(){
+    public static function GetInstance(){
         if(is_null(self::$instance)){
 
             self::$instance=new User();
@@ -30,13 +30,19 @@ class User {
         return self::$instance;
     }
 
-//fonction qui permet la création du user 
-    function login ($mail,$mdp){
+/*fonction qui permet la création du user
+*
+*@param $mail
+*
+*@param $password
+*
+*/
+    function Login ($mail,$password){
         global $db;
         $sql=$db->prepare("SELECT password FROM users WHERE  mail = :userMail ");
         $sql->execute(array('userMail'=>$mail));
         $res=$sql->fetch();
-        if (password_verify($mdp,$res[0])){
+        if (password_verify($mdp,$password[0])){
             $sql=$db->prepare("SELECT idUser,firstname,lastname FROM Users WHERE mail=:userMail");
             $sql->execute(array('userMail'=>$mail));
             $res=$sql->fetch();
@@ -49,39 +55,39 @@ class User {
         
     }
 
-    public function resetUser(){
+    public function ResetUser(){
         $this->firstname='john';
         $this->lastname='doe';
         $this->role=null;
         $this->log=false;
     }
-
+//tmp
 //setter and getter 
 
-    function setFirstname($fn){
+    function SetFirstname($fn){
         $this->firstname=$fn;
     }
 
-    function setLastname($ln){
+    function SetLastname($ln){
         $this->lastname=$ln;
     }
 
-    function setRole($i){
+    function SetRole($i){
         $this->role=$i;
     }
 
-    function getFirstname(){
+    function GetFirstname(){
         return $this->firstname;
     }
 
-    function getLastname(){
+    function GetLastname(){
         return $this->lastname;
     }
 
-    function getRole(){
+    function GetRole(){
         return $this->role;
     }
 }
 session_start();
-$_SESSION['user'] = User::getInstance();
+$_SESSION['user'] = User::GetInstance();
 ?>

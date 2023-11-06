@@ -4,7 +4,7 @@ include "../View/index.php";
 include "../View/valideInscriptionView.html";
 
 $res = getTableVerif();
-
+//tmp
 
 echo '<div class="container py-3 d-flex justify-content-center">';
 echo '<table id="ins">';

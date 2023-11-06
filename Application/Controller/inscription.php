@@ -13,7 +13,7 @@ include "../Model/users_table.php";
 include "../Model/verify_table.php";
 include ("../Model/User_class.php");
 echo ("<p id='userRole' visibility='hidden' style= 'display :none;'>".json_encode($_SESSION["user"]->getRole())."</p>");
-
+//tmp
 //Permet d'envoyer les informations du formulaire d'inscription à la bdd
 //Si l'utilisateur connecté est un admin il peut créer n'importe quel utilisateur
 //Si l'utilisateur n'est pas connecté, alors il crée son profil qui va ensuite devoir être validé
