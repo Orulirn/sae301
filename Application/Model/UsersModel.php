@@ -28,7 +28,7 @@ function signUpAdmin($firstname, $lastname, $mail, $usertype, $password, $verifi
 
 function GetAllOfUsersTable(){
     global $db;
-    $sql = $db->prepare("SELECT * FROM Users JOIN user_role on users.idrole = user_role.idrole");
+    $sql = $db->prepare("SELECT * FROM Users JOIN users_role on users.idUser = users_role.idUser");
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -63,9 +63,11 @@ function updateLine($email, $cotisation){
     return true;
 }
 
-function updateUserInfo($buttonIndex, $firstname, $lastname, $mail, $cotisation) {
+function updateUserInfo($buttonIndex, $firstname, $lastname, $mail, $cotisation, $role) {
     global $db;
     $sql = $db->prepare("UPDATE `users` SET `firstname`='$firstname',`lastname`='$lastname',`mail`='$mail',`cotisation`='$cotisation' WHERE `idUser`='$buttonIndex'");
+    $sql->execute();
+    $sql = $db->prepare("UPDATE `users_role` SET `idRole`='$role' WHERE `idUser`='$buttonIndex'");
     $sql->execute();
     return true;
 }
