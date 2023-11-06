@@ -6,6 +6,8 @@ $UsersData = GetAllOfUsersTable();
 
 $buttonIndex = $_GET['buttonIndex'];
 
+$saveRole = $UsersData[$buttonIndex]["idRole"];
+
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
@@ -43,14 +45,6 @@ echo'<center>';
             echo'<div class="invalid-feedback">Please fill out this field.</div>';
         echo'</div>';
 
-        echo'<div class="w-50 p-3">';
-            echo'<label>Role</label>';
-            echo'<br>1 = Joueur | 2 = Admin';
-            echo'<input type="integer" class="form-control" name="role" size="30" maxlength="1" required="true" value='.$UsersData[$buttonIndex]["idRole"]. '>';
-            echo'<div class="valid-feedback">Valid.</div>';
-            echo'<div class="invalid-feedback">Please fill out this field.</div>';
-        echo'</div>';
-
 
         echo'<button type="submit" id="modify" class="btn btn-light">Modify</button>';
         echo'<button type="reset" class="btn btn-light">Reset</button>';
@@ -66,7 +60,7 @@ echo'</center>';
     });
 
     function confirmation() {
-        <?php UpdateUserInfo($buttonIndex,$_POST["firstname"],$_POST["lastname"],$_POST["mail"],$_POST["cotisation"],$_POST["role"]);
+        <?php updateUserInfo($buttonIndex,$_POST["firstname"],$_POST["lastname"],$_POST["mail"],$_POST["cotisation"],$_POST["role"],$saveRole);
         header("Location: ModificationController.php")?>
     }
 
