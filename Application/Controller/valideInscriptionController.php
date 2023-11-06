@@ -68,7 +68,7 @@ echo'</div>';
             var ligne = t.rows[buttonIndex+1];
             var email = ligne.cells[2].textContent;
             var data = "email=" + encodeURIComponent(email) + "&index=" + encodeURIComponent(0);
-            alert("Inscription validée :)");
+            alert("Inscription rejetée :)");
             window.location.replace("valider.php?"+data)
         }
     }
