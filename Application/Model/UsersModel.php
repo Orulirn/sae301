@@ -28,7 +28,7 @@ function signUpAdmin($firstname, $lastname, $mail, $usertype, $password, $verifi
 
 function GetAllOfUsersTable(){
     global $db;
-    $sql = $db->prepare("SELECT * FROM Users");
+    $sql = $db->prepare("SELECT * FROM Users JOIN user_role on users.idrole = user_role.idrole");
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
