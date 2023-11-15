@@ -5,9 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH popup">
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="commit à delete">
+      <change afterPath="$PROJECT_DIR$/Application/Model/CreerParcours.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/client_secret_354475587396-9h5ais7ceqirim0cso3fttbrq4ildjs4.apps.googleusercontent.com.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Model/creerparcours.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Controller/updateDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/updateDataController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Model/UsersModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/UsersModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/Mailing.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/Mailing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/autoload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/ClassLoader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/InstalledVersions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_namespaces.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_real.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/platform_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/platform_check.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,16 +36,46 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <execution>
+      <executable path="composer" />
+    </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="equipe" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Orulirn&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="e542a386-2ee6-49fc-9d8a-e011fe19499f" />
+        <option name="url" value="https://github.com/Orulirn/sae301.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\MAMP\bin\php\php8.0.1\php.exe" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -39,15 +89,19 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;test&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/leoha/PhpstormProjects/sae301&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;creerUnTournoi&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/MAMP/bin/php/php8.0.1/php.ini&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -70,6 +124,14 @@
       <workItem from="1694779451952" duration="2961000" />
       <workItem from="1695020582869" duration="11882000" />
       <workItem from="1695276784267" duration="3558000" />
+      <workItem from="1699255567069" duration="9034000" />
+      <workItem from="1699280300969" duration="220000" />
+      <workItem from="1699280919183" duration="3898000" />
+      <workItem from="1699347416752" duration="1381000" />
+      <workItem from="1699348825438" duration="236000" />
+      <workItem from="1699349072878" duration="1110000" />
+      <workItem from="1699350200149" duration="30944000" />
+      <workItem from="1699969524427" duration="7511000" />
       <workItem from="1699255191009" duration="6808000" />
     </task>
     <task id="LOCAL-00001" summary="Installation bootstrap">
@@ -191,5 +253,11 @@
     <MESSAGE value="PATCH Role sur modif" />
     <MESSAGE value="PATCH popup" />
     <option name="LAST_COMMIT_MESSAGE" value="PATCH popup" />
+    <MESSAGE value="commit à delete" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit à delete" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
