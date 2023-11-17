@@ -1,6 +1,6 @@
 <?php
 
-include '../Model/creerparcours.html';
+
 include '../Model/DatabaseConnection.php';
 
 
