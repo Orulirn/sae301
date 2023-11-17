@@ -1,32 +1,30 @@
 <?php
 
 include '../Model/creerparcours.html';
-include'../Model/Database_connection.php';
-global  $db;
+include '../Model/DatabaseConnection.php';
+
+
 
 function insertParcours($name,$city,$year,$markerData){
     global $db;
     var_dump($markerData);
-    if (!($db->lastInsertId())){
-        $lastid = 0;
-    }else {
-        $lastid = $db->lastInsertID() + 1;
-    }
     try {
-        $sql = $db->prepare("INSERT INTO parcours (id,nom,ville,annee) VALUES (:id,:name,:city,:year)");
-        $sql->execute(array('id' => $lastid, 'name' => $name, 'city' => $city, 'year' => $year));
+        $sql = $db->prepare("INSERT INTO parcours (nom,ville,annee) VALUES (:name,:city,:year)");
+        $sql->execute(array( 'name' => $name, 'city' => $city, 'year' => $year));
+        $db->lastInsertId();
     } catch(PDOException $error){
         var_dump($error);
     }
 
+    $lastid=$db->lastInsertID();
     $No = 0;
     foreach ($markerData as $marker){
-        $latitude = floatval($marker['lat']);
-        $longitude = floatval($marker['lng']);
+        $latitude = $marker['lat'];
+        $longitude = $marker['lng'];
 
         try {
-            $sql = $db->prepare("INSERT INTO marker (idParcours,No,longitude,latitude) VALUES (:idParcours,:No,:longitude,:latitude)");
-            $sql->execute(array('idParcours' => $lastid, 'No' => $No, 'longitude' => $longitude, 'latitude' => $latitude));
+            $sql = $db->prepare("INSERT INTO marker (idParcours,`No`,longitude,latitude) VALUES (:idParcours,:N,:longitude,:latitude)");
+            $sql->execute(array('idParcours' => $lastid, 'N' => $No, 'longitude' => $longitude, 'latitude' => $latitude));
         } catch(PDOException $error){
             var_dump($error);
         }
