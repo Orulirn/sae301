@@ -1,28 +1,23 @@
 <?php
-
-$formData = $_POST;
-var_dump($formData);
-echo $formData['city'];
-
 include "../Model/CreerParcoursModel.php";
 include "../View/creerparcours.html";
 
-echo "test";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer les données du formulaire
-    $city = $_POST["city"];
-    $name = $_POST["name"];
-    $year = $_POST["year"];
-    $markersJSON = $_POST["markers"];
-    echo "passe";
-
-    // Décoder la chaîne JSON pour obtenir un tableau PHP
-    $markers = json_encode($markersJSON, true);
-    var_dump($markersJSON);
+if (isset($_GET['city'])) {
+    saveParcoursController();
 }
-function saveParcoursController($name,$city,$year,$markerData){
-
-
-    insertParcours($name,$city,$year,$markerData);
+function saveParcoursController(){
+    // Récupérer les données du formulaire
+    $city = $_GET["city"];
+    $name = $_GET["name"];
+    $year = $_GET["year"];
+    $nbMarkers =  (count($_GET)-3)/2 ;
+    $markers = array();
+    for ($i = 0;$i<$nbMarkers;$i++){
+        $newMarker = array(
+            "lat" => $_GET['LAT' . $i],
+            "lng" => $_GET['LNG' . $i]
+        );
+        array_push($markers,$newMarker);
+    }
+    insertParcours($name,$city,$year,$markers);
 }
