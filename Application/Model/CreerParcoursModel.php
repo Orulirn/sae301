@@ -1,7 +1,7 @@
 <?php
 
 
-include '../Model/DatabaseConnection.php';
+include 'DatabaseConnection.php';
 
 
 
