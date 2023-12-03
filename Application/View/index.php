@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../View/bootstrap-5.3.1-dist/css/bootstrap.css">
 </head>
 <body>
 <?php
@@ -17,7 +18,7 @@ if(isset($_POST['Deconnexion'])){
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="navbar-brand " id="backHome" href="#" >
-                    <img src="../View/img/logoSite.png" width="200px" height="133px">
+                    <img src="../View/files/logoSite.png" width="200px" height="133px">
                 </a>
             </li>
             <li class="nav-item mt-auto">
@@ -27,7 +28,10 @@ if(isset($_POST['Deconnexion'])){
                 <a class="nav-link fw-bold" href="#">Les matchs</a>
             </li>
             <li class="nav-item mt-auto">
-                <a class="nav-link fw-bold" href="#">mon profil</a>
+                <a class="nav-link fw-bold" href="#">Mon profil</a>
+            </li>
+            <li class="nav-item mt-auto">
+                <a class="nav-link fw-bold" href="#">Créer une équipe</a>
             </li>
         </ul>
     </div>
@@ -48,10 +52,10 @@ if(isset($_POST['Deconnexion'])){
     const backHome = document.querySelector("#backHome");
     const goConn = document.querySelector("#Connexion")
     backHome.addEventListener("click",function (){
-        window.location.replace("HomePageController.php");
+        window.location.replace("../Controller/HomepageController.php");
     });
     goConn.addEventListener("click", function (){
-        window.location.replace("ConnexionController.php");
+        window.location.replace("../Controller/ConnectionController.php");
     });
     function toggleButtonState() {
         
