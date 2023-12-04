@@ -7,7 +7,6 @@ include "../View/UpdateDataView.html";
 $buttonIndex = $_GET['buttonIndex'];
 $UsersData = Get1OfUsersTable($buttonIndex);
 $saveRole = $UsersData["idRole"];
-echo $UsersData["idRole"];
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
