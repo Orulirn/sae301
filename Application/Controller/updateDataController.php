@@ -2,7 +2,7 @@
 include "../Model/UsersModel.php";
 include "../View/UpdateDataView.html";
 
-
+$UsersData = GetAllOfUsersTable();
 
 $buttonIndex = $_GET['buttonIndex'];
 $UsersData = Get1OfUsersTable($buttonIndex);
@@ -18,21 +18,21 @@ echo'<center>';
     echo'<form class="was-validated" method="post">';
         echo'<div class="w-50 p-3">';
             echo'<label>Firstname</label>';
-            echo'<input type="text" class="form-control" name="firstname" size="30" maxlength="225" required="true" value='.$UsersData["firstname"]. '>';
+            echo'<input type="text" class="form-control" name="firstname" size="30" maxlength="225" required="true" value='.$UsersData ["firstname"]. '>';
             echo'<div class="valid-feedback">Valid.</div>';
             echo'<div class="invalid-feedback">Please fill out this field.</div>';
         echo'</div>';
 
         echo'<div class="w-50 p-3">';
             echo'<label>Lastname</label>';
-            echo'<input type="text" class="form-control" name="lastname" size="30" maxlength="225" required="true" value='.$UsersData["lastname"]. '>';
+            echo'<input type="text" class="form-control" name="lastname" size="30" maxlength="225" required="true" value='.$UsersData ["lastname"]. '>';
             echo'<div class="valid-feedback">Valid.</div>';
             echo'<div class="invalid-feedback">Please fill out this field.</div>';
         echo'</div>';
 
         echo'<div class="w-50 p-3">';
             echo'<label>Email</label>';
-            echo'<input type="text" class="form-control" name="mail" size="30" maxlength="225" required="true" value='.$UsersData['mail'].'>';
+            echo'<input type="text" class="form-control" name="mail" size="30" maxlength="225" required="true" value='.$UsersData ['mail'].'>';
             echo'<div class="valid-feedback">Valid.</div>';
             echo'<div class="invalid-feedback">Please fill out this field.</div>';
         echo'</div>';
@@ -40,7 +40,7 @@ echo'<center>';
         echo'<div class="w-50 p-3">';
             echo'<label>Cotisation</label>';
             echo'<br> 1 = Cotisé | 0 = Non cotisé';
-            echo'<input type="integer" class="form-control" name="cotisation" size="30" maxlength="1" required="true" value='.$UsersData["cotisation"]. '>';
+            echo'<input type="integer" class="form-control" name="cotisation" size="30" maxlength="1" required="true" value='.$UsersData ["cotisation"]. '>';
             echo'<div class="valid-feedback">Valid.</div>';
             echo'<div class="invalid-feedback">Please fill out this field.</div>';
         echo'</div>';
@@ -50,7 +50,7 @@ echo'<center>';
         echo'<button type="reset" class="btn btn-light">Reset</button>';
     echo'</form>';
 echo'</center>';
-//tmp
+
 ?>
 
 <script>
