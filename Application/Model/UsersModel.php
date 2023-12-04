@@ -36,6 +36,14 @@ function GetAllOfUsersTable()
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function Get1OfUsersTable($id)
+{
+    global $db;
+    $sql = $db->prepare("SELECT users.idUser, firstname, lastname, mail, cotisation FROM users JOIN users_role ON users.idUser = users_role.idUser WHERE users.idUser =:id ");
+    $sql->execute(array('id'=>$id));
+    return $sql->fetch(PDO::FETCH_ASSOC);
+}
+
 
 function GetAllUserWithContribution(){
     global $db;

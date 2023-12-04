@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH Role sur modif">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Controller/valideInscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/valideInscriptionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/ModificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/ModificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/updateDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/updateDataController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/UsersModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/UsersModel.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +43,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "test",
+    "git-widget-placeholder": "develop",
     "last_opened_file_path": "C:/Users/leoha/PhpstormProjects/sae301",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

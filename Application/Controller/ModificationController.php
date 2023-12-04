@@ -5,6 +5,7 @@ include "../View/ModificationView.html";
 
 $dataAllUsers = GetAllOfUsersTable();
 
+
 echo'<div class="container py-3">';
 
 echo'Cotisation : 1 = Cotisé | 0 = Non cotisé <br> Role : 1 = Joueur | 2 = Admin';
@@ -21,16 +22,14 @@ echo'<br><br>';
             echo'<th>Edit</th>';
         echo'</tr>';
         echo'<tr>';
-        $i=0;
         foreach ($dataAllUsers as $row) {
             echo'<td>'.$row['firstname'].'</td>';
             echo'<td>'.$row['lastname'].'</td>';
             echo'<td>'.$row['mail'].'</td>';
             echo'<td>'.$row['cotisation'].'</td>';
             echo'<td>'.$row['idRole'].'</td>';
-            echo'<td><button id=$i type="button" class="btn btn-white border-black border-1" name="editButton">Edit</button></td>';
+            echo'<td><button id=';echo $row['idUser']; echo ' type="button" class="btn btn-white border-black border-1" name="editButton">Edit</button></td>';
         echo'</tr>';
-        $i = $i+1;
         }
     echo'</table>';
 
@@ -85,10 +84,11 @@ echo'</div>';
 
 <script>
 
-    for (let i = 0; i < <?php echo $i?>; i++) {
+    for (let i in document.getElementsByName("editButton")) {
         let button = document.getElementsByName("editButton")[i];
         button.addEventListener("click", function() {
-            confirmation(i); // Passez la valeur de 'i' à la fonction confirmation
+            console.log(button.id)
+            confirmation(button.id); // Passez la valeur de 'i' à la fonction confirmation
         });
     }
 
@@ -99,6 +99,7 @@ echo'</div>';
             window.location.href = "updateDataController.php?buttonIndex=" + buttonIndex;
         }
     }
+
 
 </script>
 
