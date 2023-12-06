@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH modification user par admin">
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH modification user par admin Button">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Controller/ModificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/ModificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/View/ModificationView.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/valideInscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/valideInscriptionController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +71,8 @@
       <workItem from="1695276784267" duration="3558000" />
       <workItem from="1699255191009" duration="4167000" />
       <workItem from="1701685241545" duration="630000" />
-      <workItem from="1701868012827" duration="2661000" />
+      <workItem from="1701868012827" duration="3374000" />
+      <workItem from="1701871582890" duration="352000" />
     </task>
     <task id="LOCAL-00001" summary="Installation bootstrap">
       <option name="closed" value="true" />
@@ -170,7 +170,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701682255105</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="PATCH modification user par admin Button">
+      <option name="closed" value="true" />
+      <created>1701870742546</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1701870742546</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,6 +208,7 @@
     <MESSAGE value="PATCH Role sur validation" />
     <MESSAGE value="PATCH Role sur modif" />
     <MESSAGE value="PATCH modification user par admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="PATCH modification user par admin" />
+    <MESSAGE value="PATCH modification user par admin Button" />
+    <option name="LAST_COMMIT_MESSAGE" value="PATCH modification user par admin Button" />
   </component>
 </project>
