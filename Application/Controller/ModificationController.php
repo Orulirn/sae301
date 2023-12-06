@@ -5,30 +5,23 @@ include "../View/ModificationView.php";
 ?>
 
 <script>
+    document.getElementsByName("editButton").forEach((element )=>
+        element.addEventListener("click", function() {
+            confirmation(element.id); // Passez la valeur de 'i' à la fonction confirmation
+        }
+        ))
 
-    for (let i in document.getElementsByName("editButton")) {
-        let button = document.getElementsByName("editButton")[i];
-        button.addEventListener("click", function() {
-            confirmation(button.id); // Passez la valeur de 'i' à la fonction confirmation
-        });
-    }
+    document.getElementsByName("promAdmin").forEach((element )=>
+        element.addEventListener("click", function() {
+                confirmation2(element.id); // Passez la valeur de 'i' à la fonction confirmation
+            }
+        ))
 
-    for (let i in document.getElementsByName("promAdmin")) {
-        let button = document.getElementsByName("promAdmin")[i];
-        if (button != null){
-        button.addEventListener("click", function() {
-            confirmation2(button.id); // Passez la valeur de 'i' à la fonction confirmation
-        });}
-    }
-
-    for (let i in document.getElementsByName("revAdmin")) {
-        let button = document.getElementsByName("revAdmin")[i];
-        if (button != null){
-        button.addEventListener("click", function() {
-            confirmation3(button.id); // Passez la valeur de 'i' à la fonction confirmation
-        });}
-    }
-
+    document.getElementsByName("revAdmin").forEach((element )=>
+        element.addEventListener("click", function() {
+                confirmation3(element.id); // Passez la valeur de 'i' à la fonction confirmation
+            }
+        ))
 
     function confirmation(buttonIndex) {
         let value = confirm ("Etes-vous sûr de vouloir modifier ces informations ?");

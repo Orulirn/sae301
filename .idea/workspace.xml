@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH Role sur modif">
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH modification user par admin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Controller/ModificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/ModificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Controller/updateDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/updateDataController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/UsersModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/UsersModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/View/ModificationView.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,20 +37,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "develop",
-    "last_opened_file_path": "C:/Users/leoha/PhpstormProjects/sae301",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/leoha/PhpstormProjects/sae301&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ewenc\PhpstormProjects\sae301\Application\View\img" />
@@ -72,6 +71,8 @@
       <workItem from="1695020582869" duration="11882000" />
       <workItem from="1695276784267" duration="3558000" />
       <workItem from="1699255191009" duration="4167000" />
+      <workItem from="1701685241545" duration="630000" />
+      <workItem from="1701868012827" duration="2661000" />
     </task>
     <task id="LOCAL-00001" summary="Installation bootstrap">
       <option name="closed" value="true" />
@@ -153,7 +154,23 @@
       <option name="project" value="LOCAL" />
       <updated>1699259317079</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="PATCH modification user par admin">
+      <option name="closed" value="true" />
+      <created>1701682222476</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1701682222476</updated>
+    </task>
+    <task id="LOCAL-00012" summary="PATCH modification user par admin">
+      <option name="closed" value="true" />
+      <created>1701682255105</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1701682255105</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +199,7 @@
     <MESSAGE value="MAJ pour afficher un retour à l'utilisateur" />
     <MESSAGE value="PATCH Role sur validation" />
     <MESSAGE value="PATCH Role sur modif" />
-    <option name="LAST_COMMIT_MESSAGE" value="PATCH Role sur modif" />
+    <MESSAGE value="PATCH modification user par admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="PATCH modification user par admin" />
   </component>
 </project>
