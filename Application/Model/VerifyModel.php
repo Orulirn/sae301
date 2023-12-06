@@ -43,11 +43,10 @@ function valide($mail) {
             $sql = $db->prepare("SELECT `iduser` FROM `users` WHERE `mail` = :mail");
             $sql->bindParam(':mail', $mail, PDO::PARAM_STR);
             $sql->execute();
-            $id = $sql->fetch(PDO::FETCH_ASSOC);
-            var_dump($id);
-            $sql = $db->prepare("INSERT INTO `users_role` (`idRole`, `idUser`) VALUES (:idRole, :iduser)");
+            $id = $sql->fetchAll(PDO::FETCH_ASSOC);
+            $sql = $db->prepare("INSERT INTO `users_role` (`idRole`, `idUser`) VALUES (:idrole, :iduser)");
             $sql->bindParam(':idRole', $row['idRole'], PDO::PARAM_STR);
-            $sql->bindParam(':iduser', $id['iduser'], PDO::PARAM_STR);
+            $sql->bindParam(':idUser', $id['idUser'], PDO::PARAM_STR);
             $sql->execute();
         }
     } catch (PDOException $erreur) {
