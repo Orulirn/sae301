@@ -1,5 +1,5 @@
 <?php
-include "../Model/valideInscription.php";
+include "../Model/VerifyModel.php";
 $email = $_GET['email'];
 $nb = $_GET['index'];
 

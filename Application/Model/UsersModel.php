@@ -26,28 +26,72 @@ function signUpAdmin($firstname, $lastname, $mail, $usertype, $password, $verifi
     }
 }
 
+
+
 function GetAllOfUsersTable(){
     global $db;
-    $sql = $db->prepare("SELECT * FROM Users JOIN users_role on users.idUser = users_role.idUser");
+    $sql = $db->prepare("SELECT users.idUser,firstname,lastname,mail,cotisation,count(idRole) as nbRole FROM Users JOIN users_role on users.iduser = users_role.iduser GROUP BY idUser");
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
 
-
-function getTableCotise(){
+function Get1OfUsersTable($id){
     global $db;
-    $sql = $db->prepare("SELECT * FROM Users  WHERE `cotisation`=1");
-    $sql->execute();
-    return $sql->fetchAll(PDO::FETCH_ASSOC);
+    $sql = $db->prepare("SELECT users.idUser,firstname,lastname,mail,cotisation  FROM Users JOIN users_role on users.iduser = users_role.iduser WHERE users.idUser = :id");
+    $sql->execute(array("id"=> $id));
+    return $sql->fetch(PDO::FETCH_ASSOC);
 }
 
-function getTableNonCotise(){
+function GetRole($idUser){
     global $db;
-    $sql = $db->prepare("SELECT * FROM Users WHERE `cotisation`=0");
+    $sql = $db->prepare("SELECT idRole FROM users_role WHERE idUser = :idUser");
+    $sql->execute(array('idUser' => $idUser));
+    return $sql->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function UpdateRoleAdmin($idUser,$role){
+    global $db;
+    $sql = $db->prepare("SELECT idRole FROM users_role WHERE idUser = :idUser");
+    $sql->execute((array('idUser' => $idUser)));
+    $res = $sql->fetchAll(PDO::FETCH_ASSOC);
+    if (count($res) > 1 ){
+        $sql = $db->prepare("DELETE FROM users_role WHERE idRole = 0 AND idUser = :idUser");
+        $sql->execute((array('idUser' => $idUser)));
+        return true;
+    }
+    else {
+        foreach ($res as $row){
+        if ($row['idRole'] = 0){
+            $sql = $db->prepare("UPDATE users_role SET idRole = :role WHERE idUser = :idUser");
+            $sql->execute((array('role' => $role , 'idUser' => $idUser)));
+            return true;
+        }
+        else{
+            $sql = $db->prepare("INSERT INTO `users_role` (`idRole`, `idUser`) VALUES (:role, :user) ");
+            $sql->execute((array('role' => $role , 'user' => $idUser)));
+            return true;
+        }
+    }
+        return false;
+    }
+}
+
+
+
+function GetAllUserWithContribution(){
+    global $db;
+    $sql = $db->prepare("SELECT idUser,firstname,lastname,mail,cotisation FROM Users  WHERE `cotisation`=1");
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function GetAllUserWithNoContribution(){
+    global $db;
+    $sql = $db->prepare("SELECT idUser,firstname,lastname,mail,cotisation FROM Users WHERE `cotisation`=0");
+    $sql->execute();
+    return $sql->fetchAll(PDO::FETCH_ASSOC);
+}
+//tmp
 function updateLine($email, $cotisation){
     global $db;
     echo $email;
@@ -63,12 +107,12 @@ function updateLine($email, $cotisation){
     return true;
 }
 
-function updateUserInfo($buttonIndex, $firstname, $lastname, $mail, $cotisation, $role) {
+function updateUserInfo($buttonIndex, $firstname, $lastname, $mail, $cotisation, $role, $savedRole) {
     global $db;
-    $sql = $db->prepare("UPDATE `users` SET `firstname`='$firstname',`lastname`='$lastname',`mail`='$mail',`cotisation`='$cotisation' WHERE `idUser`='$buttonIndex'");
-    $sql->execute();
-    $sql = $db->prepare("UPDATE `users_role` SET `idRole`='$role' WHERE `idUser`='$buttonIndex'");
-    $sql->execute();
+    $sql = $db->prepare("UPDATE `users` SET `firstname`=:firstname,`lastname`=:lastname,`mail`=:mail,`cotisation`=:cotisation WHERE `idUser`=:btnIndex");
+    $sql->execute(array('firstname'=>$firstname,'lastname'=>$lastname,'mail'=>$mail,'cotisation'=>$cotisation,"btnIndex"=>$buttonIndex));
+    $sql = $db->prepare("UPDATE `users_role` SET `idRole`=:role WHERE `idUser`=:btnIndex AND `idUser` =:userID");
+    $sql->execute(array('role'=>$role,"btnIndex"=>$buttonIndex,"userID"=>$savedRole));
     return true;
 }
 ?>

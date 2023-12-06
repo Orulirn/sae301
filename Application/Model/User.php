@@ -4,7 +4,7 @@
  * 
  * PHP version 8.1.0
  * 
- * @version 2.2
+ * @version 2.4
  * 
  * @author LERMIGEAUX Nathan <nathan.lermigeaux@uphf.fr>
  * @author MASSE Océane <oceane.masse2@uphf.fr>
@@ -22,9 +22,10 @@ class User {
         $this->lastname='doe';
         $this->role=0;
         $this->log=false;
+        $this->idUser=null;
     }
 
-    public static function getInstance(){
+    public static function GetInstance(){
         if(is_null(self::$instance)){
 
             self::$instance=new User();
@@ -33,58 +34,57 @@ class User {
         return self::$instance;
     }
 
-//fonction qui permet la création du user 
-    function login ($mail,$mdp){
+/*fonction qui permet la création du user
+*
+*@param $mail
+*
+*@param $password
+*
+*/
+    function Login ($mail,$password){
         global $db;
         $sql=$db->prepare("SELECT password FROM users WHERE  mail = :userMail ");
         $sql->execute(array('userMail'=>$mail));
         $res=$sql->fetch();
-        if (password_verify($mdp,$res[0])){
-            $sql=$db->prepare("SELECT idUser,firstname,lastname FROM Users WHERE mail=:userMail");
+        
+        if (password_verify($password, $res[0])){
+            $sql=$db->prepare("SELECT idRole,firstname,lastname,users.idUser FROM Users JOIN users_role ON users.idUser = users_role.idUser WHERE mail= :userMail");
             $sql->execute(array('userMail'=>$mail));
             $res=$sql->fetch();
+            var_dump($res);
             $this->role=$res[0];
             $this->firstname=$res[1];
             $this->lastname=$res[2];
             $this->log=true;
+            $this->idRole=$res[3];
             header('Location: ../Controller/HomepageController.php');
         }
         
     }
 
-    public function resetUser(){
+    public function ResetUser(){
         $this->firstname='john';
         $this->lastname='doe';
         $this->role=null;
         $this->log=false;
     }
 
-//setter and getter 
-
-    function setFirstname($fn){
-        $this->firstname=$fn;
+    function GetIdUser(){
+        return $this->idUser;
     }
 
-    function setLastname($ln){
-        $this->lastname=$ln;
-    }
-
-    function setRole($i){
-        $this->role=$i;
-    }
-
-    function getFirstname(){
+    function GetFirstname(){
         return $this->firstname;
     }
 
-    function getLastname(){
+    function GetLastname(){
         return $this->lastname;
     }
 
-    function getRole(){
+    function GetRole(){
         return $this->role;
     }
 }
 session_start();
-$_SESSION['user'] = User::getInstance();
+$_SESSION['user'] = User::GetInstance();
 ?>
