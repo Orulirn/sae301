@@ -2,11 +2,8 @@
 include "../Model/UsersModel.php";
 
 $id = $_GET['buttonIndex'];
-$role = $_GET['role'];
 
-UpdateRoleAdmin($id,$role);
+deleteUser($id);
 
 
 header('Location: ModificationController.php');
-
-?>

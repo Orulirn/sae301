@@ -2,8 +2,6 @@
 include "../Model/UsersModel.php";
 include "../View/UpdateDataView.html";
 
-$UsersData = GetAllOfUsersTable();
-
 $buttonIndex = $_GET['buttonIndex'];
 $UsersData = Get1OfUsersTable($buttonIndex);
 $saveRole = $UsersData["idRole"];

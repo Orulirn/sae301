@@ -76,7 +76,16 @@ function UpdateRoleAdmin($idUser,$role){
     }
 }
 
-
+function deleteUser($id){
+    global $db;
+    $sql = $db->prepare("DELETE FROM team_player WHERE player = :id");
+    $sql->execute(array('id'=> $id));
+    $sql = $db->prepare("DELETE FROM users_role WHERE idUser = :id");
+    $sql->execute(array('id'=> $id));
+    $sql = $db->prepare("DELETE FROM users WHERE IdUser = :id");
+    $sql->execute(array('id'=> $id));
+    return true;
+}
 
 function GetAllUserWithContribution(){
     global $db;
