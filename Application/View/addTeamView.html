@@ -10,7 +10,11 @@
     <div class="container d-flex justify-content-center align-items-center"  style="height: 90vh;">
         <div class="border p-5 rounded bg-light">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Créer une équipe</h3>
+<<<<<<< HEAD
+            <form method="POST" id="formulaire">
+=======
             <form method="POST">
+>>>>>>> develop
                 <div class="mb-4"></div>
                 <label for="teamName">Écrire le nom de l'équipe :</label><br>
                 <input type="text" id="teamName" name="teamName" required><br><br>
@@ -22,7 +26,11 @@
                 <label>(Le capitaine sera le joueur coché)</label><br>
                 <div id="member" class="mb-4" style="text-align: center"></div>
                 <div style="text-align: center">
+<<<<<<< HEAD
+                <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Ajouter" disabled>
+=======
                 <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Ajouter">
+>>>>>>> develop
                 </div>
               </form>
             <div class="mb-4"></div>
@@ -43,9 +51,15 @@
         let nb = document.getElementById("nbMember");
         createAddFieldsForTeamMates(3,maDiv);
         nb.addEventListener('input', function() {
+<<<<<<< HEAD
+        createAddFieldsForTeamMates(nb.value,maDiv);   
+        });
+
+=======
         
         createAddFieldsForTeamMates(nb.value,maDiv);   
         });
+>>>>>>> develop
 function createAddFieldsForTeamMates(quantity, container){
     // Supprimer tous les sélecteurs existants à l'intérieur de maDiv
     while (container.children.length>quantity) {
@@ -84,10 +98,50 @@ function createAddFieldsForTeamMates(quantity, container){
     }
 }
 
+<<<<<<< HEAD
+const submit = document.getElementById('submit');
+
+submit.addEventListener('Click',function(){
+    alert("Votre équipe à bien été créée");
+})
+
+const form = document.getElementById('formulaire');
+form.addEventListener('change', function (){
+    
+    let valid = selectIsValid(form);
+     
+    if(valid == true){
+        submit.removeAttribute('disabled');
+    }
+    else {
+        submit.setAttribute('disabled',true);
+    }
+    })
+
+    function selectIsValid(form) {
+    let selects = form.querySelectorAll('select');
+    for (let i = 0; i < selects.length; i++) {
+        if (selects[i].value != "null") {
+            for (let j = i+1; j < selects.length; j++) {
+                if (selects[i].value == selects[j].value || selects[j].value == "null") {
+                    return false;
+                }
+            }
+        } else {
+            
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+=======
 submit.addEventListener('click', function (){ 
     alert("Votre équipe à bien été créée");    
     })
 
+>>>>>>> develop
 
     </script>
 </body>
