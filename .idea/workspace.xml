@@ -4,32 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Ajout d'une fonctionnalité d'ajout de pièce jointe">
-      <change afterPath="$PROJECT_DIR$/Application/Controller/ControllerCreerParcours.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Controller/ControllerMailing.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Model/ChargerParcours.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Model/Mailing_Class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Model/vendor/autoload.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/View/MailingView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/View/custom-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sae301.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sae301.iml" afterDir="false" />
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH modification user par admin Button">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/valideInscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/valideInscriptionController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings">
     <execution />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-        <option value="JavaScript File" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -39,38 +24,34 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2VFeoJDDRkTKtXcQNiQp7deBHYc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "mailer",
-    "last_opened_file_path": "C:/Users/leoha/PhpstormProjects/sae301",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/leoha/PhpstormProjects/sae301&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\leoha\PhpstormProjects\sae301\Application\Model\vendor" />
-      <recent name="C:\Users\leoha\PhpstormProjects\sae301\Application\Model" />
       <recent name="C:\Users\ewenc\PhpstormProjects\sae301\Application\View\img" />
     </key>
   </component>
@@ -88,11 +69,10 @@
       <workItem from="1694779451952" duration="2961000" />
       <workItem from="1695020582869" duration="11882000" />
       <workItem from="1695276784267" duration="3558000" />
-      <workItem from="1697186776891" duration="22281000" />
-      <workItem from="1697551688033" duration="703000" />
-      <workItem from="1700736346314" duration="644000" />
-      <workItem from="1701244894353" duration="48846000" />
-      <workItem from="1701868761737" duration="14529000" />
+      <workItem from="1699255191009" duration="4167000" />
+      <workItem from="1701685241545" duration="630000" />
+      <workItem from="1701868012827" duration="3374000" />
+      <workItem from="1701871582890" duration="352000" />
     </task>
     <task id="LOCAL-00001" summary="Installation bootstrap">
       <option name="closed" value="true" />
@@ -150,39 +130,59 @@
       <option name="project" value="LOCAL" />
       <updated>1695114524884</updated>
     </task>
-    <task id="LOCAL-00008" summary="Installation phpMailer + création d'une classe qui permet l'envoi de mail de manière non sécurisé + ajout de pièces jointes pour le sondage">
+    <task id="LOCAL-00008" summary="MAJ pour afficher un retour à l'utilisateur">
       <option name="closed" value="true" />
-      <created>1700083716027</created>
+      <created>1699256796185</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1700083716028</updated>
+      <updated>1699256796185</updated>
     </task>
-    <task id="LOCAL-00009" summary="Ajout d'un design bootstrap pour l'envoi d'un/plusieurs mail + ajout du contenu depuis le site directement">
+    <task id="LOCAL-00009" summary="PATCH Role sur validation">
       <option name="closed" value="true" />
-      <created>1701415154452</created>
+      <created>1699258196907</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1701415154452</updated>
+      <updated>1699258196907</updated>
     </task>
-    <task id="LOCAL-00010" summary="Ajout d'une fonctionnalité d'ajout de pièce jointe">
+    <task id="LOCAL-00010" summary="PATCH Role sur modif">
       <option name="closed" value="true" />
-      <created>1701439740265</created>
+      <created>1699259317079</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1701439740265</updated>
+      <updated>1699259317079</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="PATCH modification user par admin">
+      <option name="closed" value="true" />
+      <created>1701682222476</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1701682222476</updated>
+    </task>
+    <task id="LOCAL-00012" summary="PATCH modification user par admin">
+      <option name="closed" value="true" />
+      <created>1701682255105</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1701682255105</updated>
+    </task>
+    <task id="LOCAL-00013" summary="PATCH modification user par admin Button">
+      <option name="closed" value="true" />
+      <created>1701870742546</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1701870742546</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="UnknownFeatures">
-    <option featureType="dependencySupport" implementationName="executable:docker" />
-    <option featureType="dependencySupport" implementationName="executable:kubectl" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -204,10 +204,11 @@
     <MESSAGE value="patch pour refaire marcher la connexion." />
     <MESSAGE value="ajout d'un pop up pour informer l'utilisateur que son mdp n'est pas correct" />
     <MESSAGE value="Patch de la View pour la connexion" />
-    <MESSAGE value="Installation phpMailer + création d'une classe qui permet l'envoi de mail de manière non sécurisé" />
-    <MESSAGE value="Installation phpMailer + création d'une classe qui permet l'envoi de mail de manière non sécurisé + ajout de pièces jointes pour le sondage" />
-    <MESSAGE value="Ajout d'un design bootstrap pour l'envoi d'un/plusieurs mail + ajout du contenu depuis le site directement" />
-    <MESSAGE value="Ajout d'une fonctionnalité d'ajout de pièce jointe" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout d'une fonctionnalité d'ajout de pièce jointe" />
+    <MESSAGE value="MAJ pour afficher un retour à l'utilisateur" />
+    <MESSAGE value="PATCH Role sur validation" />
+    <MESSAGE value="PATCH Role sur modif" />
+    <MESSAGE value="PATCH modification user par admin" />
+    <MESSAGE value="PATCH modification user par admin Button" />
+    <option name="LAST_COMMIT_MESSAGE" value="PATCH modification user par admin Button" />
   </component>
 </project>
