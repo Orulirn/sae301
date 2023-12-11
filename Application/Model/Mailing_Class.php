@@ -11,7 +11,7 @@ class Mailing_Class {
     public function __construct() {
         $this->mailer = new PHPMailer(true);
     }
-
+    //Methode pour envoyer un ou plusieurs mails
     public function sendCustomEmail($from, $to, $subject, $message, $attachments = array()) {
         try {
             $this->configureMailer();
@@ -38,7 +38,16 @@ class Mailing_Class {
             return 'Erreur lors de l\'envoi de l\'email : ' . $this->mailer->ErrorInfo;
         }
     }
+    public function getEvailableEmails(){
+        require_once('../Model/DatabaseConnection.php');
 
+        $db = Database::getInstance();
+        $stmt = $db->prepare("SELECT mail FROM users WHERE cotisation = 1");
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
+    //Configuration du mailer
     private function configureMailer() {
         $this->mailer->isSMTP();
         $this->mailer->Host = 'smtp.gmail.com';

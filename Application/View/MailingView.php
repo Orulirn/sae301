@@ -13,21 +13,9 @@
         <div class="col-md-6">
             <h3>Adresses e-mail disponibles</h3>
             <div class="list-group">
-                <?php
-                // Récupérer toutes les adresses email depuis la base de données
-                require_once('../Model/Database_connection.php'); // Assure-toi de bien importer ta classe de connexion
-
-                $db = Database::getInstance();
-                $stmt = $db->prepare("SELECT mail FROM users WHERE cotisation = 1");
-                $stmt->execute();
-
-                $emails = $stmt->fetchAll(PDO::FETCH_COLUMN);
-
-                // Afficher toutes les adresses email
-                foreach ($emails as $email) {
-                    echo '<a href="#" class="list-group-item list-group-item-action" onclick="toggleSelection(\'' . $email . '\')" id="' . $email . '">' . $email . '</a>';
-                }
-                ?>
+                <? foreach ($emails as $email): ?>
+                <a href="#" class="list-group-item list-group-item-action" onclick="toggleSelection('<?php echo $email; ?>')" id="<?php echo $email; ?>"><?php echo $email; ?></a>
+                <?php endforeach; ?>
             </div>
         </div>
         <div class="col-md-6">

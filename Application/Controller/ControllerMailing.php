@@ -1,6 +1,5 @@
 <?php
 include "../Model/Mailing_Class.php";
-include "../View/MailingView.php";
 class ControllerMailing
 {
     private $mailingModel;
@@ -9,9 +8,12 @@ class ControllerMailing
     {
         $this->mailingModel = new Mailing_Class();
     }
+    public function getEmailsForView(){
+        return $this->mailingModel->getEvailableEmails();
+    }
+    public function processRequest(){
 
-    public function processRequest()
-    {
+        $emails = $this->mailingModel->getEvailableEmails();// recuperer les adresse e-mail des personnes cotisés
         if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['selectedEmails']) && isset($_POST['emailContent'])) {
             $selectedEmails = json_decode($_POST['selectedEmails']);
             $emailContent = $_POST['emailContent'];
@@ -30,10 +32,13 @@ class ControllerMailing
             } else {
                 echo 'Erreur lors de l\'envoi des e-mails : ' . $result;
             }
+            include('../View/MailingView.php');
         }
     }
 }
 
 $controller = new ControllerMailing();
 $controller->processRequest();
-?>
+$emails = $controller->getEmailsForView();
+include('../View/MailingView.php');
+
