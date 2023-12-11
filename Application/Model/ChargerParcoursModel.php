@@ -21,7 +21,6 @@ function selectNameInParcours(){
 }
 
 function selectParcoursByName($name){
-    echo "entre dans selectParcoursByName() <br>";
     global $db;
     $sql = $db->prepare("SELECT * FROM `parcours` WHERE `nom` = :name");
     $sql->execute(array('name'=> $name));
@@ -30,7 +29,6 @@ function selectParcoursByName($name){
 }
 
 function selectMarkersByParcours($idParcours){
-    echo "entre dans selectMarkerByParcours() <br>";
     global $db;
     $sql = $db->prepare("SELECT longitude,latitude FROM `marker` WHERE `idParcours` = :idParcours");
     $sql->execute(array('idParcours'=> $idParcours));
@@ -39,7 +37,6 @@ function selectMarkersByParcours($idParcours){
 }
 
 function selectParticularParcours($name){
-    echo "entre dans selectPartuclarParcours() <br>";
     $parcours = selectParcoursByName($name);
     $idParcours = $parcours[0][0];
     $markers = selectMarkersByParcours($idParcours);
@@ -51,6 +48,7 @@ function selectParticularParcours($name){
             $parcours[0][3],
         )
     );
+
     foreach ($markers as $marker){
         $newMarker = array(
             "longitude" => $marker[0],
