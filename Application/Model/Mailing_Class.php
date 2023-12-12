@@ -11,15 +11,18 @@ class Mailing_Class {
     public function __construct() {
         $this->mailer = new PHPMailer(true);
     }
-    //Methode pour envoyer un ou plusieurs mails
-    public function sendCustomEmail($from, $to, $subject, $message, $attachments = array()) {
+
+    public function sendCustomEmail($fromEmail, $to, $subject, $message, $attachments = array()) {
         try {
             $this->configureMailer();
 
-            $this->mailer->setFrom($from);
+            $fromName = 'MailCholage';
+            $this->mailer->setFrom($fromEmail, $fromName);
+
             foreach ($to as $recipient) {
                 $this->mailer->addAddress($recipient);
             }
+
             $this->mailer->Subject = $subject;
             $this->mailer->Body = $message;
             $this->mailer->isHTML(true);
@@ -29,7 +32,7 @@ class Mailing_Class {
             }
 
             if ($this->mailer->send()) {
-                printf("l'email a été envoyé");
+                printf("L'email a été envoyé");
                 return true;
             } else {
                 return 'L\'email n\'a pas pu être envoyé.';
@@ -38,7 +41,9 @@ class Mailing_Class {
             return 'Erreur lors de l\'envoi de l\'email : ' . $this->mailer->ErrorInfo;
         }
     }
-    public function getEvailableEmails(){
+
+
+    public function getAvailableEmails(){
         require_once('../Model/DatabaseConnection.php');
 
         $db = Database::getInstance();
@@ -47,13 +52,13 @@ class Mailing_Class {
 
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
-    //Configuration du mailer
+
     private function configureMailer() {
         $this->mailer->isSMTP();
         $this->mailer->Host = 'smtp.gmail.com';
         $this->mailer->SMTPAuth = true;
-        $this->mailer->Username = 'lasae301test@gmail.com';
-        $this->mailer->Password = 'umkn xeta pgpj phic';
+        $this->mailer->Username = 'cholagemail@gmail.com';
+        $this->mailer->Password = 'gtoo xgvw gnnd otqq';
         $this->mailer->SMTPSecure = 'tls';
         $this->mailer->Port = 587;
         $this->mailer->SMTPOptions = [
@@ -65,4 +70,3 @@ class Mailing_Class {
         ];
     }
 }
-?>

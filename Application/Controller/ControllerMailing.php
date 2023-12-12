@@ -1,5 +1,6 @@
 <?php
 include "../Model/Mailing_Class.php";
+
 class ControllerMailing
 {
     private $mailingModel;
@@ -8,12 +9,16 @@ class ControllerMailing
     {
         $this->mailingModel = new Mailing_Class();
     }
-    public function getEmailsForView(){
-        return $this->mailingModel->getEvailableEmails();
-    }
-    public function processRequest(){
 
-        $emails = $this->mailingModel->getEvailableEmails();// recuperer les adresse e-mail des personnes cotisés
+    public function getEmailsForView()
+    {
+        return $this->mailingModel->getAvailableEmails();
+    }
+
+    public function processRequest()
+    {
+        $emails = $this->mailingModel->getAvailableEmails();
+
         if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['selectedEmails']) && isset($_POST['emailContent'])) {
             $selectedEmails = json_decode($_POST['selectedEmails']);
             $emailContent = $_POST['emailContent'];
@@ -41,4 +46,3 @@ $controller = new ControllerMailing();
 $controller->processRequest();
 $emails = $controller->getEmailsForView();
 include('../View/MailingView.php');
-
