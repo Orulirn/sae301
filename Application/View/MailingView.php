@@ -13,7 +13,7 @@
         <div class="col-md-6">
             <h3>Adresses e-mail disponibles</h3>
             <div class="list-group">
-                <? foreach ($emails as $email): ?>
+                <?php foreach ($emails as $email): ?>
                     <a href="#" class="list-group-item list-group-item-action" onclick="toggleSelection('<?php echo $email; ?>')" id="<?php echo $email; ?>"><?php echo $email; ?></a>
                 <?php endforeach; ?>
             </div>
@@ -45,7 +45,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-        var selectedFiles = [];
+        var selectedFiles = []; // Liste des pièces jointes pour l'envoi d'e-mails
         function toggleSelection(email) {
             var emailButton = document.getElementById(email);
             var selectedEmails = document.getElementById('selectedEmails');
@@ -63,7 +63,6 @@
                 selectedEmails.appendChild(newListItem);
             }
         }
-        var selectedFiles = []; // Déclarer cette variable à l'extérieur de la fonction pour la garder accessible
 
         function updateFileName() {
             var input = document.getElementById('attachments');
@@ -71,24 +70,60 @@
             var fileNamesList = document.getElementById('fileNamesList');
             var files = input.files;
 
-            for (var i = 0; i < files.length; i++) {
-                selectedFiles.push(files[i]);
-            }
+            label.innerHTML = 'Fichiers sélectionnés';
 
-            fileNamesList.innerHTML = '';
-
-            if (selectedFiles.length === 0) {
-                label.innerHTML = 'Choisir des fichiers';
-                return;
-            }
-
-            for (var j = 0; j < selectedFiles.length; j++) {
-                var fileName = selectedFiles[j].name;
+            for (var j = 0; j < files.length; j++) {
+                var fileId = generateId(); // Générer un identifiant unique pour chaque fichier
+                var fileName = files[j].name;
                 var listItem = document.createElement('li');
                 listItem.textContent = fileName;
+
+                var deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Supprimer';
+                deleteButton.className = 'btn btn-danger btn-sm ml-2';
+                deleteButton.onclick = createDeleteHandler(listItem, fileId); // Utilise l'élément de la liste et l'ID du fichier
+                deleteButton.style.marginLeft = '5px';
+
+                listItem.appendChild(deleteButton);
                 fileNamesList.appendChild(listItem);
+
+                selectedFiles.push({ id: fileId, file: files[j] }); // Ajoute l'objet fichier avec son ID unique à la liste
             }
+
+            // Mettre à jour l'affichage des noms de fichiers
+            displayFileNames();
         }
+
+        function createDeleteHandler(listItem, fileId) {
+            return function () {
+                listItem.parentNode.removeChild(listItem);
+
+                // Retirer la pièce jointe de la liste selectedFiles côté client
+                selectedFiles = selectedFiles.filter(function (file) {
+                    return file.id !== fileId;
+                });
+
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            console.log('Réponse du serveur : ', xhr.responseText);
+                        } else {
+                            console.error('Une erreur est survenue lors de la requête.');
+                        }
+                    }
+                };
+
+                xhr.open('POST', 'URL_de_suppression_des_pieces_jointes', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify({ fileId: fileId }));
+            };
+        }
+
+        function generateId() {
+            return '_' + Math.random().toString(36).substr(2, 9); // Génère un ID unique aléatoire
+        }
+
 
         function displayFileNames() {
             var input = document.getElementById('attachments');
@@ -126,8 +161,10 @@
 
             // Ajouter les pièces jointes depuis la liste selectedFiles
             for (var j = 0; j < selectedFiles.length; j++) {
-                formData.append('attachments[]', selectedFiles[j]);
+                formData.append('attachments[]', selectedFiles[j].file);
             }
+
+
 
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
@@ -148,4 +185,3 @@
     </script>
 </body>
 </html>
-

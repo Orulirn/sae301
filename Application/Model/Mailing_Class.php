@@ -12,7 +12,7 @@ class Mailing_Class {
         $this->mailer = new PHPMailer(true);
     }
 
-    public function sendCustomEmail($fromEmail, $to, $subject, $message, $attachments = array()) {
+    public function sendCustomEmail($fromEmail, $to, $subject, $message, $attachments = array(), $replyToName = '') {
         try {
             $this->configureMailer();
 
@@ -27,12 +27,15 @@ class Mailing_Class {
             $this->mailer->Body = $message;
             $this->mailer->isHTML(true);
 
-            foreach ($attachments['tmp_name'] as $index => $tmpName) {
-                $this->mailer->addAttachment($tmpName, $attachments['name'][$index]);
+            // Vérifier si des pièces jointes ont été envoyées et les attacher à l'e-mail
+            if (!empty($attachments['tmp_name'])) {
+                foreach ($attachments['tmp_name'] as $index => $tmpName) {
+                    $this->mailer->addAttachment($tmpName, $attachments['name'][$index]);
+                }
             }
 
+            // Envoyer l'e-mail
             if ($this->mailer->send()) {
-                printf("L'email a été envoyé");
                 return true;
             } else {
                 return 'L\'email n\'a pas pu être envoyé.';
