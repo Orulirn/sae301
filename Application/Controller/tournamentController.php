@@ -6,12 +6,14 @@
  * 
  */
 
-include_once ('../Model/DatabaseConnection.php');
-include ("../View/index.php");
+include ("../Model/ChargerParcoursModel.php");
 include ("../Model/tournamentModel.php");
+
 
 if(isset($_POST['submit'])) {
     addTournament($_POST['place'], $_POST['year']);
 }
 
-include "../View/addTournamentView.html";
+$data = selectParcoursName();
+echo ("<p id='dataParcours' visibility='hidden' style= 'display :none;'>".json_encode($data)."</p>");
+include "../View/tournamentView.php";
