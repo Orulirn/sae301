@@ -15,6 +15,7 @@ class User {
 //function to connect to the site
     
     private function __construct(){
+        /* contructeur de l'objet user par défaut. Dans cette situation, l'utilisateur n'est pas connecté.*/
         $this->firstname='john';
         $this->lastname='doe';
         $this->role=null;
@@ -22,6 +23,10 @@ class User {
     }
 
     public static function getInstance(){
+        /* Permet de récupéré l'instance de l'utilisateur si elle existe déjà, sinon elle en créer une.
+         *
+         * return l'instance de l'utilisateur.
+         * */
         if(is_null(self::$instance)){
 
             self::$instance=new User();
@@ -32,6 +37,12 @@ class User {
 
 //fonction qui permet la création du user 
     function login ($mail,$mdp){
+        /* fonction qui permet de se connecter en tant que personne inscrite sur le site (possèdant un compte). Si l'utilisateur a rentré des informations correct, le redirige sur la homepage.
+         *
+         * args:
+         *     mail (str) : le mail avec lequel l'utilisateur a essayé de se connecter.
+         *     mdp (str) : mot de passe que l'utilisateur a utilisé pour essayer e se connecter.
+         * */
         global $db;
         $sql=$db->prepare("SELECT password FROM users WHERE  mail = :userMail ");
         $sql->execute(array('userMail'=>$mail));
@@ -50,6 +61,7 @@ class User {
     }
 
     public function resetUser(){
+        /*Permet de remettre les données lié à un utilisateur au format par défaut*/
         $this->firstname='john';
         $this->lastname='doe';
         $this->role=null;
