@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="../View/bootstrap-5.3.1-dist/css/bootstrap.css">
 </head>
 <body>
+<?php
+
+if(isset($_POST['Deconnexion'])){
+    unset($_SESSION['user']);
+}
+
+?>
 
 <nav class="navbar navbar-expand-sm bg-dark-subtle">
     <div class="container-fluid p-xl-2">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="navbar-brand " id="backHome" href="#" >
-                    <img src="../View/img/logoSite.png" width="200px" height="133px">
+                    <img src="../View/files/logoSite.png" width="200px" height="133px">
                 </a>
             </li>
             <li class="nav-item mt-auto">
@@ -21,7 +28,10 @@
                 <a class="nav-link fw-bold" href="#">Les matchs</a>
             </li>
             <li class="nav-item mt-auto">
-                <a class="nav-link fw-bold" href="#">mon profil</a>
+                <a class="nav-link fw-bold" href="#">Mon profil</a>
+            </li>
+            <li class="nav-item mt-auto">
+                <a class="nav-link fw-bold" href="#">Créer une équipe</a>
             </li>
         </ul>
     </div>
@@ -31,36 +41,38 @@
                 <button name="Connexion" id="Connexion" class="btn btn-primary" >Connexion</button>
             </li>
             <li class="nav-item p-xl-1">
-                <button name="Deconnexion" id="Deconnexion" class="btn btn-danger">Déconnexion</button>
+                <form method="post">
+                    <input name="Deconnexion" type="submit" value="Deconnexion" class="btn btn-danger">
+                </form>
             </li>
         </ul>
     </div>
 </nav>
-
 <script>
     const backHome = document.querySelector("#backHome");
     const goConn = document.querySelector("#Connexion")
-    const goDeco = document.querySelector("#Deconnexion")
     backHome.addEventListener("click",function (){
-        window.location.replace("HomePageController.php");
+        window.location.replace("../Controller/HomepageController.php");
     });
     goConn.addEventListener("click", function (){
-        window.location.replace("ConnexionController.php");
+        window.location.replace("../Controller/ConnectionController.php");
     });
-    //$connected = JSON.parse("connected");
-    function toggleButtonState(boolean) {
-        if (boolean === true) {
+    function toggleButtonState() {
+        
+        console.log(document.getElementById('userState').outerText);
+        if (document.getElementById('userState').outerText = "null") {
             //gestion du bouton de connexion
-            goConn.setAttribute("disabled");
-            goConn.classList.remove("btn-primary")
-            goConn.classList.add("btn-secondary")
+            goConn.setAttribute("disabled",true);
+            goConn.classList.remove("btn-primary");
+            goConn.classList.add("btn-secondary");
+        }
+        else {
             //gestion du bouton de déconnexion
-            goDeco.setAttribute("disabled", "disabled")
-            goConn.classList.remove("btn-secondary")
-            goConn.classList.add("btn-primary")
+            goDeco.setAttribute("disabled", true);
+            goConn.classList.remove("btn-secondary");
+            goConn.classList.add("btn-primary");
         }
     }
-    //toggleButtonState($connected);
 </script>
 
 </body>

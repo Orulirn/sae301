@@ -1,26 +1,66 @@
 <?php
-
-
-include "../Model/Modification.php";
-$res = getTable();
-
-function updateUserInfo($buttonIndex, $firstname, $lastname, $mail, $cotisation) {
-    /*Permet d'aller mettre à jour les données d'un utilisateur dans la base de donnée
-     *
-     * args :
-     *      buttonIndex (int) : l'id du champs, permet donc de cibler le bon champs dans la base de donnée
-     *      firstname (str) : représente le prenom de l'utilisateur, à aller modifier dans la base de donnée (il peut être le même que celui déjà présent dans cette dernière).
-     *      lastname (str) : représente le nom de l'utilisateur, à aller modifier dans la base de donnée (il peut être le même que celui déjà présent dans cette dernière).
-     *      mail (str) : représente le mail de l'utilisateur, à aller modifier dans la base de donnée (il peut être le même que celui déjà présent dans cette dernière).
-     *      cotisation (int) : représente la cotisation de l'utilisateur, à aller modifier dans la base de donnée (il peut être le même que celui déjà présent dans cette dernière) 0 pour ceux n'ayant pas cotisé 1 pour ceux ayant cotisé.
-     *
-     *      return, sert à confirmer que la requête c'est bien exécuté
-     * */
-    global $db;
-    $sql = $db->prepare("UPDATE `users` SET `firstname`='$firstname',`lastname`='$lastname',`mail`='$mail',`cotisation`='$cotisation' WHERE `idUser`='$buttonIndex'");
-    $sql->execute();
-    return true;
-}
-
+include "../Model/UsersModel.php";
+$dataAllUsers = GetAllOfUsersTable();
+include "../View/ModificationView.php";
 ?>
+
+<script>
+    document.getElementsByName("editButton").forEach((element )=>
+        element.addEventListener("click", function() {
+            confirmation(element.id); // Passez la valeur de 'i' à la fonction confirmation
+        }
+        ))
+
+    document.getElementsByName("promAdmin").forEach((element )=>
+        element.addEventListener("click", function() {
+                confirmation2(element.id); // Passez la valeur de 'i' à la fonction confirmation
+            }
+        ))
+
+    document.getElementsByName("revAdmin").forEach((element )=>
+        element.addEventListener("click", function() {
+                confirmation3(element.id); // Passez la valeur de 'i' à la fonction confirmation
+            }
+        ))
+
+    document.getElementsByName("deleteButton").forEach((element )=>
+        element.addEventListener("click", function() {
+                confirmation4(element.id); // Passez la valeur de 'i' à la fonction confirmation
+            }
+        ))
+
+    function confirmation(buttonIndex) {
+        let value = confirm ("Etes-vous sûr de vouloir modifier ces informations ?");
+        if (value === true){
+            window.location.href = "updateDataController.php?buttonIndex=" + buttonIndex;
+        }
+    }
+
+    function confirmation2(buttonIndex) {
+        let role = 0
+        let value = confirm ("Etes-vous sûr de vouloir promouvoir cette personne en tant qu'administrateur ?");
+        if (value === true){
+            var queryString = "buttonIndex=" + encodeURIComponent(buttonIndex) + "&role=" + encodeURIComponent(role);
+            window.location.replace("ModifRoleController.php?" + queryString);
+        }
+    }
+
+
+    function confirmation3(buttonIndex) {
+        let role = 1
+        let value = confirm ("Etes-vous sûr de vouloir révoquer à cette personne le role d'administrateur ?");
+        if (value === true){
+            var queryString = "buttonIndex=" + encodeURIComponent(buttonIndex) + "&role=" + encodeURIComponent(role);
+            window.location.replace("ModifRoleController.php?" + queryString);
+        }
+    }
+
+    function confirmation4(buttonIndex) {
+        let value = confirm ("Etes-vous sûr de vouloir supprimer cette utilisateur ?");
+        if (value === true){
+            window.location.href = "deleteUserController.php?buttonIndex=" + buttonIndex;
+        }
+    }
+
+</script>
 

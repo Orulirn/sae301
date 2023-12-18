@@ -1,6 +1,7 @@
 <?php
 session_start();
-include_once("../Model/User_class");
-include ("../View/index.html");
-include("../View/HomePage.html");
+include_once("../Model/User.php");
+include ("../View/index.php");
+include("../View/HomepageView.html");
+//tmp
 ?>

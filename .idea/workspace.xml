@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Patch de la View pour la connexion">
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH modification user par admin Button">
+      <change afterPath="$PROJECT_DIR$/Application/Controller/deleteUserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Controller/ConnexionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/ConnexionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/ModifRoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/ModifRoleController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Controller/ModificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/ModificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/updateDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/updateDataController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/UsersModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/UsersModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/View/ModificationView.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/ModificationView.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Connection" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -30,35 +34,31 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2VFeoJDDRkTKtXcQNiQp7deBHYc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "develop",
-    "last_opened_file_path": "C:/Users/leoha/PhpstormProjects/sae301",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/leoha/PhpstormProjects/sae301&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ewenc\PhpstormProjects\sae301\Application\View\img" />
     </key>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-php-predefined-ba97393d7c68-74080bdb84d3-com.jetbrains.php.sharedIndexes-PS-233.11799.297" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -74,6 +74,10 @@
       <workItem from="1694779451952" duration="2961000" />
       <workItem from="1695020582869" duration="11882000" />
       <workItem from="1695276784267" duration="3558000" />
+      <workItem from="1699255191009" duration="4167000" />
+      <workItem from="1701685241545" duration="630000" />
+      <workItem from="1701868012827" duration="3374000" />
+      <workItem from="1701871582890" duration="352000" />
     </task>
     <task id="LOCAL-00001" summary="Installation bootstrap">
       <option name="closed" value="true" />
@@ -131,7 +135,55 @@
       <option name="project" value="LOCAL" />
       <updated>1695114524884</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="MAJ pour afficher un retour à l'utilisateur">
+      <option name="closed" value="true" />
+      <created>1699256796185</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699256796185</updated>
+    </task>
+    <task id="LOCAL-00009" summary="PATCH Role sur validation">
+      <option name="closed" value="true" />
+      <created>1699258196907</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1699258196907</updated>
+    </task>
+    <task id="LOCAL-00010" summary="PATCH Role sur modif">
+      <option name="closed" value="true" />
+      <created>1699259317079</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1699259317079</updated>
+    </task>
+    <task id="LOCAL-00011" summary="PATCH modification user par admin">
+      <option name="closed" value="true" />
+      <created>1701682222476</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1701682222476</updated>
+    </task>
+    <task id="LOCAL-00012" summary="PATCH modification user par admin">
+      <option name="closed" value="true" />
+      <created>1701682255105</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1701682255105</updated>
+    </task>
+    <task id="LOCAL-00013" summary="PATCH modification user par admin Button">
+      <option name="closed" value="true" />
+      <created>1701870742546</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1701870742546</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +209,11 @@
     <MESSAGE value="patch pour refaire marcher la connexion." />
     <MESSAGE value="ajout d'un pop up pour informer l'utilisateur que son mdp n'est pas correct" />
     <MESSAGE value="Patch de la View pour la connexion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Patch de la View pour la connexion" />
+    <MESSAGE value="MAJ pour afficher un retour à l'utilisateur" />
+    <MESSAGE value="PATCH Role sur validation" />
+    <MESSAGE value="PATCH Role sur modif" />
+    <MESSAGE value="PATCH modification user par admin" />
+    <MESSAGE value="PATCH modification user par admin Button" />
+    <option name="LAST_COMMIT_MESSAGE" value="PATCH modification user par admin Button" />
   </component>
 </project>

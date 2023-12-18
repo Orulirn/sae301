@@ -1,6 +1,33 @@
-<?php
-global $res;
-include "../Controller/ModificationController.php"
+<?php include "index.php";
+
+
+function setTab($dataAllUsers)
+{
+    echo'<tr>';
+    foreach ($dataAllUsers as $row) {
+        echo'<td>'.$row['firstname'].'</td>';
+        echo'<td>'.$row['lastname'].'</td>';
+        echo'<td>'.$row['mail'].'</td>';
+        echo'<td>'.$row['cotisation'].'</td>';
+        if ($row['nbRole'] == 1) {
+            $resultatRole = GetRole($row['idUser']);
+            foreach($resultatRole as $row2){
+                $role = $row2['idRole'];
+                if ($role == 1) {
+                    echo'<td><button id="';echo $row["idUser"]; echo '" type="button" class="btn btn-white border-black border-1" name="promAdmin">Promouvoir Administrateur</button></td>';
+                }
+                else {
+                    echo'<td><button id="'; echo $row["idUser"]; echo '" type="button" class="btn btn-white border-black border-1" name="revAdmin">Révoquer Administrateur</button></td>';
+                }}
+        }
+        else {
+            echo'<td><button id="'; echo $row["idUser"]; echo '" type="button" class="btn btn-white border-black border-1" name="revAdmin">Révoquer Administrateur</button></td>';
+        }
+        echo'<td><button id="'; echo $row["idUser"] ; echo '" type="button" class="btn btn-white border-black border-1" name="editButton">Edit</button></td>';
+        echo'<td><button id="'; echo $row["idUser"] ; echo '" type="button" class="btn btn-white border-black border-1" name="deleteButton">Supprimer</button></td>';
+        echo'</tr>';
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +48,9 @@ include "../Controller/ModificationController.php"
             padding: 8px;
             text-align: left;
         }
+        tr{
+            border: 2px solid #000000;
+        }
         .editable {
             cursor: pointer;
         }
@@ -32,115 +62,36 @@ include "../Controller/ModificationController.php"
 <body>
 
 
-
 <header>
 
     <div class="container-fluid p-3 bg-white text-dark text-center">
         <h1>Modification</h1>
     </div>
 
-</header>
+    <div class="container py-3">
 
-<div class="container py-3">
+    <p>Cotisation : 1 = Cotisé | 0 = Non cotisé</p>
 
+    <br><br>
 
     <table>
         <tr>
-            <th>id</th>
             <th>Prénom</th>
             <th>Nom</th>
             <th>Email</th>
             <th>Cotisation</th>
+            <th>Admin</th>
             <th>Edit</th>
+            <th>Supprimer</th>
         </tr>
-        <tr>
-        <?php $i=0;
-        foreach ($res as $row) { ?>
-            <td><?php echo $row['idUser']; ?></td>
-            <td><?php echo $row['firstname']; ?></td>
-            <td><?php echo $row['lastname']; ?></td>
-            <td><?php echo $row['mail']; ?></td>
-            <td><?php echo $row['cotisation']; ?></td>
-            <td><button id="<?php echo "$i"?>" type="button" class="btn btn-white border-black border-1" name="editButton">Edit</button></td>
-        </tr>
-        <?php $i = $i+1;
-        } ?>
+        <?php setTab($dataAllUsers); ?>
     </table>
-
-</div>
-
-<footer class="bg-white">
-
-    <div class="container-fluid p-3 bg-white text-dark text-center">
     </div>
-
-</footer>
-
-
-
-
-
-<script>
-
-    // Add event listeners to make the table cells editable
-    let editableCells = document.querySelectorAll('.editable');
-    editableCells.forEach(cell => {
-        cell.addEventListener('dblclick', () => {
-            let value = cell.textContent;
-            let old_value = cell.textContent;
-
-            // Create an input field to edit the value
-            let input = document.createElement('input');
-            input.setAttribute('type', 'text');
-            input.setAttribute('value', value);
-
-            // Replace the cell's content with the input field
-            cell.textContent = '';
-            cell.appendChild(input);
-
-            // Focus on the input field
-            input.focus();
-
-
-            // Add an event listener to save the edited value
-            input.addEventListener('blur', () => {
-                let newValue = input.value;
-
-                if (newValue === ""){
-                    newValue = old_value;
-                }
-
-                // Send the updated value to the server (you'll need to implement this)
-                // For now, we'll just update the cell's content
-                cell.textContent = newValue;
-            });
-        });
-    });
-
-</script>
-
-
-<script>
-
-    for (let i = 0; i < <?php echo $i?>; i++) {
-        let button = document.getElementsByName("editButton")[i];
-        button.addEventListener("click", function() {
-            confirmation(i); // Passez la valeur de 'i' à la fonction confirmation
-        });
-    }
-
-
-    function confirmation(buttonIndex) {
-        let value = confirm ("Etes-vous sûr de vouloir modifier ces informations ?");
-        if (value === true){
-            window.location.href = "updateData.php?buttonIndex=" + buttonIndex;
-        }
-    }
-
-</script>
-
+</header>
 </body>
 </html>
+
+
 
 
 
