@@ -15,8 +15,6 @@
     <button id="clearRoute">Effacer l'itineraire</button>
     <button id="removeLastMarker">Supprimer le dernier marqueur</button>
 </div>
-</div>
-
 <div id="formContainer">
     <h2>Informations</h2>
     <form id="locationForm">
@@ -28,11 +26,27 @@
 
         <label for="year">Annee:</label>
         <input type="number" id="year" name="year" required><br>
+        <button type="submit" id="btn">Enregistrer le parcours</button>
 
-        <button type="submit" id="btn">Enregistrer le parcours</button>  </form>
+    </form>
+    <form id="load" action="../Controller/ChargerParcoursController.php" method="post">
+        <select id="parcoursList" name="parcours">
+            <?php
+            $parcoursNames = selectNameInParcours();
+            foreach ($parcoursNames as $parcours) {
+                $selected = '';
+                if (isset($_POST['parcours']) && $_POST['parcours'] === $parcours['nom']) {
+                    $selected = 'selected';
+                }
+                echo "<option value='".$parcours['nom']."' ".$selected.">".$parcours['nom']."</option>";
+            }
+            ?>
+        </select>
+        <button type="submit" name="loadSelectedParcours"onclick="loadParcours()">Charger le parcours</button>
+    </form>
+
 </Div>
 <script>
-
     function addMarker(latlng) {
         var marker = L.marker(latlng).addTo(map);
         markers.push(marker);
