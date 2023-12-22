@@ -28,7 +28,7 @@
                 <label>Choissez les parcours :</label><br>
                 <div id="parcours" class="mb-4" style="text-align: center"></div>
                 <div class="mb-4"></div>
-                <input hidden="hidden" type="text" id="id_year" name="year"/><br>
+                <input hidden="hidden" type="number" id="id_year" name="year"/><br>
                 <div style="text-align: center">
                     <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Ajouter">
                 </div>

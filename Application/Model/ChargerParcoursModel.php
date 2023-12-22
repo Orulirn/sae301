@@ -38,7 +38,7 @@ function selectMarkersByParcours($idParcours){
 
 function selectParcoursName(){
     global $db;
-    $sql = $db->prepare("SELECT id,nom FROM `parcours`");
+    $sql = $db->prepare("SELECT id,name FROM `parcours`");
     $sql->execute();
     $res = $sql->fetchAll();
     return $res;
