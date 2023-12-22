@@ -9,7 +9,7 @@ function saveParcoursController(){
     // Récupérer les données du formulaire
     $city = $_GET["city"];
     $name = $_GET["name"];
-    $year = $_GET["year"];
+    $nbDecholeMax = $_GET["nbDecholeMax"];
     $nbMarkers =  (count($_GET)-3)/2 ;
     $markers = array();
     for ($i = 0;$i<$nbMarkers;$i++){
@@ -19,5 +19,5 @@ function saveParcoursController(){
         );
         array_push($markers,$newMarker);
     }
-    insertParcours($name,$city,$year,$markers);
+    insertParcours($name,$city,$nbDecholeMax,$markers);
 }

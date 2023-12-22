@@ -5,12 +5,12 @@ include 'DatabaseConnection.php';
 
 
 
-function insertParcours($name,$city,$year,$markerData){
+function insertParcours($name,$city,$nbDecholeMax,$markerData){
     global $db;
     var_dump($markerData);
     try {
-        $sql = $db->prepare("INSERT INTO parcours (nom,ville,annee) VALUES (:name,:city,:year)");
-        $sql->execute(array( 'name' => $name, 'city' => $city, 'year' => $year));
+        $sql = $db->prepare("INSERT INTO parcours (nom,ville,nbDecholeMax) VALUES (:name,:city,:nbDecholeMax)");
+        $sql->execute(array( 'name' => $name, 'city' => $city, 'nbDecholeMax' => $nbDecholeMax));
         $db->lastInsertId();
     } catch(PDOException $error){
         var_dump($error);
