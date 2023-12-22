@@ -42,7 +42,7 @@
     //créer une variable qui permet d'en créer autant que l'utilisateur en veux
     //assigner la valeur à un champ et l'attribuer a i
     let nb = document.getElementById("nbParcours");
-    createAddFieldsForTeamMates(1,maDiv);
+    createAddFieldsForTeamMates(3,maDiv);
     nb.addEventListener('input', function() {
         createAddFieldsForTeamMates(nb.value,maDiv);
     });

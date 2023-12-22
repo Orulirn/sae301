@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Installation phpMailer + création d'une classe qui permet l'envoi de mail de manière non sécurisé">
-      <change afterPath="$PROJECT_DIR$/Application/View/tournamentView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Controller/tournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/tournamentController.php" afterDir="false" />
-    </list>
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Création d'un tournoi" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -141,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695114524884</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Création d'un tournoi">
+      <option name="closed" value="true" />
+      <created>1702915052962</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1702915052962</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +172,7 @@
     <MESSAGE value="ajout d'un pop up pour informer l'utilisateur que son mdp n'est pas correct" />
     <MESSAGE value="Patch de la View pour la connexion" />
     <MESSAGE value="Installation phpMailer + création d'une classe qui permet l'envoi de mail de manière non sécurisé" />
-    <option name="LAST_COMMIT_MESSAGE" value="Installation phpMailer + création d'une classe qui permet l'envoi de mail de manière non sécurisé" />
+    <MESSAGE value="Création d'un tournoi" />
+    <option name="LAST_COMMIT_MESSAGE" value="Création d'un tournoi" />
   </component>
 </project>
