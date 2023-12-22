@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="stylesheet" href="../View/bootstrap-5.3.1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css">
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -10,42 +9,57 @@
     <title>MAP</title>
 </head>
 <body>
-<div id="map" style="height: 500px;"></div>
-<div id="buttons">
-    <button id="clearRoute">Effacer l'itineraire</button>
-    <button id="removeLastMarker">Supprimer le dernier marqueur</button>
+<div class="container mt-5">
+    <div id="map" style="height: 500px;"></div>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <button id="clearRoute" class="btn btn-danger">Effacer l'itinéraire</button>
+            <button id="removeLastMarker" class="btn btn-warning">Supprimer le dernier marqueur</button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <h2>Informations</h2>
+            <form id="locationForm">
+                <div class="mb-3">
+                    <label for="city" class="form-label">Ville:</label>
+                    <input type="text" id="city" name="city" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nom:</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="NombreDechole" class="form-label">Nombre de Dechole:</label>
+                    <input type="number" id="NombreDechole" name="NombreDechole" class="form-control" required>
+                </div>
+                <button type="submit" id="btn" class="btn btn-primary">Enregistrer le parcours</button>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <form id="load" action="../Controller/ChargerParcoursController.php" method="post">
+                <div class="mb-3">
+                    <select id="parcoursList" name="parcours" class="form-select">
+                        <?php
+                        $parcoursNames = selectNameInParcours();
+                        foreach ($parcoursNames as $parcours) {
+                            $selected = '';
+                            if (isset($_POST['parcours']) && $_POST['parcours'] === $parcours['nom']) {
+                                $selected = 'selected';
+                            }
+                            echo "<option value='".$parcours['nom']."' ".$selected.">".$parcours['nom']."</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+                <button type="submit" name="loadSelectedParcours" onclick="loadParcours()" class="btn btn-secondary">Charger le parcours</button>
+            </form>
+        </div>
+    </div>
 </div>
-<div id="formContainer">
-    <h2>Informations</h2>
-    <form id="locationForm">
-        <label for="city">Ville:</label>
-        <input type="text" id="city" name="city" required><br>
 
-        <label for="name">Nom:</label>
-        <input type="text" id="name" name="name" required><br>
-
-        <label for="year">Annee:</label>
-        <input type="number" id="year" name="year" required><br>
-        <button type="submit" id="btn">Enregistrer le parcours</button>
-
-    </form>
-    <form id="load" action="../Controller/ChargerParcoursController.php" method="post">
-        <select id="parcoursList" name="parcours">
-            <?php
-            $parcoursNames = selectNameInParcours();
-            foreach ($parcoursNames as $parcours) {
-                $selected = '';
-                if (isset($_POST['parcours']) && $_POST['parcours'] === $parcours['nom']) {
-                    $selected = 'selected';
-                }
-                echo "<option value='".$parcours['nom']."' ".$selected.">".$parcours['nom']."</option>";
-            }
-            ?>
-        </select>
-        <button type="submit" name="loadSelectedParcours"onclick="loadParcours()">Charger le parcours</button>
-    </form>
-
-</Div>
 <script>
     function addMarker(latlng) {
         var marker = L.marker(latlng).addTo(map);
