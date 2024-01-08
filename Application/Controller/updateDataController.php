@@ -1,7 +1,8 @@
 <?php
 include "../Model/UsersModel.php";
+include "../Model/User.php";
 include "../View/UpdateDataView.html";
-
+session_start();
 $buttonIndex = $_GET['buttonIndex'];
 $UsersData = Get1OfUsersTable($buttonIndex);
 $saveRole = $UsersData["idRole"];
@@ -35,6 +36,8 @@ echo'<center>';
             echo'<div class="invalid-feedback">Please fill out this field.</div>';
         echo'</div>';
 
+if ($_SESSION['user']->GetRole()==0){
+
         echo'<div class="w-50 p-3">';
             echo'<label>Cotisation</label>';
             echo'<br> 1 = Cotisé | 0 = Non cotisé';
@@ -42,7 +45,7 @@ echo'<center>';
             echo'<div class="valid-feedback">Valid.</div>';
             echo'<div class="invalid-feedback">Please fill out this field.</div>';
         echo'</div>';
-
+}
 
         echo'<button type="submit" id="modify" class="btn btn-light">Modify</button>';
         echo'<button type="reset" class="btn btn-light">Reset</button>';
