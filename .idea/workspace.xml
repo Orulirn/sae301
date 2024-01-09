@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH modification user par admin Button">
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH ValiderInscription">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Controller/valideInscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/valideInscriptionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/valider.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/valider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/VerifyModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/VerifyModel.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701870742546</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="PATCH ValiderInscription">
+      <option name="closed" value="true" />
+      <created>1704791323527</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1704791323527</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,6 +219,7 @@
     <MESSAGE value="PATCH Role sur modif" />
     <MESSAGE value="PATCH modification user par admin" />
     <MESSAGE value="PATCH modification user par admin Button" />
-    <option name="LAST_COMMIT_MESSAGE" value="PATCH modification user par admin Button" />
+    <MESSAGE value="PATCH ValiderInscription" />
+    <option name="LAST_COMMIT_MESSAGE" value="PATCH ValiderInscription" />
   </component>
 </project>

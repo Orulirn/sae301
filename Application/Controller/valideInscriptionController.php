@@ -32,7 +32,6 @@ echo'</div>';
 
     document.getElementsByName("Valider").forEach((element) =>
         element.addEventListener("click", function() {
-            console.log(element.id)
             confirmation1(element.id);
         })
     )
@@ -47,10 +46,7 @@ echo'</div>';
     function confirmation1(buttonIndex) {
         let value = confirm ("Etes-vous sûr de vouloir valider ces informations ?");
         if (value === true){
-            var t = document.getElementById('ins');
-            var ligne = t.rows[buttonIndex+1];
-            var email = ligne.cells[2].textContent;
-            var data = "email=" + encodeURIComponent(email) + "&index=" + encodeURIComponent(1);
+            var data = "idVerif=" + encodeURIComponent(buttonIndex) + "&index=" + encodeURIComponent(1);
             alert("Inscription validée :)");
             window.location.replace("valider.php?"+data)
         }
@@ -58,11 +54,9 @@ echo'</div>';
 
     function confirmation2(buttonIndex) {
         let value = confirm ("Etes-vous sûr de vouloir rejeter ces informations ?");
+        console.log(buttonIndex)
         if (value === true){
-            var t = document.getElementById('ins');
-            var ligne = t.rows[buttonIndex+1];
-            var email = ligne.cells[2].textContent;
-            var data = "email=" + encodeURIComponent(email) + "&index=" + encodeURIComponent(0);
+            var data = "idVerif=" + encodeURIComponent(buttonIndex) + "&index=" + encodeURIComponent(0);
             alert("Inscription rejetée :)");
             window.location.replace("valider.php?"+data)
         }
