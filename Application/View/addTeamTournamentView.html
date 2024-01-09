@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../View/bootstrap-5.3.1-dist/css/bootstrap.css">
+    <title>Page d'ajout d'équipe dans un tournois</title>
+</head>
+<body>
+    <h1>Inscrire son équipe à un tournoi</h1>
+    <form method="POST">
+        <div class="mb-4"></div>
+        <label for="teamName">Voici votre équipe</label><br>
+        <div id="teamName" class="mb-4" style="text-align: center"></div><br>
+        <div class="mb-4"></div>
+        <label for="idTournoi">A quel tournoi voulez-vous inscrire votre équipe ?</label><br>
+        <div id="idTournoi" class="mb-4" style="text-align: center"></div><br>
+        <div class="mb-4"></div>
+        <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Ajouter">
+        </div>
+    </form>
+
+    <script>
+        const myDiv = document.getElementById('teamName');
+
+        dataTeam = document.getElementById("dataTeam").outerText;
+        dataTeam = JSON.parse(dataTeam);
+        Array.from(dataTeam).forEach(team => {
+            let labelTeamName = document.createElement('label');
+            labelTeamName.name="idTeam";
+            labelTeamName.value=team;
+            labelTeamName.innerText = team;
+            myDiv.appendChild(labelTeamName);
+        });
+        const myDivTournament = document.getElementById('idTournoi');
+        
+        let div = document.createElement('div');
+        let select = document.createElement('select');
+        select.name = 'selectTournament';
+        select.id= 'selectTournament' ;
+
+        let option = document.createElement('option');
+        option.innerText = 'selectionnez';
+        option.value = null;
+        select.appendChild(option);
+
+        dataTournament = document.getElementById("dataTournament").outerText;
+        dataTournament = JSON.parse(dataTournament);
+        dataTournament.forEach(item => {
+            let option = document.createElement('option');
+            option.innerText = item.idTournoi + '\t' + item.place;
+            option.value = item.idTournoi;
+            select.appendChild(option);
+        });
+
+        myDivTournament.appendChild(select);
+    </script>
+</body>

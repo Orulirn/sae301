@@ -43,3 +43,17 @@ function selectAllPlayerWithTeam(){
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function selectCaptainWithUser($player){
+    global $db;
+    $sql = $db->prepare("SELECT isCaptain FROM team_player WHERE player = :player");
+    $sql->execute(array('player' => $player));
+    return $sql->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function selectTeamWithCaptain($player){
+    global $db;
+    $sql = $db->prepare("SELECT idTeam FROM team_player WHERE player=(:player)");
+    $sql->execute(array('player' => $player));
+    return $sql->fetch(PDO::FETCH_ASSOC)['idTeam'];
+};
