@@ -25,7 +25,6 @@ foreach ($res as $row) {
 echo'</table>';
 echo'</div>';
 
-
 ?>
 
 <script>
@@ -33,14 +32,15 @@ echo'</div>';
 
     document.getElementsByName("Valider").forEach((element) =>
         element.addEventListener("click", function() {
+            console.log(element.id)
             confirmation1(element.id);
-        });
+        })
     )
 
     document.getElementsByName("Rejeter").forEach((element) =>
         element.addEventListener("click", function() {
             confirmation2(element.id);
-        });
+        })
     )
 
 

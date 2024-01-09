@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH modification user par admin Button">
-      <change afterPath="$PROJECT_DIR$/Application/Controller/deleteUserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Controller/ModifRoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/ModifRoleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Controller/ModificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/ModificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Controller/updateDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/updateDataController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/UsersModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/UsersModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/View/ModificationView.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/ModificationView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/valideInscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/valideInscriptionController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
