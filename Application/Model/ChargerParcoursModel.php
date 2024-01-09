@@ -44,6 +44,14 @@ function selectParcoursName(){
     return $res;
 }
 
+function getNbParcours(){
+    global $db;
+    $sql = $db->prepare("SELECT count(*) FROM `parcours`");
+    $sql->execute();
+    $res = $sql->fetch();
+    return $res;
+}
+
 function selectParticularParcours($name){
     $parcours = selectParcoursByName($name);
     $idParcours = $parcours[0][0];

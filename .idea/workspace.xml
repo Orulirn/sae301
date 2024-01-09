@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Création d'un tournoi">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/tournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/tournamentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Model/ChargerParcoursModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/ChargerParcoursModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/View/tournamentView.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/tournamentView.php" afterDir="false" />
     </list>
