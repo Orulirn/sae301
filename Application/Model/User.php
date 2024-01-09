@@ -20,7 +20,7 @@ class User {
     private function __construct(){
         $this->firstname='john';
         $this->lastname='doe';
-        $this->role=0;
+        $this->role=1;
         $this->log=false;
         $this->idUser=null;
     }
@@ -67,6 +67,7 @@ class User {
         $this->lastname='doe';
         $this->role=null;
         $this->log=false;
+        $this->idUser=null;
     }
 
     function GetIdUser(){

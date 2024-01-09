@@ -6,18 +6,21 @@
 </head>
 <body>
 <?php
-
+session_start();
 if(isset($_POST['Deconnexion'])){
     unset($_SESSION['user']);
 }
+
+// var_dump(json_encode($_SESSION['user']->GetRole()));
+// echo ("<p id='userRole' >".json_encode($_SESSION["user"]->getRole())."</p>");
 
 ?>
 
 <nav class="navbar navbar-expand-sm bg-dark-subtle">
     <div class="container-fluid p-xl-2">
-        <ul class="navbar-nav">
+        <ul id="navbar" class="navbar-nav">
             <li class="nav-item">
-                <a class="navbar-brand " id="backHome" href="#" >
+                <a class="navbar-brand " id="backHome" href="../Controller/HomePageController.php" >
                     <img src="../View/files/logoSite.png" width="200px" height="133px">
                 </a>
             </li>
@@ -28,10 +31,7 @@ if(isset($_POST['Deconnexion'])){
                 <a class="nav-link fw-bold" href="#">Les matchs</a>
             </li>
             <li class="nav-item mt-auto">
-                <a class="nav-link fw-bold" href="#">Mon profil</a>
-            </li>
-            <li class="nav-item mt-auto">
-                <a class="nav-link fw-bold" href="#">Créer une équipe</a>
+                <a class="nav-link fw-bold" href="../Controller/teamsController.php">Équipes</a>
             </li>
         </ul>
     </div>
@@ -49,6 +49,9 @@ if(isset($_POST['Deconnexion'])){
     </div>
 </nav>
 <script>
+    
+    
+    
     const backHome = document.querySelector("#backHome");
     const goConn = document.querySelector("#Connexion")
     backHome.addEventListener("click",function (){
