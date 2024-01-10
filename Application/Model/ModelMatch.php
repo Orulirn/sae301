@@ -40,7 +40,6 @@ class ModelMatch
             }
         } catch (PDOException $e) {
             echo "Erreur lors de la génération des rencontres : " . $e->getMessage();
-            // Gérer l'erreur selon vos besoins
         }
     }
 
@@ -108,9 +107,6 @@ class ModelMatch
 
         // Récupérer les rencontres sous forme de tableau associatif
         $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        // Debug temporaire pour vérifier les données récupérées
-
         return $matches;
     }
 
@@ -125,7 +121,6 @@ class ModelMatch
 
             $parcours = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            return $parcours;
         } catch (PDOException $e) {
             echo "Erreur lors de la récupération des parcours : " . $e->getMessage();
             return [];
@@ -162,7 +157,6 @@ class ModelMatch
 
     public function deleteRencontre($idRencontre)
     {
-        var_dump($idRencontre); // Ajout pour vérifier l'ID de rencontre reçu
 
         $db = Database::getInstance();
 
@@ -172,12 +166,9 @@ class ModelMatch
             $stmt->bindParam(':idRencontre', $idRencontre);
             $stmt->execute();
 
-            // Vérifier le nombre de lignes affectées
-            $rowCount = $stmt->rowCount();
-            return $rowCount; // Renvoyer le nombre de lignes affectées après la suppression
         } catch (PDOException $e) {
             echo "Erreur lors de la suppression de la rencontre : " . $e->getMessage();
-            return 0; // Retourne 0 en cas d'erreur
+            return 0;
         }
     }
 }

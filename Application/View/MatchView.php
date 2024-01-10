@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <title>Rencontres du tournoi</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Ajoutez vos styles personnalisés ici */
-    </style>
 </head>
 <body>
 <div class="container mt-5">
@@ -65,7 +62,7 @@
                 <td>
                     <form action="../Controller/ControllerMatch.php" method="POST">
                         <input type="hidden" name="action" value="deleteRencontre">
-                        <input type="hidden" name="idRencontre" value="<?= $match['idRencontre']; ?>"> <!-- Ajout de l'ID de la rencontre -->
+                        <input type="hidden" name="idRencontre" value="<?= $match['idRencontre']; ?>">
                         <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
                     </form>
                 </td>
@@ -79,8 +76,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-    // Ajoutez vos scripts personnalisés ici si nécessaire
-</script>
 </body>
 </html>

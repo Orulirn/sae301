@@ -14,7 +14,7 @@ class ControllerMatch
 
     public function generateAndDisplayMatches()
     {
-        $idTournoi = 1; // Remplacez par l'ID de votre tournoi
+        $idTournoi = 1;
 
         $equipes = $this->matchModel->getEquipesFromDatabase();
         $parcoursDisponibles = $this->matchModel->getAvailableParcours();
@@ -25,8 +25,6 @@ class ControllerMatch
                 $equipe2 = $_POST['equipe2'];
                 $parcours = $_POST['parcours'];
                 $this->matchModel->insertManualRencontre($idTournoi, $equipe1, $equipe2, $parcours);
-
-                // Redirection pour éviter la soumission multiple du formulaire
                 header("Location: " . $_SERVER['PHP_SELF']);
                 exit();
             } elseif (isset($_POST["action"]) && $_POST["action"] == "deleteRencontre") {
