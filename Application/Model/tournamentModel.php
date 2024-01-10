@@ -22,3 +22,18 @@ function addTournament($place, $year){
     }
     return $db->lastInsertID();
 };
+
+function addParcoursToTournament($tournoi,$parcours){
+    global $db;
+    try{
+        $db->beginTransaction();
+        $sql = $db->prepare("INSERT INTO `tournoi_parcours`(`idTournoi`, `idParcours`) VALUES (:tournoi, :parcours)");
+        $sql->execute(array('tournoi' => $tournoi, 'parcours' => $parcours));
+        $db->commit();
+    }
+    catch (PDOException $e){
+        $db->rollBack();
+        echo($e->getMessage());
+    }
+    return $db->lastInsertID();
+}

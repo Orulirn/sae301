@@ -23,9 +23,9 @@
                 <input type="text" id="place" name="place"/><br>
                 <div class="mb-4"></div>
                 <label for="nbParcours">Combien de parcours voulez vous mettre dans ce tournoi :</label><br>
-                <input type="number" id="nbParcours" name="nbParcours" min="0" max="15" value="3"><br>
+                <input type="number" id="nbParcours" name="nbParcours" min="0" max="15" value="0"><br>
                 <div class="mb-4"></div>
-                <label>Choissez les parcours :</label><br>
+                <div id="lab" class="mb-4" style="text-align: center"></div>
                 <div id="parcours" class="mb-4" style="text-align: center"></div>
                 <div class="mb-4"></div>
                 <input hidden="hidden" type="number" id="id_year" name="year"/><br>
@@ -37,17 +37,42 @@
 </header>
 
 <script>
+
+    document.getElementById("nbParcours").value=0;
+
     const maDiv = document.getElementById('parcours');
+    const divLab = document.getElementById('lab');
 
     //créer une variable qui permet d'en créer autant que l'utilisateur en veux
     //assigner la valeur à un champ et l'attribuer a i
     let nb = document.getElementById("nbParcours");
-    createAddFieldsForTeamMates(3,maDiv);
+
+    nbParcours = document.getElementById("dataNb").outerText;
+    nbParcours = JSON.parse(nbParcours);
+    nb.max = nbParcours[0]
+
+    createAddFieldsForTeamMates(0,maDiv);
     nb.addEventListener('input', function() {
         createAddFieldsForTeamMates(nb.value,maDiv);
+        createFieldLabel(nb.value,divLab)
     });
 
+
+    function createFieldLabel(quantity,container){
+        while (container.children.length>0) {
+            container.removeChild(divLab.lastChild);
+        }
+        if (quantity>0) {
+            let div = document.createElement('div');
+            let lab = document.createElement('label');
+            lab.innerText = "Choissez les parcours :"
+            div.appendChild(lab);
+            divLab.appendChild(div);
+        }
+    }
+
     function createAddFieldsForTeamMates(quantity, container){
+
         // Supprimer tous les sélecteurs existants à l'intérieur de maDiv
         while (container.children.length>quantity) {
             container.removeChild(maDiv.lastChild);
@@ -68,8 +93,8 @@
             console.log(dataParcours);
             dataParcours.forEach(item => {
                 let option = document.createElement('option');
-                option.innerText = item.nom;
-                option.value = item.id;
+                option.innerText = item[1];
+                option.value = item[0];
                 select.appendChild(option);
             });
 
