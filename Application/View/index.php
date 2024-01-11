@@ -7,12 +7,12 @@
 <body>
 <?php
 session_start();
+include_once("../Model/User.php");
 if(isset($_POST['Deconnexion'])){
     unset($_SESSION['user']);
 }
 
-// var_dump(json_encode($_SESSION['user']->GetRole()));
-// echo ("<p id='userRole' >".json_encode($_SESSION["user"]->getRole())."</p>");
+echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_encode($_SESSION["user"]->GetRole())."</p>");
 
 ?>
 
@@ -75,6 +75,45 @@ if(isset($_POST['Deconnexion'])){
             goConn.classList.remove("btn-secondary");
             goConn.classList.add("btn-primary");
         }
+    }
+    const role = document.querySelector("#currentRole").innerText;
+    const navbar = document.querySelector("#navbar");
+    if (role == 0 ){
+        let li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        let menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Vérifier Joueur";
+        menu.setAttribute("href","../Controller/valideInscriptionController.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
+
+        li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Modifier Joueur";
+        menu.setAttribute("href","../Controller/ModificationController.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
+
+        li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Gérer Contribution";
+        menu.setAttribute("href","../Controller/ContributionConsultController.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
+
+        li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Gérer Parcours";
+        menu.setAttribute("href","../Controller/ParcoursController.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
     }
 </script>
 
