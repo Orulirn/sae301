@@ -24,6 +24,7 @@ function setTab($dataAllUsers)
             echo'<td><button id="'; echo $row["idUser"]; echo '" type="button" class="btn btn-white border-black border-1" name="revAdmin">Révoquer Administrateur</button></td>';
         }
         echo'<td><button id="'; echo $row["idUser"] ; echo '" type="button" class="btn btn-white border-black border-1" name="editButton">Edit</button></td>';
+
         echo'<td><button id="'; echo $row["idUser"] ; echo '" type="button" class="btn btn-white border-black border-1" name="deleteButton">Supprimer</button></td>';
         echo'</tr>';
     }
@@ -83,6 +84,7 @@ function setTab($dataAllUsers)
             <th>Admin</th>
             <th>Edit</th>
             <th>Supprimer</th>
+
         </tr>
         <?php setTab($dataAllUsers); ?>
     </table>

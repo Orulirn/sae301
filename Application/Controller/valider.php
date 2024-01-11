@@ -1,5 +1,6 @@
 <?php
 include "../Model/VerifyModel.php";
+
 $id = $_GET['idVerif'];
 $nb = $_GET['index'];
 

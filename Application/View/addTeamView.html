@@ -11,8 +11,8 @@
         <div class="border p-5 rounded bg-light">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Créer une équipe</h3>
 
-            <form method="POST" id="formulaire">
 
+            <form method="POST" id="formulaire">
                 <div class="mb-4"></div>
                 <label for="teamName">Écrire le nom de l'équipe :</label><br>
                 <input type="text" id="teamName" name="teamName" required><br><br>
@@ -26,7 +26,6 @@
                 <div style="text-align: center">
 
                 <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Ajouter" disabled>
-
                 </div>
               </form>
             <div class="mb-4"></div>
@@ -52,7 +51,6 @@
 
 
         
-
 function createAddFieldsForTeamMates(quantity, container){
     // Supprimer tous les sélecteurs existants à l'intérieur de maDiv
     while (container.children.length>quantity) {
@@ -128,6 +126,7 @@ form.addEventListener('change', function (){
     
     return true;
 }
+
 
 
     </script>

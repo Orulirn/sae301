@@ -62,5 +62,23 @@ include "../View/ModificationView.php";
         }
     }
 
+    function confirmation2(buttonIndex) {
+        let role = 0
+        let value = confirm ("Etes-vous sûr de vouloir promouvoir cette personne en tant qu'administrateur ?");
+        if (value === true){
+            var queryString = "buttonIndex=" + encodeURIComponent(buttonIndex) + "&role=" + encodeURIComponent(role);
+            window.location.replace("ModifRoleController.php?" + queryString);
+        }
+    }
+
+    function confirmation3(buttonIndex) {
+        let role = 1
+        let value = confirm ("Etes-vous sûr de vouloir révoquer à cette personne le role d'administrateur ?");
+        if (value === true){
+            var queryString = "buttonIndex=" + encodeURIComponent(buttonIndex) + "&role=" + encodeURIComponent(role);
+            window.location.replace("ModifRoleController.php?" + queryString);
+        }
+    }
+
 </script>
 

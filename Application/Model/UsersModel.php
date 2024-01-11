@@ -76,6 +76,7 @@ function UpdateRoleAdmin($idUser,$role){
     }
 }
 
+
 function deleteUser($id){
     global $db;
     $sql = $db->prepare("DELETE FROM team_player WHERE player = :id");

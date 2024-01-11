@@ -20,6 +20,7 @@ function GetAllOfVerifyTable(){
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
+
 function valide($id) {
     global $db;
     try {
@@ -32,6 +33,7 @@ function valide($id) {
     }
     try {
         foreach ($res as $row) {
+
             $sql = $db->prepare("INSERT INTO `users`(`firstname`, `lastname`, `mail`, `password`, `cotisation`) VALUES (:firstname, :lastname, :mail, :password, :role)");
             $sql->bindParam(':mail', $row['mail'], PDO::PARAM_STR);
             $sql->bindParam(':firstname', $row['firstname'], PDO::PARAM_STR);

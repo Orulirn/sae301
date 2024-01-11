@@ -6,7 +6,6 @@ $role = $_GET['role'];
 
 UpdateRoleAdmin($id,$role);
 
-
 header('Location: ModificationController.php');
 
 ?>
