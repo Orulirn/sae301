@@ -67,6 +67,7 @@ class User {
         $this->lastname='doe';
         $this->role=null;
         $this->log=false;
+        $this->idUser=null;
     }
 
     function GetIdUser(){

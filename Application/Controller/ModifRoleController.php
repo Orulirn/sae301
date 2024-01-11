@@ -6,8 +6,6 @@ $role = $_GET['role'];
 
 UpdateRoleAdmin($id,$role);
 
-echo "OUI";
-
 header('Location: ModificationController.php');
 
 ?>
