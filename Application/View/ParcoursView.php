@@ -43,9 +43,9 @@
         </div>
     </div>
     <div class="row mt-3">
-        <div class="col-md-6" style="display: none" id="formModif">
-            <h2>Informations</h2>
-            <form id="locationForm">
+        <div class="col-md-6" style="display: none" id="Modif">
+            <h2>Modifier un parcours</h2>
+            <form id="FormModif">
                 <div class="mb-3">
                     <label for="city" class="form-label">Ville:</label>
                     <input type="text" id="city" name="city" class="form-control" required>
@@ -59,16 +59,16 @@
                     <label for="NombreDechole" class="form-label">Nombre de Dechole:</label>
                     <input type="number" id="NombreDechole" name="NombreDechole" class="form-control" required>
                 </div>
-                <button type="submit" id="btn" class="btn btn-primary">Enregistrer le parcours</button>
+                <button type="submit" id="btn-update" class="btn btn-primary">Enregistrer le parcours</button>
             </form>
         </div>
     </div>
 
     <div class="row mt-3">
         <div class="col-md-6">
-            <div id="formCreer">
-                <h2>Informations TEST</h2>
-                <form id="locationForm">
+            <div id="Creer">
+                <h2>Créer un parcours</h2>
+                <form id="formCreer">
                     <div class="mb-3">
                         <label for="city" class="form-label">Ville:</label>
                         <input type="text" id="city" name="city" class="form-control" required>
@@ -81,7 +81,7 @@
                         <label for="NombreDechole" class="form-label">Nombre de Dechole:</label>
                         <input type="number" id="NombreDechole" name="NombreDechole" class="form-control" required>
                     </div>
-                    <button type="submit" id="btn" class="btn btn-primary">Enregistrer le parcours</button>
+                    <button type="submit" id="btn-create" class="btn btn-primary">Enregistrer le parcours</button>
                 </form>
             </div>
         </div>
@@ -90,8 +90,8 @@
 
 <script>
     var addMarkerMode = true;
-    const formModif = document.getElementById("formModif");
-    const formCreer = document.getElementById("formCreer");
+    const Modif = document.getElementById("Modif");
+    const Creer = document.getElementById("Creer");
 
     function addMarker(latlng) {
         if (addMarkerMode) {
@@ -223,7 +223,7 @@
     }
 
     function addHiddenInput() {
-        let ourForm = document.getElementById('locationForm');// on change pour aller chercher le noeud parent de où on veut ajouter
+        let ourForm = document.getElementById('formCreer');// on change pour aller chercher le noeud parent de où on veut ajouter
         for(let i=0;i<markers.length;i++){
             let lat=markers[i].getLatLng().lat;
             let lng= markers[i].getLatLng().lng;
@@ -234,16 +234,16 @@
         }
         //reste à soumettre le formulaire une fois tout construit
         alert('En clickant sur ok, on va soumettre le formulaire, voir l\'URL avec les éléments ajoutés car en GET');
-        document.getElementById('locationForm').submit();
+        document.getElementById('formCreer').submit();
     }
 
-    document.getElementById('btn').addEventListener('click', addHiddenInput);
+    document.getElementById('btn-create').addEventListener('click', addHiddenInput);
 
     function loadParcours(){
         var data = getData();
 
-        formModif.setAttribute("style","");
-        formCreer.setAttribute("style","display: none");
+        Modif.setAttribute("style","");
+        Creer.setAttribute("style","display: none");
 
         for (var i = 1;i<data.length;i++){
             console.log(i);

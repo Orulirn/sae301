@@ -1,6 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 
+
 include "../Model/ParcoursModel.php";
 include "../View/index.php";
 
@@ -18,9 +19,10 @@ if (isset($_GET['city'])) {
 
 function saveParcoursController(){
     // Récupérer les données du formulaire
+    var_dump($_GET);
     $city = $_GET["city"];
     $name = $_GET["name"];
-    $nbDecholeMax = $_GET["nbDecholeMax"];
+    $nbDecholeMax = $_GET["NombreDechole"];
     $nbMarkers =  (count($_GET)-3)/2 ;
     $markers = array();
     for ($i = 0;$i<$nbMarkers;$i++){
@@ -30,7 +32,20 @@ function saveParcoursController(){
         );
         array_push($markers,$newMarker);
     }
-    insertParcours($name,$city,$nbDecholeMax,$markers);
+    $cookieName = "addedParcours";
+    $addedParcours = isset($_COOKIE[$cookieName]) ? json_decode($_COOKIE[$cookieName], true) : array();
+
+    if (!in_array($name, $addedParcours)) {
+        // Ajouter le parcours à la base de données
+        insertParcours($name, $city, $nbDecholeMax, $markers);
+
+        // Mettre à jour le cookie ou le stockage local
+        $addedParcours[] = $name;
+        setcookie($cookieName, json_encode($addedParcours), time() + 3600); // Vous pouvez ajuster la durée du cookie
+    }
+
+    // Réinitialiser $_GET pour éviter de recréer le parcours à chaque rechargement
+    $_GET = array();
 }
 
 function dataTransfert($data)
