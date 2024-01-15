@@ -1,7 +1,5 @@
 <?php
-
-require_once '../Model/DatabaseConnection.php';
-
+include'../Model/DatabaseConnection.php';
 class ModelMatch
 {
 
@@ -40,6 +38,7 @@ class ModelMatch
             }
         } catch (PDOException $e) {
             echo "Erreur lors de la génération des rencontres : " . $e->getMessage();
+            // Gérer l'erreur selon vos besoins
         }
     }
 
@@ -101,12 +100,17 @@ class ModelMatch
         INNER JOIN teams e2 ON r.idTeamDeux = e2.idTeam
         INNER JOIN parcours p ON r.idParcours = p.id
         WHERE r.idTournoi = :idTournoi";
+
+
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':idTournoi', $idTournoi);
         $stmt->execute();
 
         // Récupérer les rencontres sous forme de tableau associatif
         $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Debug temporaire pour vérifier les données récupérées
+
         return $matches;
     }
 
@@ -121,6 +125,7 @@ class ModelMatch
 
             $parcours = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            return $parcours;
         } catch (PDOException $e) {
             echo "Erreur lors de la récupération des parcours : " . $e->getMessage();
             return [];
@@ -157,6 +162,7 @@ class ModelMatch
 
     public function deleteRencontre($idRencontre)
     {
+        var_dump($idRencontre); // Ajout pour vérifier l'ID de rencontre reçu
 
         $db = Database::getInstance();
 
@@ -166,8 +172,50 @@ class ModelMatch
             $stmt->bindParam(':idRencontre', $idRencontre);
             $stmt->execute();
 
+            // Vérifier le nombre de lignes affectées
+            $rowCount = $stmt->rowCount();
+            return $rowCount; // Renvoyer le nombre de lignes affectées après la suppression
         } catch (PDOException $e) {
             echo "Erreur lors de la suppression de la rencontre : " . $e->getMessage();
+            return 0; // Retourne 0 en cas d'erreur
+        }
+    }
+
+    public function getRencontreById($idRencontre)
+    {
+        $db = Database::getInstance();
+
+        try {
+            $sql = "SELECT * FROM rencontre WHERE idRencontre = :idRencontre";
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':idRencontre', $idRencontre);
+            $stmt->execute();
+
+            $rencontre = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $rencontre;
+        } catch (PDOException $e) {
+            echo "Erreur lors de la récupération de la rencontre : " . $e->getMessage();
+            return null;
+        }
+    }
+
+    public function updateRencontre($idRencontre, $newEquipe1, $newEquipe2, $newParcours)
+    {
+        $db = Database::getInstance();
+
+        try {
+            $sql = "UPDATE rencontre SET idTeamUn = :newEquipe1, idTeamDeux = :newEquipe2, idParcours = :newParcours WHERE idRencontre = :idRencontre";
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':newEquipe1', $newEquipe1);
+            $stmt->bindParam(':newEquipe2', $newEquipe2);
+            $stmt->bindParam(':newParcours', $newParcours);
+            $stmt->bindParam(':idRencontre', $idRencontre);
+            $stmt->execute();
+            $rowCount = $stmt->rowCount();
+            return $rowCount;
+        } catch (PDOException $e) {
+            echo "Erreur lors de la mise à jour de la rencontre : " . $e->getMessage();
             return 0;
         }
     }
