@@ -1,15 +1,25 @@
 <?php
+session_start();
+
 include("../Model/tournamentModel.php");
 
-// Logique pour ajouter un parcours à un tournoi
+
 if (isset($_POST['addCourse'])) {
-    $lastId = addCourseToTournament($_POST['tournamentId'], $_POST['courseId']);
+    $message = addCourseToTournament($_POST['tournamentId'], $_POST['courseId']);
+    $_SESSION['message'] = $message;
 }
 
-// Logique pour supprimer un parcours d'un tournoi
-if (isset($_POST['removeCourse'])) {
-    removeCourseFromTournament($_POST['tournamentId'], $_POST['courseId']);
+
+
+if (isset($_POST['removeSelectedCourses']) && isset($_POST['courseIds'])) {
+    $tournamentId = $_POST['tournamentId'];
+    foreach ($_POST['courseIds'] as $courseId) {
+        $response = removeCourseFromTournament($tournamentId, $courseId);
+        // Vous pouvez choisir de ne conserver que le dernier message ou de les combiner
+        $_SESSION['message'] = $response;
+    }
 }
+
 
 
 // Récupérer les données des tournois et des parcours

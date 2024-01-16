@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH Créer tournoi avec parcours">
-      <change afterPath="$PROJECT_DIR$/Application/Controller/getTournamentCourses.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Controller/tournamentModificationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/View/tournamentModificationView.php" afterDir="false" />
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Modification d'un tournoi">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/tournamentModificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/tournamentModificationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Model/tournamentModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/tournamentModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/View/tournamentModificationView.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/tournamentModificationView.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +88,7 @@
       <workItem from="1697551688033" duration="703000" />
       <workItem from="1703239959226" duration="1616000" />
       <workItem from="1704970533745" duration="1805000" />
-      <workItem from="1705388793333" duration="2061000" />
+      <workItem from="1705388793333" duration="8860000" />
     </task>
     <task id="LOCAL-00001" summary="Installation bootstrap">
       <option name="closed" value="true" />
@@ -179,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704798627110</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Modification d'un tournoi">
+      <option name="closed" value="true" />
+      <created>1705390900777</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1705390900777</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,6 +216,7 @@
     <MESSAGE value="Création d'un tournoi" />
     <MESSAGE value="PATCH Créer tournoi" />
     <MESSAGE value="PATCH Créer tournoi avec parcours" />
-    <option name="LAST_COMMIT_MESSAGE" value="PATCH Créer tournoi avec parcours" />
+    <MESSAGE value="Modification d'un tournoi" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modification d'un tournoi" />
   </component>
 </project>

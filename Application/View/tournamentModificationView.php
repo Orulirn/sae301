@@ -1,6 +1,7 @@
 <?php
-include "index.php";
+session_start();
 
+include "index.php";
 ?>
 
 
@@ -12,8 +13,23 @@ include "index.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+
+<?php if (isset($_SESSION['message'])): ?>
+    <script>
+        Swal.fire({
+            title: <?= $_SESSION['message']['status'] === 'success' ? "'Succès'" : "'Erreur'" ?>,
+            text: '<?= $_SESSION['message']['message'] ?>',
+            icon: <?= $_SESSION['message']['status'] === 'success' ? "'success'" : "'error'" ?>,
+            confirmButtonText: 'OK'
+        });
+    </script>
+    <?php unset($_SESSION['message']); ?>
+<?php endif; ?>
+
+
 
 <div class="container mt-5">
     <form method="post" action="tournamentModificationController.php">
@@ -26,9 +42,11 @@ include "index.php";
             </select>
         </div>
 
-        <div id="tournamentCourses">
+        <div class="mb-3" id="tournamentCourses">
 
         </div>
+
+        <button type="submit" name="removeSelectedCourses" class="btn btn-danger">Supprimer Parcours</button>
 
         <div class="mb-3">
             <label for="courseId" class="form-label">Parcours:</label>
@@ -38,9 +56,8 @@ include "index.php";
                 <?php endforeach; ?>
             </select>
         </div>
-
         <button type="submit" name="addCourse" class="btn btn-primary">Ajouter Parcours</button>
-        <button type="submit" name="removeCourse" class="btn btn-danger">Supprimer Parcours</button>
+
     </form>
 
 </div>
@@ -48,19 +65,19 @@ include "index.php";
 <script>
     function updateCoursesList() {
         var tournamentId = $('#tournamentId').val();
-        console.log(tournamentId);
         $.ajax({
             url: 'getTournamentCourses.php',
             type: 'GET',
             data: {tournamentId: tournamentId},
             success: function(response) {
                 var courses = JSON.parse(response);
-                console.log(courses);
-                var html = '<table> <tr> <th>Parcours du tournoi sélectionner</th> </tr>';
+                var html = '';
                 for (var i = 0; i < courses.length; i++) {
-                    html += '<td>' + courses[i].name + '</td>';
+                    html += '<div class="form-check">';
+                    html += '<input class="form-check-input" type="checkbox" name="courseIds[]" value="' + courses[i].id + '">';
+                    html += '<label class="form-check-label">' + courses[i].name + '</label>';
+                    html += '</div>';
                 }
-                html += '</table>';
                 $('#tournamentCourses').html(html);
             }
         });

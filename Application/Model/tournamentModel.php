@@ -23,20 +23,27 @@ function addTournament($place, $year){
     return $db->lastInsertID();
 };
 
-function addCourseToTournament($tournoi,$parcours){
+function addCourseToTournament($tournamentId, $courseId) {
     global $db;
-    try{
-        $db->beginTransaction();
-        $sql = $db->prepare("INSERT INTO `tournoi_parcours`(`idTournoi`, `idParcours`) VALUES (:tournoi, :parcours)");
-        $sql->execute(array('tournoi' => $tournoi, 'parcours' => $parcours));
-        $db->commit();
+    try {
+        // Vérifier si le parcours est déjà associé au tournoi
+        $checkSql = $db->prepare("SELECT COUNT(*) FROM tournoi_parcours WHERE idTournoi = :tournamentId AND idParcours = :courseId");
+        $checkSql->execute(['tournamentId' => $tournamentId, 'courseId' => $courseId]);
+        $exists = $checkSql->fetchColumn();
+
+        if ($exists == 0) {
+            $insertSql = $db->prepare("INSERT INTO tournoi_parcours (idTournoi, idParcours) VALUES (:tournamentId, :courseId)");
+            $insertSql->execute(['tournamentId' => $tournamentId, 'courseId' => $courseId]);
+            return ["status" => "success", "message" => "Parcours ajouté avec succès."];
+        } else {
+            return ["status" => "error", "message" => "Ce parcours existe déjà dans ce tournoi."];
+        }
+    } catch (PDOException $e) {
+        return ["status" => "error", "message" => "Erreur: " . $e->getMessage()];
     }
-    catch (PDOException $e){
-        $db->rollBack();
-        echo($e->getMessage());
-    }
-    return $db->lastInsertID();
 }
+
+
 
 
 // Supprimer un parcours d'un tournoi
@@ -45,10 +52,17 @@ function removeCourseFromTournament($tournamentId, $courseId) {
     try {
         $sql = $db->prepare("DELETE FROM tournoi_parcours WHERE idTournoi = :tournamentId AND idParcours = :courseId");
         $sql->execute(['tournamentId' => $tournamentId, 'courseId' => $courseId]);
+
+        if ($sql->rowCount() > 0) {
+            return ["status" => "success", "message" => "Parcours supprimé avec succès."];
+        } else {
+            return ["status" => "error", "message" => "Aucun parcours à supprimer."];
+        }
     } catch (PDOException $e) {
-        echo($e->getMessage());
+        return ["status" => "error", "message" => "Erreur: " . $e->getMessage()];
     }
 }
+
 
 // Récupérer les parcours associés à un tournoi spécifique
 function getCoursesForTournament($tournamentId) {
