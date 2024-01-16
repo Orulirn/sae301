@@ -11,9 +11,10 @@ include ("../Model/tournamentModel.php");
 
 
 if(isset($_POST['submit'])) {
-    $id = addTournament($_POST['place'], $_POST['year']);
+    $year = date('Y');
+    $id = addTournament($_POST['place'], $year);
     for ($i=0;$i<$_POST['nbParcours'];$i++){
-        addParcoursToTournament($id,$_POST['selectParcours'].$i);
+        addCourseToTournament($id,$_POST['selectParcours'].$i);
     }
 }
 
