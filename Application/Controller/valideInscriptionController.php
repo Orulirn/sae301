@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../Model/VerifyModel.php";
 include "../View/index.php";
 include "../View/valideInscriptionView.html";
@@ -44,22 +45,51 @@ echo'</div>';
 
 
     function confirmation1(buttonIndex) {
-        let value = confirm ("Etes-vous sûr de vouloir valider ces informations ?");
-        if (value === true){
-            var data = "idVerif=" + encodeURIComponent(buttonIndex) + "&index=" + encodeURIComponent(1);
-            alert("Inscription validée :)");
-            window.location.replace("valider.php?"+data)
-        }
+        Swal.fire({
+            title: 'Êtes-vous sûr?',
+            text: "Voulez-vous vraiment valider ces informations?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Oui, valider!',
+            cancelButtonText: 'Non, annuler!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var data = "idVerif=" + encodeURIComponent(buttonIndex) + "&index=" + encodeURIComponent(1);
+                Swal.fire(
+                    'Validé!',
+                    'Inscription validée.',
+                    'success'
+                ).then(() => {
+                    window.location.replace("valider.php?" + data);
+                });
+            }
+        });
     }
 
     function confirmation2(buttonIndex) {
-        let value = confirm ("Etes-vous sûr de vouloir rejeter ces informations ?");
-        console.log(buttonIndex)
-        if (value === true){
-            var data = "idVerif=" + encodeURIComponent(buttonIndex) + "&index=" + encodeURIComponent(0);
-            alert("Inscription rejetée :)");
-            window.location.replace("valider.php?"+data)
-        }
+        Swal.fire({
+            title: 'Êtes-vous sûr?',
+            text: "Voulez-vous vraiment rejeter ces informations?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Oui, valider!',
+            cancelButtonText: 'Non, annuler!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var data = "idVerif=" + encodeURIComponent(buttonIndex) + "&index=" + encodeURIComponent(0);
+                Swal.fire(
+                    'Validé!',
+                    'Inscription rejetée.',
+                    'success'
+                ).then(() => {
+                    window.location.replace("valider.php?" + data);
+                });
+            }
+        });
     }
 
 </script>

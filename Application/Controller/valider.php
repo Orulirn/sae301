@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../Model/VerifyModel.php";
 
 $id = $_GET['idVerif'];
