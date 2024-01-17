@@ -3,8 +3,6 @@
 
 include 'DatabaseConnection.php';
 
-
-
 function insertParcours($name,$city,$nbDecholeMax,$markerData){
     global $db;
     var_dump($markerData);

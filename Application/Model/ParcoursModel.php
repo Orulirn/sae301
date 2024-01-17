@@ -48,10 +48,10 @@ function selectParticularParcours($name){
     $markers = selectMarkersByParcours($idParcours);
     $fullValue = array(
         array(
-            $parcours[0][0],
-            $parcours[0][1],
-            $parcours[0][2],
-            $parcours[0][3],
+            $parcours[0][0], // Id parcours
+            $parcours[0][1], // nom du parcours
+            $parcours[0][2], // nom ville
+            $parcours[0][3], // nb dechole
         )
     );
 
@@ -64,6 +64,27 @@ function selectParticularParcours($name){
     }
     return $fullValue;
 }
+
+function deleteParcoursByID($idParcours){
+    global $db;
+    try {
+        $db->beginTransaction();
+
+        // Supprimer les marqueurs
+        $sqlDeleteMarkers = $db->prepare("DELETE FROM marker WHERE idParcours = :idParcours");
+        $sqlDeleteMarkers->execute(array("idParcours" => $idParcours));
+
+        // Supprimer le parcours
+        $sqlDeleteParcours = $db->prepare("DELETE CASCADE FROM parcours WHERE id = :idParcours");
+        $sqlDeleteParcours->execute(array("idParcours" => $idParcours));
+
+        $db->commit();
+    } catch (PDOException $e) {
+        $db->rollBack();
+        echo($e->getMessage());
+    }
+}
+
 
 function insertParcours($name,$city,$nbDecholeMax,$markerData){
     global $db;

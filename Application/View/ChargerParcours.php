@@ -165,6 +165,10 @@
             let idb="LNG"+i;
             ourForm.appendChild(addHiddenItem(idb,lng));
         }
+        let nombreDechole = document.getElementById('NombreDechole').value;
+        let idc = "NombreDechole";
+
+        ourForm.appendChild(addHiddenItem(idc, nombreDechole));
         //reste à soumettre le formulaire une fois tout construit
         alert('En clickant sur ok, on va soumettre le formulaire, voir l\'URL avec les éléments ajoutés car en GET');
         document.getElementById('locationForm').submit()

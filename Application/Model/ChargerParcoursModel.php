@@ -20,6 +20,13 @@ function selectNameInParcours(){
     return $res;
 }
 
+function selectNbDechole(){
+    global $db;
+    $sql = $db->prepare("SELECT `n_dechole` FROM `parcours` ");
+    $sql->execute();
+    $res = $sql->fetchAll();
+    return $res;
+}
 function selectParcoursByName($name){
     global $db;
     $sql = $db->prepare("SELECT * FROM `parcours` WHERE `nom` = :name");
