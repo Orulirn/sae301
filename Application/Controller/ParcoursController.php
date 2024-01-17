@@ -22,7 +22,6 @@ if (isset($_GET['cityModif'])){
 
 function saveParcoursController(){
     // Récupérer les données du formulaire
-    var_dump($_GET);
     $city = $_GET["city"];
     $name = $_GET["name"];
     $nbDecholeMax = $_GET["NombreDechole"];

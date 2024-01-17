@@ -7,6 +7,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>MAP</title>
 </head>
 <body>
@@ -279,5 +280,20 @@
     loadParcours();
 
 </script>
+
+<?php
+if (isset($_SESSION['error'])) {
+echo "<script type='text/javascript'>
+    Swal.fire({
+        title: 'Erreur!',
+        text: '" . addslashes($_SESSION['error']) . "',
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });
+</script>";
+unset($_SESSION['error']);
+}
+?>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

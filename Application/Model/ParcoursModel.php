@@ -72,7 +72,7 @@ function insertParcours($name,$city,$nbDecholeMax,$markerData){
         $sql->execute(array( 'name' => $name, 'city' => $city, 'nbDecholeMax' => $nbDecholeMax));
         $db->lastInsertId();
     } catch(PDOException $error){
-        var_dump($error);
+        $_SESSION['error'] = "Une donnée saisie est erronée";
     }
 
     $lastid=$db->lastInsertID();
@@ -108,6 +108,6 @@ function deleteParcoursByID($idParcours){
     }
     catch( PDOException $e) {
         $db->rollBack();
-        echo($e->getMessage());
+        $_SESSION['error'] = "Une donnée saisie est erronée";
     }
 }
