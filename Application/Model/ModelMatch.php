@@ -1,45 +1,43 @@
 <?php
+session_start();
 include'../Model/DatabaseConnection.php';
 class ModelMatch
 {
-
     public function generateMatches($idTournoi)
     {
-        $db = Database::getInstance();
+        $parcoursDisponibles = $this->getAvailableParcours();
+        $equipes = $this->getEquipesFromDatabase();
 
-        try {
-            $equipes = $this->getEquipesFromDatabase(); // Récupérer les équipes depuis la base de données
-            $parcoursCount = $this->getParcoursCount(); // Récupérer le nombre de parcours disponibles
-
-            if ($parcoursCount < 1) {
-                echo "Il n'y a pas de parcours disponibles.";
-                return;
+        foreach ($parcoursDisponibles as $parcours) {
+            // Vérifiez si le nombre d'équipes est impair
+            $equipeRepos = null;
+            if (count($equipes) % 2 != 0) {
+                // Sélectionnez une équipe pour le repos (par exemple, la dernière équipe)
+                $equipeRepos = array_pop($equipes);
             }
 
-            for ($parcours = 1; $parcours <= $parcoursCount; $parcours++) {
-                shuffle($equipes); // Mélanger aléatoirement les équipes pour chaque parcours
+            // Mélangez la liste des équipes
+            shuffle($equipes);
 
-                $groupOne = array_slice($equipes, 0, count($equipes) / 2);
-                $groupTwo = array_slice($equipes, count($equipes) / 2);
+            // Répartissez les équipes dans le parcours actuel
+            $nombreEquipes = count($equipes);
+            for ($i = 0; $i < $nombreEquipes; $i += 2) {
+                $equipe1 = $equipes[$i];
+                $equipe2 = $equipes[$i + 1];
 
-                for ($i = 0; $i < count($groupOne); $i++) {
-                    $idEquipeUn = $groupOne[$i]['idTeam'];
-                    $idEquipeDeux = $groupTwo[$i]['idTeam'];
-
-                    // Insérer les données dans la table des rencontres
-                    $sql = "INSERT INTO rencontre (idRencontre, idTournoi, idTeamUn, idTeamDeux, idParcours) VALUES (NULL, :idTournoi, :idTeamUn, :idTeamDeux, :idParcours)";
-                    $stmt = $db->prepare($sql);
-                    $stmt->bindParam(':idTournoi', $idTournoi);
-                    $stmt->bindParam(':idTeamUn', $idEquipeUn);
-                    $stmt->bindParam(':idTeamDeux', $idEquipeDeux);
-                    $stmt->bindParam(':idParcours', $parcours);
-                    $stmt->execute();
-                }
+                // Insérez la rencontre dans la base de données
+                $this->insertRencontre($idTournoi, $equipe1['idTeam'], $equipe2['idTeam'], $parcours['id']);
             }
-        } catch (PDOException $e) {
-            echo "Erreur lors de la génération des rencontres : " . $e->getMessage();
-            // Gérer l'erreur selon vos besoins
+
+            // Si une équipe était en repos, réinsérez-la
+            if ($equipeRepos !== null) {
+                $this->insertRencontre($idTournoi, $equipeRepos['idTeam'], null, $parcours['id']);
+            }
         }
+
+        $_SESSION['success'] = "Rencontres générées avec succès!";
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
     }
 
 
@@ -79,15 +77,26 @@ class ModelMatch
         }
     }
 
-    public function rencontreExisteDeja($idTournoi, $idEquipeUn, $idEquipeDeux, $equipesRencontrees)
+    public function rencontreExisteDeja($idTournoi, $idEquipeUn, $idEquipeDeux, $idParcours)
     {
-        foreach ($equipesRencontrees as $equipesRencontree) {
-            if (($equipesRencontree[0] === $idEquipeUn && $equipesRencontree[1] === $idEquipeDeux) ||
-                ($equipesRencontree[0] === $idEquipeDeux && $equipesRencontree[1] === $idEquipeUn)) {
-                return true;
-            }
+        $db = Database::getInstance();
+
+        try {
+            $sql = "SELECT COUNT(*) FROM rencontre WHERE idTournoi = :idTournoi AND ((idTeamUn = :idEquipeUn AND idTeamDeux = :idEquipeDeux) OR (idTeamUn = :idEquipeDeux AND idTeamDeux = :idEquipeUn)) AND idParcours = :idParcours";
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':idTournoi', $idTournoi);
+            $stmt->bindParam(':idEquipeUn', $idEquipeUn);
+            $stmt->bindParam(':idEquipeDeux', $idEquipeDeux);
+            $stmt->bindParam(':idParcours', $idParcours);
+            $stmt->execute();
+
+            $count = $stmt->fetchColumn();
+            return
+                $count > 0;
+        } catch (PDOException $e) {
+            echo "Erreur lors de la vérification del'existence de la rencontre : " . $e->getMessage();
+            return false;
         }
-        return false;
     }
 
     public function getMatchesForDisplay($idTournoi)
@@ -135,10 +144,25 @@ class ModelMatch
     public function insertManualRencontre($idTournoi, $equipe1, $equipe2, $parcours)
     {
         $db = Database::getInstance();
+        session_start();
 
+
+        // Vérification pour éviter que la même équipe ne joue contre elle-même
+        if ($equipe1 == $equipe2) {
+            $_SESSION['error'] = "Une équipe ne peut pas jouer contre elle-même.";
+            return null;
+        }
+
+        // Vérification pour éviter les doublons de rencontre
+        if ($this->rencontreExisteDeja($idTournoi, $equipe1, $equipe2, $parcours)) {
+            $_SESSION['error'] = "Cette rencontre existe déjà.";
+            return null;
+        }
+
+        // Si les vérifications sont passées, continuez avec l'insertion de la rencontre
         try {
             $sql = "INSERT INTO rencontre (idRencontre, idTournoi, idTeamUn, idTeamDeux, idParcours) 
-            VALUES (NULL, :idTournoi, :idEquipe1, :idEquipe2, :idParcours)";
+                VALUES (NULL, :idTournoi, :idEquipe1, :idEquipe2, :idParcours)";
             $stmt = $db->prepare($sql);
             $stmt->bindParam(':idTournoi', $idTournoi);
             $stmt->bindParam(':idEquipe1', $equipe1);
@@ -149,20 +173,17 @@ class ModelMatch
             // Récupérer l'ID de la dernière rencontre insérée
             $lastInsertId = $db->lastInsertId();
 
-            // Stocker l'ID de la dernière rencontre insérée dans une session
-            session_start();
-            $_SESSION['insertedIds'][] = $lastInsertId;
-
             return $lastInsertId;
-        } catch (PDOException $e) {
+        }
+        catch (PDOException $e) {
             echo "Erreur lors de l'insertion de la rencontre : " . $e->getMessage();
-            return null; // Retourne null en cas d'erreur
+            return null;
         }
     }
 
+
     public function deleteRencontre($idRencontre)
     {
-        var_dump($idRencontre); // Ajout pour vérifier l'ID de rencontre reçu
 
         $db = Database::getInstance();
 
@@ -173,11 +194,9 @@ class ModelMatch
             $stmt->execute();
 
             // Vérifier le nombre de lignes affectées
-            $rowCount = $stmt->rowCount();
-            return $rowCount; // Renvoyer le nombre de lignes affectées après la suppression
         } catch (PDOException $e) {
             echo "Erreur lors de la suppression de la rencontre : " . $e->getMessage();
-            return 0; // Retourne 0 en cas d'erreur
+            return 0;
         }
     }
 
@@ -203,7 +222,17 @@ class ModelMatch
     public function updateRencontre($idRencontre, $newEquipe1, $newEquipe2, $newParcours)
     {
         $db = Database::getInstance();
+        // Vérification pour éviter que la même équipe ne joue contre elle-même
+        if ($newEquipe1 == $newEquipe2) {
+            $_SESSION['error'] = "Une équipe ne peut pas jouer contre elle-même.";
+            return false;
+        }
 
+        // Vérification pour éviter les doublons de rencontre
+        if ($this->rencontreExisteDeja(1, $newEquipe1, $newEquipe2, $newParcours)) {
+            $_SESSION['error'] = "Cette rencontre existe déjà.";
+            return false;
+        }
         try {
             $sql = "UPDATE rencontre SET idTeamUn = :newEquipe1, idTeamDeux = :newEquipe2, idParcours = :newParcours WHERE idRencontre = :idRencontre";
             $stmt = $db->prepare($sql);
@@ -219,4 +248,43 @@ class ModelMatch
             return 0;
         }
     }
+    public function insertRencontre($idTournoi, $idEquipe1, $idEquipe2, $idParcours) {
+        $db = Database::getInstance();
+
+        try {
+            $sql = "INSERT INTO rencontre (idRencontre, idTournoi, idTeamUn, idTeamDeux, idParcours) 
+                VALUES (NULL, :idTournoi, :idEquipe1, :idEquipe2, :idParcours)";
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':idTournoi', $idTournoi, PDO::PARAM_INT);
+            $stmt->bindParam(':idEquipe1', $idEquipe1, PDO::PARAM_INT);
+            $stmt->bindParam(':idEquipe2', $idEquipe2, PDO::PARAM_INT);
+            $stmt->bindParam(':idParcours', $idParcours, PDO::PARAM_INT);
+            $stmt->execute();
+
+            // Optionnel : Récupérer et retourner l'ID de la dernière rencontre insérée
+            return $db->lastInsertId();
+        }
+        catch (PDOException $e) {
+            echo "Erreur lors de l'insertion de la rencontre : " . $e->getMessage();
+            return null;
+        }
+    }
+    public function checkIfRandomMatchesExist($idTournoi)
+    {
+        $db = Database::getInstance();
+
+        try {
+            $sql = "SELECT COUNT(*) AS match_count FROM rencontre WHERE idTournoi = :idTournoi AND idTeamUn IS NOT NULL AND idTeamDeux IS NOT NULL";
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':idTournoi', $idTournoi);
+            $stmt->execute();
+
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $row['match_count'] > 0;
+        } catch (PDOException $e) {
+            echo "Erreur lors de la vérification de l'existence des rencontres aléatoires : " . $e->getMessage();
+            return false;
+        }
+    }
+
 }

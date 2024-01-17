@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <meta charset="UTF-8">
     <title>Rencontres du tournoi</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -9,6 +10,32 @@
     </style>
 </head>
 <body>
+<?php
+// Affichage des messages SweetAlert pour les erreurs ou les succès
+if (isset($_SESSION['error'])) {
+    echo "<script type='text/javascript'>
+                Swal.fire({
+                    title: 'Erreur!',
+                    text: '" . addslashes($_SESSION['error']) . "',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+              </script>";
+    unset($_SESSION['error']);
+}
+
+if (isset($_SESSION['success'])) {
+    echo "<script type='text/javascript'>
+                Swal.fire({
+                    title: 'Succès!',
+                    text: '" . addslashes($_SESSION['success']) . "',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+              </script>";
+    unset($_SESSION['success']);
+}
+?>
 <div class="container mt-5">
     <h1 class="mb-4">Rencontres du tournoi</h1>
 
@@ -46,6 +73,13 @@
     </form>
 
     <hr>
+
+    <!-- Bouton pour générer des rencontres aléatoires -->
+    <form action="../Controller/ControllerMatch.php" method="POST">
+        <input type="hidden" name="action" value="generateRandomMatches">
+        <button type="submit" class="btn btn-success">Générer Rencontres Aléatoires</button>
+    </form>
+
 
     <table class="table table-bordered mt-3">
         <thead>
