@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="row mt-3">
-        <div class="col-md-6" style="display: none" id="formModif">
+        <div class="col-md-6" style="display: none" id="Modif">
             <h2>Modifier un parcours</h2>
             <form id="FormModif">
                 <div class="mb-3">
