@@ -68,11 +68,7 @@ class ControllerMatch
                     if ($rowCount > 0) {
                         header("Location: " . $_SERVER['PHP_SELF']);
                         exit();
-                    } else {
-                        echo "Échec de la mise à jour de la rencontre.";
                     }
-                } else {
-                    echo "ID de rencontre manquant ou invalide.";
                 }
             } elseif (isset($_POST["action"]) && $_POST["action"] == "generateRandomMatches") {
                 if ($randomMatchesExist) {
