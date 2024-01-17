@@ -74,11 +74,26 @@ if (isset($_SESSION['success'])) {
 
     <hr>
 
-    <!-- Bouton pour générer des rencontres aléatoires -->
-    <form action="../Controller/ControllerMatch.php" method="POST">
-        <input type="hidden" name="action" value="generateRandomMatches">
-        <button type="submit" class="btn btn-success">Générer Rencontres Aléatoires</button>
-    </form>
+    <div class="d-flex align-items-center">
+        <!-- Bouton pour générer des rencontres aléatoires -->
+        <form action="../Controller/ControllerMatch.php" method="POST">
+            <input type="hidden" name="action" value="generateRandomMatches">
+            <button type="submit" class="btn btn-success">Générer Rencontres Aléatoires</button>
+        </form>
+
+        <!-- Bouton pour visualiser le tableau des rencontres -->
+        <?php if (isset($_SESSION['matchesTable']) && count($_SESSION['matchesTable']) > 0): ?>
+            <a href="../View/MatchViewPlayer.php" class="btn btn-primary ml-2">Voir le Tableau des Rencontres</a>
+        <?php endif; ?>
+        <!-- Bouton pour supprimer le tableau des rencontres -->
+        <?php if (isset($_SESSION['matchesTable']) && count($_SESSION['matchesTable']) > 0): ?>
+            <form action="../Controller/ControllerMatch.php" method="POST" class="ml-2">
+                <input type="hidden" name="action" value="deleteMatchesTable">
+                <button type="submit" class="btn btn-danger">Supprimer le Tableau des Rencontres</button>
+            </form>
+        <?php endif; ?>
+    </div>
+
 
 
     <table class="table table-bordered mt-3">
@@ -113,6 +128,10 @@ if (isset($_SESSION['success'])) {
         </tbody>
 
     </table>
+    <form action="../Controller/ControllerMatch.php" method="POST">
+        <input type="hidden" name="action" value="generateMatchesTable">
+        <button type="submit" class="btn btn-success">Générer le Tableau des Rencontres</button>
+    </form>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -118,7 +118,6 @@ class ModelMatch
         // Récupérer les rencontres sous forme de tableau associatif
         $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Debug temporaire pour vérifier les données récupérées
 
         return $matches;
     }
@@ -286,5 +285,30 @@ class ModelMatch
             return false;
         }
     }
+    public function getMatchesTable($idTournoi)
+    {
+        $db = Database::getInstance();
+
+        try {
+            $sql = "SELECT e1.name AS equipe_un_nom, e2.name AS equipe_deux_nom, p.name AS parcours_nom
+                FROM rencontre r
+                INNER JOIN teams e1 ON r.idTeamUn = e1.idTeam
+                INNER JOIN teams e2 ON r.idTeamDeux = e2.idTeam
+                INNER JOIN parcours p ON r.idParcours = p.id
+                WHERE r.idTournoi = :idTournoi";
+
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':idTournoi', $idTournoi);
+            $stmt->execute();
+
+            $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $matches;
+        } catch (PDOException $e) {
+            echo "Erreur lors de la récupération des matches : " . $e->getMessage();
+            return [];
+        }
+    }
+
 
 }
