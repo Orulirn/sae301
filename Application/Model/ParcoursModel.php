@@ -91,3 +91,23 @@ function insertParcours($name,$city,$nbDecholeMax,$markerData){
         $No += 1;
     }
 }
+
+function deleteParcoursByID($idParcours){
+    global $db;
+    try{
+        $db->beginTransaction();
+
+        // Supprimer les marqueurs
+        $sqlDeleteMarkers = $db->prepare("DELETE FROM marker WHERE idParcours = :idParcours");
+        $sqlDeleteMarkers->execute(array("idParcours" => $idParcours));
+
+        // Supprimer le parcours
+        $sql = $db->prepare("DELETE FROM parcours WHERE id = :idParcours");
+        $sql->execute(array("idParcours"=> $idParcours));
+        $db->commit();
+    }
+    catch( PDOException $e) {
+        $db->rollBack();
+        echo($e->getMessage());
+    }
+}

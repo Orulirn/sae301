@@ -47,17 +47,20 @@
             <h2>Modifier un parcours</h2>
             <form id="FormModif">
                 <div class="mb-3">
-                    <label for="city" class="form-label">Ville:</label>
-                    <input type="text" id="city" name="city" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="name" class="form-label">Nom:</label>
-                    <input type="text" id="name" name="name" class="form-control" required>
+                    <label for="id" class="visually-hidden">idParcours</label>
+                    <label for="idParcours"></label><input type="text" id="idParcours" name="idParcours" class="form-control" style="display: none">
                 </div>
                 <div class="mb-3">
-                    <label for="NombreDechole" class="form-label">Nombre de Dechole:</label>
-                    <input type="number" id="NombreDechole" name="NombreDechole" class="form-control" required>
+                    <label for="cityModif" class="form-label">Ville:</label>
+                    <input type="text" id="cityModif" name="cityModif" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="nameModif" class="form-label">Nom:</label>
+                    <input type="text" id="nameModif" name="nameModif" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="NombreDecholeModif" class="form-label">Nombre de Dechole:</label>
+                    <input type="number" id="NombreDecholeModif" name="NombreDecholeModif" class="form-control" required>
                 </div>
                 <button type="submit" id="btn-update" class="btn btn-primary">Enregistrer le parcours</button>
             </form>
@@ -233,17 +236,36 @@
             ourForm.appendChild(addHiddenItem(idb,lng));
         }
         //reste à soumettre le formulaire une fois tout construit
-        alert('En clickant sur ok, on va soumettre le formulaire, voir l\'URL avec les éléments ajoutés car en GET');
         document.getElementById('formCreer').submit();
     }
 
+    function addHiddenInputModif() {
+        let ourForm = document.getElementById('FormModif');// on change pour aller chercher le noeud parent de où on veut ajouter
+        for(let i=0;i<markers.length;i++){
+            let lat=markers[i].getLatLng().lat;
+            let lng= markers[i].getLatLng().lng;
+            let ida="LAT"+i;
+            ourForm.appendChild(addHiddenItem(ida,lat));
+            let idb="LNG"+i;
+            ourForm.appendChild(addHiddenItem(idb,lng));
+        }
+        //reste à soumettre le formulaire une fois tout construit
+        document.getElementById('FormModif').submit();
+    }
+
     document.getElementById('btn-create').addEventListener('click', addHiddenInput);
+    document.getElementById('btn-update').addEventListener('click', addHiddenInputModif);
 
     function loadParcours(){
         var data = getData();
 
         Modif.setAttribute("style","");
         Creer.setAttribute("style","display: none");
+
+        document.getElementById("idParcours").value = data[0][0];
+        document.getElementById("nameModif").value = data[0][1];
+        document.getElementById("cityModif").value = data[0][2];
+        document.getElementById("NombreDecholeModif").value = data[0][3];
 
         for (var i = 1;i<data.length;i++){
             console.log(i);

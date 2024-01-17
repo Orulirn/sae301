@@ -9,12 +9,15 @@ $data = null;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['loadSelectedParcours'])) {
     $selectedParcours = $_POST['parcours'];
-//$data = selectParticularParcours("parcoursTest");
     $data = selectParticularParcours($selectedParcours);
 }
 
 if (isset($_GET['city'])) {
     saveParcoursController();
+}
+
+if (isset($_GET['cityModif'])){
+    saveModification();
 }
 
 function saveParcoursController(){
@@ -46,6 +49,23 @@ function saveParcoursController(){
 
     // Réinitialiser $_GET pour éviter de recréer le parcours à chaque rechargement
     $_GET = array();
+}
+
+function saveModification(){
+    deleteParcoursByID($_GET["idParcours"]);
+    $city = $_GET["cityModif"];
+    $name = $_GET["nameModif"];
+    $nbDecholeMax = $_GET["NombreDecholeModif"];
+    $nbMarkers =  (count($_GET)-4)/2 ;
+    $markers = array();
+    for ($i = 0;$i<$nbMarkers;$i++){
+        $newMarker = array(
+            "lat" => $_GET['LAT' . $i],
+            "lng" => $_GET['LNG' . $i]
+        );
+        array_push($markers,$newMarker);
+    }
+    insertParcours($name, $city, $nbDecholeMax, $markers);
 }
 
 function dataTransfert($data)
