@@ -55,5 +55,20 @@ function selectTeamWithCaptain($player){
     global $db;
     $sql = $db->prepare("SELECT idTeam FROM team_player WHERE player=(:player)");
     $sql->execute(array('player' => $player));
-    return $sql->fetch(PDO::FETCH_ASSOC)['idTeam'];
+    return $sql->fetch(PDO::FETCH_ASSOC);
 };
+
+
+function selectAllPlayersWithIdTeam($idTeam){
+    global $db;
+    $sql = $db->prepare("SELECT users.firstname, users.lastname FROM team_player JOIN users on users.idUser = team_player.player WHERE team_player.idTeam = :idTeam");
+    $sql->execute(array('idTeam' => $idTeam));
+    return $sql->fetchAll(PDO::FETCH_ASSOC);
+};
+
+function selectCaptainNameWithTeam($idTeam){
+    global $db;
+    $sql = $db->prepare("SELECT users.firstname, users.lastname FROM team_player JOIN users on users.idUser = team_player.player WHERE team_player.idTeam = :idTeam and team_player.isCaptain = 1");
+    $sql->execute(array('idTeam' => $idTeam));
+    return $sql->fetchAll(PDO::FETCH_ASSOC);
+}

@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH Créer tournoi">
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Modification d'un tournoi fin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Controller/tournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/tournamentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/tournamentModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/tournamentModel.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +64,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\floco\PhpstormProjects\sae301\Application\Controller" />
       <recent name="C:\Users\ewenc\PhpstormProjects\sae301\Application\View\img" />
     </key>
   </component>
@@ -85,6 +85,8 @@
       <workItem from="1697186776891" duration="22281000" />
       <workItem from="1697551688033" duration="703000" />
       <workItem from="1703239959226" duration="1616000" />
+      <workItem from="1704970533745" duration="1805000" />
+      <workItem from="1705388793333" duration="9895000" />
     </task>
     <task id="LOCAL-00001" summary="Installation bootstrap">
       <option name="closed" value="true" />
@@ -166,7 +168,31 @@
       <option name="project" value="LOCAL" />
       <updated>1704797460778</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="PATCH Créer tournoi avec parcours">
+      <option name="closed" value="true" />
+      <created>1704798627110</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1704798627110</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Modification d'un tournoi">
+      <option name="closed" value="true" />
+      <created>1705390900777</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1705390900777</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Modification d'un tournoi fin">
+      <option name="closed" value="true" />
+      <created>1705398215655</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1705398215655</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +221,9 @@
     <MESSAGE value="Installation phpMailer + création d'une classe qui permet l'envoi de mail de manière non sécurisé" />
     <MESSAGE value="Création d'un tournoi" />
     <MESSAGE value="PATCH Créer tournoi" />
-    <option name="LAST_COMMIT_MESSAGE" value="PATCH Créer tournoi" />
+    <MESSAGE value="PATCH Créer tournoi avec parcours" />
+    <MESSAGE value="Modification d'un tournoi" />
+    <MESSAGE value="Modification d'un tournoi fin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modification d'un tournoi fin" />
   </component>
 </project>
