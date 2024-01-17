@@ -7,6 +7,8 @@ include '../Model/EstimationModel.php';
 include '../Model/ParcoursModel.php';
 include '../View/index.php';
 
+$userId = $_SESSION['user']->GetIdUser();
+
 $data = selectParticularParcours("parcoursTest");
 $equipe1Id = 48;
 $equipe2Id = 49;
@@ -28,12 +30,30 @@ $pari1 = selectPari($idRencontre)["pariE1"];
 $pari2 = selectPari($idRencontre)["pariE2"];
 
 
-function dataTransfert($data)
+$equipe1 = "ZEHEF";
+$equipe2 = "DAHAK";
+$capitaineE1 = selectCaptainIdWithTeam($equipe1Id)["idUser"];
+$capitaineE2 = selectCaptainIdWithTeam($equipe2Id)["idUser"];
+
+
+
+function dataTransfert($data,$equipe1,$equipe2)
 {
     echo("<p id='data' style='display: none'>" . json_encode($data, JSON_UNESCAPED_UNICODE) . "</p>");
+    echo("<p id='equipe1' style='display: none'>" . json_encode($equipe1, JSON_UNESCAPED_UNICODE) . "</p>");
+    echo("<p id='equipe2' style='display: none'>" . json_encode($equipe2, JSON_UNESCAPED_UNICODE) . "</p>");
 }
 
-dataTransfert($data);
+function insertPariEquipe1($pari,$idRencontre){
+    insertPariE1($pari,$idRencontre);
+}
+
+function insertPariEquipe2($pari,$idRencontre){
+    insertPariE2($pari,$idRencontre);
+}
+
+
+dataTransfert($data,$equipe1,$equipe2);
 
 
 
