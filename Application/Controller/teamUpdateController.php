@@ -7,7 +7,7 @@
  */
  session_start();
 
-
+include("../View/index.php");
 include ("../Model/DatabaseConnection.php");
 include ("../Model/teams_table.php"); 
 include("../Model/team_player_table.php");
