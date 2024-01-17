@@ -22,7 +22,7 @@ class User {
         $this->lastname='doe';
         $this->role=0;
         $this->log=false;
-        $this->idUser=null;
+        $this->idUser=5;
     }
 
     public static function GetInstance(){

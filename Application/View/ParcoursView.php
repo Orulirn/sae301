@@ -176,6 +176,7 @@
     let latitude = 50.3965;
     let longitude = 3.6695;
     let map = L.map('map').setView([latitude, longitude], 13);
+    map.dragging.disable();
 
     //retrait de la fonction non utilisée et mal parenthésée !!
 
