@@ -45,8 +45,8 @@
     </div>
     <div class="row mt-3">
         <div class="col-md-6" style="display: none" id="formModif">
-            <h2>Informations</h2>
-            <form id="locationForm">
+            <h2>Modifier un parcours</h2>
+            <form id="FormModif">
                 <div class="mb-3">
                     <label for="id" class="visually-hidden">idParcours</label>
                     <label for="idParcours"></label><input type="text" id="idParcours" name="idParcours" class="form-control" style="display: none">
@@ -63,16 +63,16 @@
                     <label for="NombreDecholeModif" class="form-label">Nombre de Dechole:</label>
                     <input type="number" id="NombreDecholeModif" name="NombreDecholeModif" class="form-control" required>
                 </div>
-                <button type="submit" id="btn" class="btn btn-primary">Enregistrer le parcours</button>
+                <button type="submit" id="btn-update" class="btn btn-primary">Enregistrer le parcours</button>
             </form>
         </div>
     </div>
 
     <div class="row mt-3">
         <div class="col-md-6">
-            <div id="formCreer">
-                <h2>Informations TEST</h2>
-                <form id="locationForm">
+            <div id="Creer">
+                <h2>Créer un parcours</h2>
+                <form id="formCreer">
                     <div class="mb-3">
                         <label for="city" class="form-label">Ville:</label>
                         <input type="text" id="city" name="city" class="form-control" required>
@@ -85,7 +85,7 @@
                         <label for="NombreDechole" class="form-label">Nombre de Dechole:</label>
                         <input type="number" id="NombreDechole" name="NombreDechole" class="form-control" required>
                     </div>
-                    <button type="submit" id="btn" class="btn btn-primary">Enregistrer le parcours</button>
+                    <button type="submit" id="btn-create" class="btn btn-primary">Enregistrer le parcours</button>
                 </form>
             </div>
         </div>
@@ -94,8 +94,8 @@
 
 <script>
     var addMarkerMode = true;
-    const formModif = document.getElementById("formModif");
-    const formCreer = document.getElementById("formCreer");
+    const Modif = document.getElementById("Modif");
+    const Creer = document.getElementById("Creer");
 
     function addMarker(latlng) {
         if (addMarkerMode) {
@@ -227,7 +227,7 @@
     }
 
     function addHiddenInput() {
-        let ourForm = document.getElementById('locationForm');// on change pour aller chercher le noeud parent de où on veut ajouter
+        let ourForm = document.getElementById('formCreer');// on change pour aller chercher le noeud parent de où on veut ajouter
         for(let i=0;i<markers.length;i++){
             let lat=markers[i].getLatLng().lat;
             let lng= markers[i].getLatLng().lng;
@@ -237,7 +237,7 @@
             ourForm.appendChild(addHiddenItem(idb,lng));
         }
         //reste à soumettre le formulaire une fois tout construit
-        document.getElementById('locationForm').submit();
+        document.getElementById('formCreer').submit();
     }
 
     function addHiddenInputModif() {
@@ -254,14 +254,14 @@
         document.getElementById('FormModif').submit();
     }
 
-    document.getElementById('btn').addEventListener('click', addHiddenInput);
+    document.getElementById('btn-create').addEventListener('click', addHiddenInput);
     document.getElementById('btn-update').addEventListener('click', addHiddenInputModif);
 
     function loadParcours(){
         var data = getData();
 
-        formModif.setAttribute("style","");
-        formCreer.setAttribute("style","display: none");
+        Modif.setAttribute("style","");
+        Creer.setAttribute("style","display: none");
 
         document.getElementById("idParcours").value = data[0][0];
         document.getElementById("nameModif").value = data[0][1];
@@ -283,7 +283,7 @@
 
 <?php
 if (isset($_SESSION['error'])) {
-echo "<script type='text/javascript'>
+    echo "<script type='text/javascript'>
     Swal.fire({
         title: 'Erreur!',
         text: '" . addslashes($_SESSION['error']) . "',
@@ -291,9 +291,9 @@ echo "<script type='text/javascript'>
         confirmButtonText: 'OK'
     });
 </script>";
-unset($_SESSION['error']);
+    unset($_SESSION['error']);
 }
 ?>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 </html>
