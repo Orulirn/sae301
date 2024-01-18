@@ -16,7 +16,7 @@ echo ("<p id='dataTeams' visibility='hidden' style= 'display :none;'>".json_enco
 
 if(isset($_POST['submit'])) {
     $i=$_POST['submit'];
-    switch ($_SESSION["user"]->getRole()){
+    switch (GetRole($_SESSION['user_id'])[0]["idRole"]){
     case "0":
         deleteTeamToTournament($_POST["team".$i],$_POST["tournoi".$i]);
         break;

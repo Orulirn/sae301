@@ -41,7 +41,6 @@
 
         dataAllTeams = document.getElementById("dataAllTeams").innerText;
         dataAllTeams = JSON.parse(dataAllTeams);
-        dataAllTeams = dataAllTeams[0];
         dataAllTeams.forEach(team => {
             console.log(team);
             let optionTeam = document.createElement('option');
