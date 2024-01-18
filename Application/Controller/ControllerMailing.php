@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../Model/Mailing_Class.php";
 
 class ControllerMailing

@@ -31,12 +31,14 @@ echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_en
             <li class="nav-item mt-auto">
                 <a class="nav-link fw-bold" href="#">Les règles</a>
             </li>
+            <?php if ($userLoggedIn): ?>
             <li class="nav-item mt-auto">
                 <a class="nav-link fw-bold" href="#">Les matchs</a>
             </li>
             <li class="nav-item mt-auto">
                 <a class="nav-link fw-bold" href="../Controller/teamsController.php">Équipes</a>
             </li>
+            <?php endif; ?>
         </ul>
     </div>
     <div class="p-xl-4">

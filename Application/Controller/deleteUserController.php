@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../Model/UsersModel.php";
 
 $id = $_GET['buttonIndex'];

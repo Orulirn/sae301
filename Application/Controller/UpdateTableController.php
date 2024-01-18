@@ -1,6 +1,7 @@
 <?php
 include "../Model/UsersModel.php";
 
+session_start();
 $listEmail = $_GET['listEmail'];
 $cotisation = $_GET['cotisation'];
 
