@@ -1,4 +1,5 @@
 <?php
+include_once "../View/index.php";
 require_once '../Model/ModelMatch.php';
 
 class ControllerMatch

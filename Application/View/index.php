@@ -32,7 +32,7 @@ echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_en
             </li>
             <?php if ($userLoggedIn): ?>
             <li class="nav-item mt-auto">
-                <a class="nav-link fw-bold" href="#">Les matchs</a>
+                <a class="nav-link fw-bold" href="../Controller/ControllerMatchPlayer">Les matchs</a>
             </li>
             <li class="nav-item mt-auto">
                 <a class="nav-link fw-bold" href="../Controller/teamsController.php">Équipes</a>
@@ -141,13 +141,13 @@ echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_en
         menu.setAttribute("href","../Controller/ControllerMailing.php");
         li.appendChild(menu);
         navbar.appendChild(li);
-
+        
         li = document.createElement("li");
         li.setAttribute("class","nav-item mt-auto");
         menu = document.createElement("a");
         menu.setAttribute("class","nav-link fw-bold");
-        menu.innerText = "Mail";
-        menu.setAttribute("href","../Controller/ControllerMailing.php");
+        menu.innerText = "Modifier les rencontres";
+        menu.setAttribute("href","../Controller/ControllerMatch.php");
         li.appendChild(menu);
         navbar.appendChild(li);
     }
