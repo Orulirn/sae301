@@ -83,23 +83,11 @@ class ControllerMatch
                     header("Location: " . $_SERVER['PHP_SELF']);
                     exit();
                 }
-            } elseif (isset($_POST["action"]) && $_POST["action"] == "generateMatchesTable") {
-                $_SESSION['matchesTable'] = $this->matchModel->getMatchesTable($idTournoi);
-                $_SESSION['success'] = "Tableau des rencontres généré avec succès!";
-                header("Location: " . $_SERVER['PHP_SELF']);
-                exit();
-            }elseif (isset($_POST["action"]) && $_POST["action"] == "deleteMatchesTable") {
-                // Supprime les données du tableau des rencontres de la session
-                unset($_SESSION['matchesTable']);
-
-                // Redirige vers la même page pour actualiser
-                header("Location: " . $_SERVER['PHP_SELF']);
-                exit();
             }
         }
 
         $matches = $this->matchModel->getMatchesForDisplay($idTournoi);
-        include('../View/MatchViewAdmin.php');
+        include_once('../View/MatchViewAdmin.php');
     }
 }
 
