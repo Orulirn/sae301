@@ -71,4 +71,11 @@ function selectCaptainNameWithTeam($idTeam){
     $sql = $db->prepare("SELECT users.firstname, users.lastname FROM team_player JOIN users on users.idUser = team_player.player WHERE team_player.idTeam = :idTeam and team_player.isCaptain = 1");
     $sql->execute(array('idTeam' => $idTeam));
     return $sql->fetchAll(PDO::FETCH_ASSOC);
+};
+
+function selectNumberOfTeamMates($idTeam){
+    global $db;
+    $sql = $db->prepare("SELECT count(player) as numberMates FROM team_player WHERE idTeam=(:idTeam)");
+    $sql->execute(array('idTeam' => $idTeam));
+    return $sql->fetch(PDO::FETCH_ASSOC);
 }
