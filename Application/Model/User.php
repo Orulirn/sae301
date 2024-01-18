@@ -17,12 +17,12 @@ class User {
     private $role,$firstname,$lastname,$log;
 //function to connect to the site
     
-    private function __construct(){
+    public function __construct(){
         $this->firstname='john';
         $this->lastname='doe';
-        $this->role=0;
+        $this->role=1;
         $this->log=false;
-        $this->idUser=5;
+        $this->idUser=null;
     }
 
     public static function GetInstance(){
@@ -57,9 +57,10 @@ class User {
             $this->lastname=$res[2];
             $this->log=true;
             $this->idRole=$res[3];
-            header('Location: ../Controller/HomepageController.php');
+            $this->idUser=$res["idUser"];
+            return true;
         }
-        
+        return false;
     }
 
     public function ResetUser(){

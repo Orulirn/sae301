@@ -9,9 +9,12 @@
 session_start();
 include_once("../Model/User.php");
 if(isset($_POST['Deconnexion'])){
-    unset($_SESSION['user']);
+    session_unset();
+    session_destroy();
+    header("Location: ../Controller/HomePageController.php");
 }
 
+$userLoggedIn = isset($_SESSION['user_id']);
 echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_encode($_SESSION["user"]->GetRole())."</p>");
 
 ?>
@@ -37,14 +40,23 @@ echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_en
     </div>
     <div class="p-xl-4">
         <ul class="navbar-nav">
-            <li class="nav-item p-xl-1">
-                <button name="Connexion" id="Connexion" class="btn btn-primary" >Connexion</button>
-            </li>
-            <li class="nav-item p-xl-1">
-                <form method="post">
-                    <input name="Deconnexion" type="submit" value="Deconnexion" class="btn btn-danger">
-                </form>
-            </li>
+            <?php if (!$userLoggedIn): ?>
+                <!-- Afficher seulement si l'utilisateur n'est pas connecté -->
+                <li class="nav-item p-xl-1">
+                    <button name="Connexion" id="Connexion" class="btn btn-primary" >Connexion</button>
+                </li>
+                <li class="nav-item p-xl-1">
+                    <!-- Bouton ou lien vers la page d'inscription -->
+                    <a href="../Controller/RegisterController.php" class="btn btn-primary">Inscription</a>
+                </li>
+            <?php else: ?>
+                <!-- Afficher seulement si l'utilisateur est connecté -->
+                <li class="nav-item p-xl-1">
+                    <form method="post">
+                        <input name="Deconnexion" type="submit" value="Deconnexion" class="btn btn-danger">
+                    </form>
+                </li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>
