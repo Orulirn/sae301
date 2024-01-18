@@ -48,10 +48,9 @@ class User {
         $res=$sql->fetch();
         
         if (password_verify($password, $res[0])){
-            $sql=$db->prepare("SELECT idRole,firstname,lastname,users.idUser FROM Users JOIN users_role ON users.idUser = users_role.idUser WHERE mail= :userMail ORDER BY idRole DESC LIMIT 1 ");
+            $sql=$db->prepare("SELECT idRole,firstname,lastname,users.idUser FROM Users JOIN users_role ON users.idUser = users_role.idUser WHERE mail= :userMail ORDER BY idRole ASC LIMIT 1 ");
             $sql->execute(array('userMail'=>$mail));
             $res=$sql->fetch();
-            var_dump($res);
             $this->role=$res[0];
             $this->firstname=$res[1];
             $this->lastname=$res[2];
@@ -59,6 +58,7 @@ class User {
             $this->idRole=$res[3];
             $this->idUser=$res["idUser"];
             return true;
+            header("Location : ../Controller/HomePageController.php");
         }
         return false;
     }
