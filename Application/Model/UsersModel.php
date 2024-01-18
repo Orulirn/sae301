@@ -2,6 +2,8 @@
 /*
 * @author LERMIGEAUX Nathan <nathan.lermigeaux@uphf.fr>
 * @author MASSE Océane <oceane.masse2@uphf.fr>
+*
+*@version 1.2 ajout d'un sum() sur la fonction GetCotisationForTeam
 */
 
 include_once ('../Model/DatabaseConnection.php');
@@ -49,6 +51,13 @@ function GetRole($idUser){
     return $sql->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function GetCotisationForTeam($idTeam){
+    global $db;
+    $sql = $db->prepare("SELECT sum(users.cotisation) AS cotisation FROM users JOIN team_player ON users.iduser = team_player.player WHERE team_player.idTeam = :idTeam");
+    $sql->execute(array('idTeam' => $idTeam));
+    return $sql->fetch(PDO::FETCH_ASSOC);
+}
+
 function UpdateRoleAdmin($idUser,$role){
     global $db;
     $sql = $db->prepare("SELECT idRole FROM users_role WHERE idUser = :idUser");
@@ -77,16 +86,6 @@ function UpdateRoleAdmin($idUser,$role){
 }
 
 
-function deleteUser($id){
-    global $db;
-    $sql = $db->prepare("DELETE FROM team_player WHERE player = :id");
-    $sql->execute(array('id'=> $id));
-    $sql = $db->prepare("DELETE FROM users_role WHERE idUser = :id");
-    $sql->execute(array('id'=> $id));
-    $sql = $db->prepare("DELETE FROM users WHERE IdUser = :id");
-    $sql->execute(array('id'=> $id));
-    return true;
-}
 
 function GetAllUserWithContribution(){
     global $db;
