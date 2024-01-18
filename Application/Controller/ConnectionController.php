@@ -15,7 +15,7 @@ if (isset($_POST['connect'])) {
         $_SESSION['user_id'] = $user->getIdUser();
         header("Location: ../Controller/HomePageController.php");
     } else {
-        header("Location: ../View/ConnectionView.html?login=failed");
+        header("Location: ../Controller/ConnectionController.php?login=failed");
     }
 }
 ?>
