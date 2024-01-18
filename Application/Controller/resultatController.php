@@ -6,13 +6,16 @@ include '../Model/resultatModel.php';
 include '../View/index.php';
 include_once '../Model/DatabaseConnection.php';
 
+
 $userId = $_SESSION['user_id'];
+$idRencontre = $_SESSION['idRencontre'];
+$rencontre = getRencontreById($idRencontre);
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idRencontre'])) {
     $_SESSION['idRencontre'] = $_POST['idRencontre'];
 }
 $idRencontre = $_SESSION['idRencontre'];
-$equipe1Id = 48;
-$equipe2Id = 49;
+$equipe1Id = $rencontre['idTeamUn'];
+$equipe2Id = $rencontre['idTeamDeux'];
 
 
 $commence = selectEquipeChole($idRencontre)["equipeChole"];
@@ -37,8 +40,8 @@ $propo = selectProposition($idRencontre)["propositionResultat"];
 
 
 
-$equipe1 = "ZEHEF";
-$equipe2 = "DAHAK";
+$equipe1 = getTeamNameById($equipe1Id);
+$equipe2 = getTeamNameById($equipe2Id);
 $capitaineE1 = selectCaptainIdWithTeam($equipe1Id)["idUser"];
 $capitaineE2 = selectCaptainIdWithTeam($equipe2Id)["idUser"];
 
