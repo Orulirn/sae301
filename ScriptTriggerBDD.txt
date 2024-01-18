@@ -10,7 +10,7 @@ CREATE TRIGGER delete_team AFTER DELETE ON teams FOR EACH ROW
    DELIMITER ;
 
 DELIMITER $$
-CREATE TRIGGER delete_tournoi AFTER DELETE ON tournoi FOR EACH ROW
+CREATE TRIGGER delete_tournoi before DELETE ON tournoi FOR EACH ROW
     BEGIN
         DELETE FROM tournoi_parcours where tournoi_parcours.idTournoi = OLD.idTournoi;
         DELETE FROM team_tournoi where team_tournoi.idTournoi = OLD.idTournoi;
@@ -21,7 +21,7 @@ CREATE TRIGGER delete_tournoi AFTER DELETE ON tournoi FOR EACH ROW
    DELIMITER ;
 
 DELIMITER $$
-CREATE TRIGGER delete_user AFTER DELETE ON users FOR EACH ROW
+CREATE TRIGGER delete_user before DELETE ON users FOR EACH ROW
     BEGIN
         DELETE FROM users_role where users_role.idUser = OLD.idUser;
         DELETE FROM team_player where users_role.idUser = OLD.idUser;
