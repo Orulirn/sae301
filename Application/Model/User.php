@@ -48,7 +48,7 @@ class User {
         $res=$sql->fetch();
         
         if (password_verify($password, $res[0])){
-            $sql=$db->prepare("SELECT idRole,firstname,lastname,users.idUser FROM Users JOIN users_role ON users.idUser = users_role.idUser WHERE mail= :userMail");
+            $sql=$db->prepare("SELECT idRole,firstname,lastname,users.idUser FROM Users JOIN users_role ON users.idUser = users_role.idUser WHERE mail= :userMail ORDER BY idRole DESC LIMIT 1 ");
             $sql->execute(array('userMail'=>$mail));
             $res=$sql->fetch();
             var_dump($res);
