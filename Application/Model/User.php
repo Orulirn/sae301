@@ -27,9 +27,7 @@ class User {
 
     public static function GetInstance(){
         if(is_null(self::$instance)){
-
             self::$instance=new User();
-
         }
         return self::$instance;
     }
@@ -85,6 +83,4 @@ class User {
         return $this->role;
     }
 }
-session_start();
-$_SESSION['user'] = User::GetInstance();
 ?>

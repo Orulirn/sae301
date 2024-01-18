@@ -9,6 +9,7 @@
 <?php
 session_start();
 include_once("../Model/User.php");
+include_once("../Model/UsersModel.php");
 if(isset($_POST['Deconnexion'])){
     session_unset();
     session_destroy();
@@ -16,7 +17,8 @@ if(isset($_POST['Deconnexion'])){
 }
 
 $userLoggedIn = isset($_SESSION['user_id']);
-echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_encode($_SESSION["user"]->GetRole())."</p>");
+$res = GetRole($_SESSION['user_id'])[0]["idRole"];
+echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_encode($res)."</p>");
 
 ?>
 
@@ -27,9 +29,6 @@ echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_en
                 <a class="navbar-brand " id="backHome" href="../Controller/HomePageController.php" >
                     <img src="../View/files/logoSite.png" width="200px" height="133px">
                 </a>
-            </li>
-            <li class="nav-item mt-auto">
-                <a class="nav-link fw-bold" href="#">Les règles</a>
             </li>
             <?php if ($userLoggedIn): ?>
             <li class="nav-item mt-auto">
@@ -72,9 +71,12 @@ echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_en
     backHome.addEventListener("click",function (){
         window.location.replace("../Controller/HomepageController.php");
     });
-    goConn.addEventListener("click", function (){
-        window.location.replace("../Controller/ConnectionController.php");
-    });
+    <?php if (!$userLoggedIn): ?>
+        goConn.addEventListener("click", function (){
+            window.location.replace("../Controller/ConnectionController.php");
+        });
+    <?php endif; ?>
+
     function toggleButtonState() {
         
         console.log(document.getElementById('userState').outerText);
@@ -91,8 +93,9 @@ echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_en
             goConn.classList.add("btn-primary");
         }
     }
-    const role = document.querySelector("#currentRole").innerText;
+    let role = document.querySelector("#currentRole").innerText;
     const navbar = document.querySelector("#navbar");
+    role = JSON.parse(role);
     if (role == 0 ){
         let li = document.createElement("li");
         li.setAttribute("class","nav-item mt-auto");
