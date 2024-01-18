@@ -99,27 +99,27 @@ class ModelMatch
         }
     }
 
-    public function getMatchesForDisplay($idTournoi)
-    {
+    public function getMatchesForDisplay($idTournoi) {
         $db = Database::getInstance();
-        // Requête pour récupérer les rencontres en fonction de l'ID du tournoi
-        $sql = "SELECT r.idRencontre, e1.name AS equipe_un_nom, e2.name AS equipe_deux_nom, p.name AS parcours_nom
-        FROM rencontre r
-        INNER JOIN teams e1 ON r.idTeamUn = e1.idTeam
-        INNER JOIN teams e2 ON r.idTeamDeux = e2.idTeam
-        INNER JOIN parcours p ON r.idParcours = p.id
-        WHERE r.idTournoi = :idTournoi";
 
+        try {
+            $sql = "SELECT r.idRencontre, e1.name AS equipe_un_nom, e2.name AS equipe_deux_nom, p.nom AS parcours_nom, r.equipeChole, r.resultatRencontre
+            FROM rencontre r
+            INNER JOIN teams e1 ON r.idTeamUn = e1.idTeam
+            INNER JOIN teams e2 ON r.idTeamDeux = e2.idTeam
+            INNER JOIN parcours p ON r.idParcours = p.id
+            WHERE r.idTournoi = :idTournoi";
 
-        $stmt = $db->prepare($sql);
-        $stmt->bindParam(':idTournoi', $idTournoi);
-        $stmt->execute();
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':idTournoi', $idTournoi);
+            $stmt->execute();
 
-        // Récupérer les rencontres sous forme de tableau associatif
-        $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
-        return $matches;
+            $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $matches;
+        } catch (PDOException $e) {
+            echo "Erreur lors de la récupération des matches : " . $e->getMessage();
+            return [];
+        }
     }
 
     public function getAvailableParcours()
@@ -218,7 +218,7 @@ class ModelMatch
         }
     }
 
-    public function updateRencontre($idRencontre, $newEquipe1, $newEquipe2, $newParcours)
+    public function updateRencontre($idRencontre, $newEquipe1, $newEquipe2, $newParcours, $newEquipeChole = null, $newResultatRencontre = null)
     {
         $db = Database::getInstance();
         // Vérification pour éviter que la même équipe ne joue contre elle-même
@@ -233,41 +233,44 @@ class ModelMatch
             return false;
         }
         try {
-            $sql = "UPDATE rencontre SET idTeamUn = :newEquipe1, idTeamDeux = :newEquipe2, idParcours = :newParcours WHERE idRencontre = :idRencontre";
+            $sql = "UPDATE rencontre SET idTeamUn = :newEquipe1, idTeamDeux = :newEquipe2, idParcours = :newParcours, equipeChole = :newEquipeChole, resultatRencontre = :newResultatRencontre WHERE idRencontre = :idRencontre";
             $stmt = $db->prepare($sql);
-            $stmt->bindParam(':newEquipe1', $newEquipe1);
-            $stmt->bindParam(':newEquipe2', $newEquipe2);
-            $stmt->bindParam(':newParcours', $newParcours);
-            $stmt->bindParam(':idRencontre', $idRencontre);
+            $stmt->bindParam(':newEquipe1', $newEquipe1, );
+            $stmt->bindParam(':newEquipe2', $newEquipe2, );
+            $stmt->bindParam(':newParcours', $newParcours, );
+            $stmt->bindParam(':newEquipeChole', $newEquipeChole, );
+            $stmt->bindParam(':newResultatRencontre', $newResultatRencontre, );
+            $stmt->bindParam(':idRencontre', $idRencontre, );
             $stmt->execute();
-            $rowCount = $stmt->rowCount();
-            return $rowCount;
+
+            return $stmt->rowCount();
         } catch (PDOException $e) {
             echo "Erreur lors de la mise à jour de la rencontre : " . $e->getMessage();
             return 0;
         }
     }
-    public function insertRencontre($idTournoi, $idEquipe1, $idEquipe2, $idParcours) {
+    public function insertRencontre($idTournoi, $idEquipe1, $idEquipe2, $idParcours, $equipeChole = null, $resultatRencontre = null) {
         $db = Database::getInstance();
 
         try {
-            $sql = "INSERT INTO rencontre (idRencontre, idTournoi, idTeamUn, idTeamDeux, idParcours) 
-                VALUES (NULL, :idTournoi, :idEquipe1, :idEquipe2, :idParcours)";
+            $sql = "INSERT INTO rencontre (idTournoi, idTeamUn, idTeamDeux, idParcours, equipeChole, resultatRencontre) 
+                VALUES (:idTournoi, :idEquipe1, :idEquipe2, :idParcours, :equipeChole, :resultatRencontre)";
             $stmt = $db->prepare($sql);
-            $stmt->bindParam(':idTournoi', $idTournoi, PDO::PARAM_INT);
-            $stmt->bindParam(':idEquipe1', $idEquipe1, PDO::PARAM_INT);
-            $stmt->bindParam(':idEquipe2', $idEquipe2, PDO::PARAM_INT);
-            $stmt->bindParam(':idParcours', $idParcours, PDO::PARAM_INT);
+            $stmt->bindParam(':idTournoi', $idTournoi, );
+            $stmt->bindParam(':idEquipe1', $idEquipe1, );
+            $stmt->bindParam(':idEquipe2', $idEquipe2, );
+            $stmt->bindParam(':idParcours', $idParcours, );
+            $stmt->bindParam(':equipeChole', $equipeChole, );
+            $stmt->bindParam(':resultatRencontre', $resultatRencontre, );
             $stmt->execute();
 
-            // Optionnel : Récupérer et retourner l'ID de la dernière rencontre insérée
             return $db->lastInsertId();
-        }
-        catch (PDOException $e) {
+        } catch (PDOException $e) {
             echo "Erreur lors de l'insertion de la rencontre : " . $e->getMessage();
             return null;
         }
     }
+
     public function checkIfRandomMatchesExist($idTournoi)
     {
         $db = Database::getInstance();
@@ -290,7 +293,7 @@ class ModelMatch
         $db = Database::getInstance();
 
         try {
-            $sql = "SELECT e1.name AS equipe_un_nom, e2.name AS equipe_deux_nom, p.name AS parcours_nom
+            $sql = "SELECT e1.name AS equipe_un_nom, e2.name AS equipe_deux_nom, p.name AS parcours_nom,r.equipeChole,r.resultatRencontre
                 FROM rencontre r
                 INNER JOIN teams e1 ON r.idTeamUn = e1.idTeam
                 INNER JOIN teams e2 ON r.idTeamDeux = e2.idTeam
@@ -302,13 +305,11 @@ class ModelMatch
             $stmt->execute();
 
             $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+            error_log("Matches data: " . print_r($matches, true)); // Ajoutez cette ligne
             return $matches;
         } catch (PDOException $e) {
             echo "Erreur lors de la récupération des matches : " . $e->getMessage();
             return [];
         }
     }
-
-
 }

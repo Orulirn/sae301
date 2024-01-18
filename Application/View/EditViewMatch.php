@@ -39,12 +39,11 @@
             <select name="parcours" id="parcours" class="form-control">
                 <?php foreach ($parcoursDisponibles as $parcours): ?>
                     <option value="<?= $parcours['id']; ?>" <?php if ($parcours['id'] == $rencontreToEdit['idParcours']) echo 'selected'; ?>>
-                        <?= $parcours['name']; ?>
+                        <?= $parcours['nom']; ?>
                     </option>
                 <?php endforeach; ?>
             </select>
         </div>
-
         <button type="submit" class="btn btn-primary">Mettre à jour</button>
     </form>
 </div>

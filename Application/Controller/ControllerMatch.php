@@ -60,6 +60,8 @@ class ControllerMatch
                 $newEquipe2 = $_POST['equipe2'];
                 $newParcours = $_POST['parcours'];
 
+                $newResultatRencontre = $_POST['resultatRencontre'] ?? null;
+
                 if ($idRencontreToUpdate !== null) {
                     $rowCount = $this->matchModel->updateRencontre($idRencontreToUpdate, $newEquipe1, $newEquipe2, $newParcours);
 
@@ -77,6 +79,7 @@ class ControllerMatch
                 } else {
                     $this->matchModel->generateMatches($idTournoi);
                     $_SESSION['success'] = "Rencontres générées avec succès!";
+                    $_SESSION['matchesTable'] = $this->matchModel->getMatchesForDisplay($idTournoi);
                     header("Location: " . $_SERVER['PHP_SELF']);
                     exit();
                 }
