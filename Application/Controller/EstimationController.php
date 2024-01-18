@@ -7,7 +7,8 @@ include '../Model/EstimationModel.php';
 include '../Model/ParcoursModel.php';
 include '../View/index.php';
 
-$userId = $_SESSION['user']->GetIdUser();
+
+$userId = $_SESSION['user_id'];
 
 $data = selectParticularParcours("parcoursTest");
 $equipe1Id = 48;

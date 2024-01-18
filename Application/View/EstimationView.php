@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,14 +18,22 @@
             location.reload();
         }
 
+        let userId;
+
         document.addEventListener('DOMContentLoaded', (event) => {
-            const userId = <?= $userId ?>; // ID de l'utilisateur connecté
+            <?php if ($userId != null):?>
+                userId = <?= $userId ?>; // ID de l'utilisateur connecté
+            <?php else:?>
+                userId = null;
+            <?php endif;?>
+
 
             const input1 = document.getElementById('input1');
             const input2 = document.getElementById('input2');
             const button1 = document.getElementById('button1');
             const button2 = document.getElementById('button2');
 
+            console.log(userId);
 
             if (userId === <?= $capitaineE1 ?>) {
                 input1.disabled = false;
