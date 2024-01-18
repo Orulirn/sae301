@@ -1,13 +1,15 @@
 <?php
+session_start();
 include "../Model/VerifyModel.php";
-$email = $_GET['email'];
+
+$id = $_GET['idVerif'];
 $nb = $_GET['index'];
 
 if($nb === '1'){
-    valide($email);
+    valide($id);
 }
 else {
-    rejete($email);
+    rejete($id);
 }
 
 header("Location: valideInscriptionController.php")

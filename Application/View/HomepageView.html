@@ -1,11 +1,112 @@
-<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../View/bootstrap-5.3.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../View/bootstrap-5.3.1-dist/css/homepagestyle.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
     <title>Les choleux de Quiévrechain</title>
 </head>
 <body>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<div class="video-container">
+    <video autoplay loop muted poster="../View/files/poster.jpg">
+        <source src="../View/files/video.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="welcome-message">
+    <h1>
+        <span class="welcome-text">Bienvenue aux</span><br>
+        Choleux de Quiévrechain
+    </h1>
+    <p>Le jeu de cholage est une tradition locale. Les règles du jeu sont simples : chaque participant doit...</p>
+
+    <p>Continuez à explorer et à profiter du jeu passionnant de cholage dans notre belle communauté.</p>
+
+    <!-- Ajoutez ici les règles du jeu -->
+    <a class="scroll-down" href="#rules-section">&#8595;</a>
+</div>
+<div id="map" style="height: 400px;"></div>
+<!-- Section des règles -->
+<div id="rules-section" class="container mt-4 content">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Règles du Jeu :</h2>
+            <p class="rules-text">
+                <strong>Objectif du Jeu :</strong><br>
+                Le but du jeu de cholage est d'atteindre une cible déterminée (tonneau de bière traditionnellement) avec une batte de cholage et une balle.
+                <br><br>
+                <strong>Participants :</strong><br>
+                Le jeu de cholage se joue en équipe. Chaque participant ou équipe dispose d'un certain nombre de lancers (chole ou déchole) pour atteindre la cible.
+                <br><br>
+                <strong>Matériel :</strong><br>
+                Une balle en bois traditionnellement, une batte ressemblant à un club de golf plus court et plus massif, et finalement la cible (fût de bière, cercle dessiné au sol, etc.)
+                <br><br>
+                <strong>Disposition du Terrain :</strong><br>
+                Les participants se tiennent à une distance déterminée de la cible. La cible est placée à une position centrale et visible par tous les joueurs.
+                <br><br>
+                <strong>Déroulement du Jeu :</strong><br>
+                Chaque joueur de l'équipe de chole se relaie pour lancer les objets vers la cible tandis que l'équipe de déchole doit frapper la balle pour l'empêcher d'atteindre la cible au tour par tour.
+                Les points sont attribués en fonction de la proximité de l'objet par rapport à la cible. Par exemple, un lancer direct dans la cible pourrait valoir plus de points qu'un lancer proche.
+                <br><br>
+                <strong>Pénalités :</strong><br>
+                En cas de comportement antisportif ou de non-respect des règles, des pénalités peuvent être appliquées.
+                <br><br>
+                <strong>Fin du Jeu :</strong><br>
+                Le jeu se termine lorsque chaque joueur ou équipe a effectué son nombre de lancers prévu ou si la cible a été atteinte.
+                <br><br>
+                <strong>Fair-Play :</strong><br>
+                Le jeu de cholage est avant tout un moment de convivialité. Les participants sont encouragés à respecter les règles, à faire preuve de fair-play et à s'amuser.
+                <br><br>
+                Bon Cholage !
+            </p>
+        </div>
+    </div>
+</div>
+</div>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Ajoutez d'autres éléments Bootstrap ou personnalisez selon vos besoins -->
+
+<script src="../View/bootstrap-5.3.1-dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- Ajout de jQuery pour le défilement en douceur -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Fonction pour initialiser la carte
+    function initMap() {
+        // Centre la carte sur Quiévrechain
+        let latitude = 50.3965;
+        let longitude = 3.6695;
+        let map = L.map('map').setView([latitude, longitude], 13);
+
+
+        // Ajoute une couche de carte OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+    }
+
+    // Appelle la fonction d'initialisation de la carte lorsque la page est chargée
+    window.onload = function () {
+        initMap();
+    };
+</script>
+<script>
+    $(document).ready(function(){
+        $(".scroll-down").click(function() {
+            $('html, body').animate({
+                scrollTop: $("#rules-section").offset().top
+            }, 1000);
+        });
+    });
+</script>
 
 </body>
 </html>

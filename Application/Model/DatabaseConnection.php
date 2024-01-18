@@ -13,6 +13,10 @@ class Database extends PDO
     private static $instance;
 
     public static function getInstance(){
+        /*fonction qui permet de récupéré une instance de la base de donnée et si elle n'existe pas, la créer.
+         *
+         * return l'instance de la connexion à la base de donnée.
+         * */
         if (is_null(self::$instance)){
             try {
                 self::$instance = new Database('mysql:host=localhost;dbname=SAE_S3; charset=utf8', "root", 'root');
@@ -24,6 +28,7 @@ class Database extends PDO
     }
    
     private function __construct ($host,$user,$password){
+        /*Constructeur de la connexion*/
         parent::__construct($host,$user,$password);
     }
 }

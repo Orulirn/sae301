@@ -24,7 +24,9 @@ function setTab($dataAllUsers)
             echo'<td><button id="'; echo $row["idUser"]; echo '" type="button" class="btn btn-white border-black border-1" name="revAdmin">Révoquer Administrateur</button></td>';
         }
         echo'<td><button id="'; echo $row["idUser"] ; echo '" type="button" class="btn btn-white border-black border-1" name="editButton">Edit</button></td>';
-        echo'</tr>';  
+
+        echo'<td><button id="'; echo $row["idUser"] ; echo '" type="button" class="btn btn-white border-black border-1" name="deleteButton">Supprimer</button></td>';
+        echo'</tr>';
     }
 }
 ?>
@@ -36,6 +38,7 @@ function setTab($dataAllUsers)
     <title>Tableau d'Utilisateurs</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
 
         /* Ajoutez du CSS pour styliser votre tableau */
@@ -81,6 +84,8 @@ function setTab($dataAllUsers)
             <th>Cotisation</th>
             <th>Admin</th>
             <th>Edit</th>
+            <th>Supprimer</th>
+
         </tr>
         <?php setTab($dataAllUsers); ?>
     </table>

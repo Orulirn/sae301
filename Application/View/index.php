@@ -3,60 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../View/bootstrap-5.3.1-dist/css/bootstrap.css">
+    <link rel="icon" href="../View/files/logoSite.png">
 </head>
 <body>
 <?php
-
+session_start();
+include_once("../Model/User.php");
+include_once("../Model/UsersModel.php");
 if(isset($_POST['Deconnexion'])){
-    unset($_SESSION['user']);
+    session_unset();
+    session_destroy();
+    header("Location: ../Controller/HomePageController.php");
 }
+
+$userLoggedIn = isset($_SESSION['user_id']);
+$res = GetRole($_SESSION['user_id'])[0]["idRole"];
+echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_encode($res)."</p>");
 
 ?>
 
 <nav class="navbar navbar-expand-sm bg-dark-subtle">
     <div class="container-fluid p-xl-2">
-        <ul class="navbar-nav">
+        <ul id="navbar" class="navbar-nav">
             <li class="nav-item">
-                <a class="navbar-brand " id="backHome" href="#" >
+                <a class="navbar-brand " id="backHome" href="../Controller/HomePageController.php" >
                     <img src="../View/files/logoSite.png" width="200px" height="133px">
                 </a>
             </li>
-            <li class="nav-item mt-auto">
-                <a class="nav-link fw-bold" href="#">Les règles</a>
-            </li>
+            <?php if ($userLoggedIn): ?>
             <li class="nav-item mt-auto">
                 <a class="nav-link fw-bold" href="#">Les matchs</a>
             </li>
             <li class="nav-item mt-auto">
-                <a class="nav-link fw-bold" href="#">Mon profil</a>
+                <a class="nav-link fw-bold" href="../Controller/teamsController.php">Équipes</a>
             </li>
-            <li class="nav-item mt-auto">
-                <a class="nav-link fw-bold" href="#">Créer une équipe</a>
-            </li>
+            <?php endif; ?>
         </ul>
     </div>
     <div class="p-xl-4">
         <ul class="navbar-nav">
-            <li class="nav-item p-xl-1">
-                <button name="Connexion" id="Connexion" class="btn btn-primary" >Connexion</button>
-            </li>
-            <li class="nav-item p-xl-1">
-                <form method="post">
-                    <input name="Deconnexion" type="submit" value="Deconnexion" class="btn btn-danger">
-                </form>
-            </li>
+            <?php if (!$userLoggedIn): ?>
+                <!-- Afficher seulement si l'utilisateur n'est pas connecté -->
+                <li class="nav-item p-xl-1">
+                    <button name="Connexion" id="Connexion" class="btn btn-primary" >Connexion</button>
+                </li>
+                <li class="nav-item p-xl-1">
+                    <!-- Bouton ou lien vers la page d'inscription -->
+                    <a href="../Controller/RegisterController.php" class="btn btn-primary">Inscription</a>
+                </li>
+            <?php else: ?>
+                <!-- Afficher seulement si l'utilisateur est connecté -->
+                <li class="nav-item p-xl-1">
+                    <form method="post">
+                        <input name="Deconnexion" type="submit" value="Deconnexion" class="btn btn-danger">
+                    </form>
+                </li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>
 <script>
+    
+    
+    
     const backHome = document.querySelector("#backHome");
     const goConn = document.querySelector("#Connexion")
     backHome.addEventListener("click",function (){
         window.location.replace("../Controller/HomepageController.php");
     });
-    goConn.addEventListener("click", function (){
-        window.location.replace("../Controller/ConnectionController.php");
-    });
+    <?php if (!$userLoggedIn): ?>
+        goConn.addEventListener("click", function (){
+            window.location.replace("../Controller/ConnectionController.php");
+        });
+    <?php endif; ?>
+
     function toggleButtonState() {
         
         console.log(document.getElementById('userState').outerText);
@@ -72,6 +92,46 @@ if(isset($_POST['Deconnexion'])){
             goConn.classList.remove("btn-secondary");
             goConn.classList.add("btn-primary");
         }
+    }
+    let role = document.querySelector("#currentRole").innerText;
+    const navbar = document.querySelector("#navbar");
+    role = JSON.parse(role);
+    if (role == 0 ){
+        let li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        let menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Vérifier Joueur";
+        menu.setAttribute("href","../Controller/valideInscriptionController.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
+
+        li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Modifier Joueur";
+        menu.setAttribute("href","../Controller/ModificationController.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
+
+        li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Gérer Contribution";
+        menu.setAttribute("href","../Controller/ContributionConsultController.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
+
+        li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Gérer Parcours";
+        menu.setAttribute("href","../Controller/ParcoursController.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
     }
 </script>
 

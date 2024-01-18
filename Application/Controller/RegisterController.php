@@ -10,7 +10,10 @@ session_start();
 include ("../Model/UsersModel.php");
 include ("../Model/VerifyModel.php");
 include ("../Model/User.php");
-echo ("<p id='userRole' visibility='hidden' style= 'display :none;'>".json_encode($_SESSION["user"]->getRole())."</p>");
+include ("../View/index.php");
+
+$role = GetRole($_SESSION['user_id'])[0]["idRole"];
+echo ("<p id='userRole' visibility='hidden' style= 'display :none;'>".json_encode($role)."</p>");
 //tmp
 //Permet d'envoyer les informations du formulaire d'inscription à la bdd
 //Si l'utilisateur connecté est un admin il peut créer n'importe quel utilisateur

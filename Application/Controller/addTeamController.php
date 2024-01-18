@@ -5,14 +5,13 @@
  * @author MASSE Océane <oceane.masse2@uphf.fr>
  * @author LERMIGEAUX Nathan <nathan.lermigeaux@uphf.fr>
  */
+session_start();
 
 
-
-include_once ('../Model/DatabaseConnection.php');
-include ("../View/index.php");
-include ("../Model/teams_table.php"); 
-include("../Model/team_player_table.php");
-include("../Model/UsersModel.php");
+include_once ("../View/index.php");
+include_once ("../Model/teams_table.php"); 
+include_once("../Model/team_player_table.php");
+include_once("../Model/UsersModel.php");
 
 if(isset($_POST['submit'])) {
     addTeam($_POST['teamName']);
