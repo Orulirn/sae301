@@ -7,9 +7,9 @@
  */
 
 session_start();
-include ("../View/index.php");
-include ("../Model/User.php");
-include ("../Model/team_tournament_table.php");
+include_once ("../View/index.php");
+include_once ("../Model/User.php");
+include_once ("../Model/team_tournament_table.php");
 
 $dataTeams = selectAllTeamTournament();
 echo ("<p id='dataTeams' visibility='hidden' style= 'display :none;'>".json_encode($dataTeams)."</p>");

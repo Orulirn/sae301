@@ -6,13 +6,13 @@
 * @author LERMIGEAUX Nathan <nathan.lermigeaux@uphf.fr>
 */
 session_start();
-include ("../View/index.php");
-include ("../Model/User.php");
-include ("../Model/UsersModel.php");
-include ("../Model/teams_table.php");
-include ("../Model/team_player_table.php");
-include ("../Model/team_tournament_table.php");
-include ("../Model/tournament_table.php");
+include_once ("../View/index.php");
+include_once ("../Model/User.php");
+include_once ("../Model/UsersModel.php");
+include_once ("../Model/teams_table.php");
+include_once ("../Model/team_player_table.php");
+include_once ("../Model/team_tournament_table.php");
+include_once ("../Model/tournament_table.php");
 
 $dataTeam = selectTeamWithCaptain($_SESSION["user"]->GetIdUser());
 $dataAllTeams = selectAllTeams();

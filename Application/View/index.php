@@ -141,6 +141,15 @@ echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_en
         menu.setAttribute("href","../Controller/ControllerMailing.php");
         li.appendChild(menu);
         navbar.appendChild(li);
+
+        li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Mail";
+        menu.setAttribute("href","../Controller/ControllerMailing.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
     }
 </script>
 
