@@ -5,6 +5,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <meta charset="UTF-8">
     <title>Tableau des Rencontres</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -23,17 +24,57 @@ session_start();
         </tr>
         </thead>
         <tbody>
+        <?php $cpt = 0 ?>
         <?php foreach ($matchesTable as $match): ?>
             <tr>
                 <td><?= htmlspecialchars($match['equipe_un_nom']); ?></td>
                 <td><?= htmlspecialchars($match['equipe_deux_nom']); ?></td>
                 <td><?= htmlspecialchars($match['parcours_nom']); ?></td>
-                <td><?= $match['equipeChole'] ?? "N/A"; ?></td>
-                <td><?= $match['resultatRencontre'] ?? "N/A"; ?></td>
+                <td>
+                    <?php if (isset($match['equipeChole'])): ?>
+                        <?= htmlspecialchars($match['equipeChole']); ?>
+                    <?php else: ?>
+                        <form action="../Controller/EstimationController.php" method="post">
+                            <input type="hidden" name="idRencontre" value="<?= htmlspecialchars($match['idRencontre']); ?>">
+                            <button type="submit">N/A</button>
+                        </form>
+                    <?php endif; ?>
+                </td>
+                <td>
+                    <?php if (isset($match['resultatRencontre'])): ?>
+                        <?= htmlspecialchars($match['resultatRencontre']); ?>
+                    <?php else: ?>
+                        <form action="../Controller/resultatController.php" method="post">
+                            <input type="hidden" name="idRencontre" value="<?= htmlspecialchars($match['idRencontre']); ?>">
+                            <button type="submit">N/A</button>
+                        </form>
+                    <?php endif; ?>
+                </td>
             </tr>
         <?php endforeach; ?>
+
+
+
         </tbody>
     </table>
 </div>
+<script>
+    function redirectTo(id,page){
+        if (page === "resultatRencontre"){
+            <?php $_SESSION['idRencontre'] = $matchesTable["<script>id</script>"]["idRencontre"]?>
+            window.location.href = "../Controller/resultatController.php"
+        }else if (page === "equipeChole"){
+            <?php $_SESSION['idRencontre']?> = id;
+            window.location.href = "../Controller/EstimationController.php"
+        }else {
+            Swal.fire({
+                title: 'Erreur!',
+                text: 'Il y a eu une erreur de redirection.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+    }
+</script>
 </body>
 </html>

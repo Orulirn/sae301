@@ -6,7 +6,7 @@ function getMatchesTable($idTournoi) {
     $db = Database::getInstance();
 
     try {
-        $sql = "SELECT e1.name AS equipe_un_nom, e2.name AS equipe_deux_nom, p.nom AS parcours_nom, r.equipeChole, r.resultatRencontre
+        $sql = "SELECT r.idRencontre, e1.name AS equipe_un_nom, e2.name AS equipe_deux_nom, p.nom AS parcours_nom, r.equipeChole, r.resultatRencontre
                 FROM rencontre r
                 INNER JOIN teams e1 ON r.idTeamUn = e1.idTeam
                 INNER JOIN teams e2 ON r.idTeamDeux = e2.idTeam

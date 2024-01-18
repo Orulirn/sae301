@@ -82,4 +82,20 @@ function getRencontreById($idRencontre){
         return null;
     }
 }
+function getTeamNameById($teamId) {
+    global $db;
+
+    try {
+        $sql = "SELECT name FROM teams WHERE idTeam = :teamId";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':teamId', $teamId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ? $result['name'] : null;
+    } catch (PDOException $e) {
+        echo "Erreur lors de la récupération du nom de l'équipe : " . $e->getMessage();
+        return null;
+    }
+}
 

@@ -7,10 +7,13 @@ include '../View/index.php';
 include_once '../Model/DatabaseConnection.php';
 
 $userId = $_SESSION['user_id'];
-
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idRencontre'])) {
+    $_SESSION['idRencontre'] = $_POST['idRencontre'];
+}
+$idRencontre = $_SESSION['idRencontre'];
 $equipe1Id = 48;
 $equipe2Id = 49;
-$idRencontre = 1;
+
 
 $commence = selectEquipeChole($idRencontre)["equipeChole"];
 

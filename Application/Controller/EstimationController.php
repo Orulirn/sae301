@@ -5,6 +5,9 @@ include '../Model/EstimationModel.php';
 include '../Model/ParcoursModel.php';
 include '../View/index.php';
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idRencontre'])) {
+    $_SESSION['idRencontre'] = $_POST['idRencontre'];
+}
 
 $userId = $_SESSION['user_id'];
 
@@ -32,8 +35,8 @@ $pari1 = selectPari($idRencontre)["pariE1"];
 $pari2 = selectPari($idRencontre)["pariE2"];
 
 
-$equipe1 = "ZEHEF";
-$equipe2 = "DAHAK";
+$equipe1 = getTeamNameById($equipe1Id);
+$equipe2 = getTeamNameById($equipe2Id);
 $capitaineE1 = selectCaptainIdWithTeam($equipe1Id)["idUser"];
 $capitaineE2 = selectCaptainIdWithTeam($equipe2Id)["idUser"];
 
