@@ -14,7 +14,7 @@ include_once ("../Model/team_player_table.php");
 include_once ("../Model/team_tournament_table.php");
 include_once ("../Model/tournament_table.php");
 
-$dataTeam = selectTeamWithCaptain($_SESSION["user"]->GetIdUser());
+$dataTeam = selectTeamWithCaptain($_SESSION['user_id']);
 $dataAllTeams = selectAllTeams();
 $dataTournament = selectAllTournaments();
 $dataNumberTeamMates = selectNumberOfTeamMates($dataTeam["idTeam"]);
@@ -27,19 +27,19 @@ echo ("<p id='dataCotisation' visibility='hidden' style= 'display :none;'>".json
 echo ("<p id='dataNumberTeamMates' visibility='hidden' style= 'display :none;'>".json_encode($dataNumberTeamMates)."</p>");
 
 
-switch ($_SESSION["user"]->getRole()){
+switch (GetRole($_SESSION['user_id'])[0]["idRole"]){
     case "0":
         require "../View/addTeamTournamentViewAdmin.html";
         break;
 case "1":
-    if (selectCaptainWithUser($_SESSION["user"]->GetIdUser())[0]["isCaptain"]){
+    if (selectCaptainWithUser(GetRole($_SESSION['user_id'])[0]["idRole"])[0]["isCaptain"]){
         require "../View/addTeamTournamentView.html";
         }
         break;
     };
 
 if(isset($_POST['submit'])) {
-    switch ($_SESSION["user"]->getRole()){
+    switch (GetRole($_SESSION['user_id'])[0]["idRole"]){
     case "1":
         if (selectCaptainWithUser($_SESSION["user"]->GetIdUser())[0]["isCaptain"]){
             addTeamToTournament($dataTeam["idTeam"],$_POST['selectTournament']);

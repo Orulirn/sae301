@@ -7,15 +7,15 @@
  */
 session_start();
 
-include ("../View/index.php");
-include ("../Model/team_player_table.php");
-include ("../Model/User.php");
-include ("../Model/teams_table.php");
+include_once ("../View/index.php");
+include_once ("../Model/team_player_table.php");
+include_once ("../Model/User.php");
+include_once ("../Model/teams_table.php");
 
-$team = selectTeamWithCaptain($_SESSION["user"]->GetIdUser());
-$data = selectAllPlayersWithIdTeam($team["idTeam"]);
-$dataCaptain = selectCaptainNameWithTeam($team["idTeam"]);
-$dataNameTeam = selectNameWithIdTeam($team["idTeam"]);
+$team = selectTeamWithCaptain($_SESSION["user_id"]);
+$data = selectAllPlayersWithIdTeam($team);
+$dataCaptain = selectCaptainNameWithTeam($team);
+$dataNameTeam = selectNameWithIdTeam($team);
 
 echo ("<p id='dataPlayer' visibility='hidden' style= 'display :none;'>".json_encode($data)."</p>");
 echo ("<p id='dataCaptain' visibility='hidden' style= 'display :none;'>".json_encode($dataCaptain)."</p>");
