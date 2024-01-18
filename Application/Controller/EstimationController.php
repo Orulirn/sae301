@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-//TODO Utiliser la session pour l'id rencontre
-
 include '../Model/EstimationModel.php';
 include '../Model/ParcoursModel.php';
 include '../View/index.php';
@@ -10,10 +8,13 @@ include '../View/index.php';
 
 $userId = $_SESSION['user_id'];
 
-$data = selectParticularParcours("parcoursTest");
-$equipe1Id = 48;
-$equipe2Id = 49;
-$idRencontre = 1;
+$idRencontre = $_SESSION['idRencontre'];
+$rencontre = getRencontreById($idRencontre);
+$nomParcours = selectParcoursById($rencontre['idParcours']);
+$data = selectParticularParcours($nomParcours['nom']);
+$equipe1Id = $rencontre['idTeamUn'];
+$equipe2Id = $rencontre['idTeamDeux'];
+
 
 $commence = selectEquipeChole($idRencontre)["equipeChole"];
 
