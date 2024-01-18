@@ -60,6 +60,8 @@ class ControllerMatch
                 $newEquipe2 = $_POST['equipe2'];
                 $newParcours = $_POST['parcours'];
 
+                $newResultatRencontre = $_POST['resultatRencontre'] ?? null;
+
                 if ($idRencontreToUpdate !== null) {
                     $rowCount = $this->matchModel->updateRencontre($idRencontreToUpdate, $newEquipe1, $newEquipe2, $newParcours);
 
@@ -77,26 +79,15 @@ class ControllerMatch
                 } else {
                     $this->matchModel->generateMatches($idTournoi);
                     $_SESSION['success'] = "Rencontres générées avec succès!";
+                    $_SESSION['matchesTable'] = $this->matchModel->getMatchesForDisplay($idTournoi);
                     header("Location: " . $_SERVER['PHP_SELF']);
                     exit();
                 }
-            } elseif (isset($_POST["action"]) && $_POST["action"] == "generateMatchesTable") {
-                $_SESSION['matchesTable'] = $this->matchModel->getMatchesTable($idTournoi);
-                $_SESSION['success'] = "Tableau des rencontres généré avec succès!";
-                header("Location: " . $_SERVER['PHP_SELF']);
-                exit();
-            }elseif (isset($_POST["action"]) && $_POST["action"] == "deleteMatchesTable") {
-                // Supprime les données du tableau des rencontres de la session
-                unset($_SESSION['matchesTable']);
-
-                // Redirige vers la même page pour actualiser
-                header("Location: " . $_SERVER['PHP_SELF']);
-                exit();
             }
         }
 
         $matches = $this->matchModel->getMatchesForDisplay($idTournoi);
-        include('../View/MatchViewAdmin.php');
+        include_once('../View/MatchViewAdmin.php');
     }
 }
 

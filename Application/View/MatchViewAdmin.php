@@ -12,6 +12,7 @@
 <body>
 <?php
 // Affichage des messages SweetAlert pour les erreurs ou les succès
+session_start();
 if (isset($_SESSION['error'])) {
     echo "<script type='text/javascript'>
                 Swal.fire({
@@ -64,7 +65,7 @@ if (isset($_SESSION['success'])) {
             <label for="parcours">Choisir un parcours :</label>
             <select name="parcours" id="parcours" class="form-control">
                 <?php foreach ($parcoursDisponibles as $parcours): ?>
-                    <option value="<?= $parcours['id']; ?>"><?= $parcours['name']; ?></option>
+                    <option value="<?= $parcours['id']; ?>"><?= $parcours['nom']; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -80,18 +81,6 @@ if (isset($_SESSION['success'])) {
             <input type="hidden" name="action" value="generateRandomMatches">
             <button type="submit" class="btn btn-success">Générer Rencontres Aléatoires</button>
         </form>
-
-        <!-- Bouton pour visualiser le tableau des rencontres -->
-        <?php if (isset($_SESSION['matchesTable']) && count($_SESSION['matchesTable']) > 0): ?>
-            <a href="../View/MatchViewPlayer.php" class="btn btn-primary ml-2">Voir le Tableau des Rencontres</a>
-        <?php endif; ?>
-        <!-- Bouton pour supprimer le tableau des rencontres -->
-        <?php if (isset($_SESSION['matchesTable']) && count($_SESSION['matchesTable']) > 0): ?>
-            <form action="../Controller/ControllerMatch.php" method="POST" class="ml-2">
-                <input type="hidden" name="action" value="deleteMatchesTable">
-                <button type="submit" class="btn btn-danger">Supprimer le Tableau des Rencontres</button>
-            </form>
-        <?php endif; ?>
     </div>
 
 
@@ -102,6 +91,8 @@ if (isset($_SESSION['success'])) {
             <th scope="col">Equipe 1</th>
             <th scope="col">Equipe 2</th>
             <th scope="col">Parcours</th>
+            <th scope="col">EquipeChole</th>
+            <th scope="col">Résultat Rencontre</th>
             <th scope="col">Actions</th>
         </tr>
         </thead>
@@ -111,10 +102,12 @@ if (isset($_SESSION['success'])) {
                 <td><?= $match['equipe_un_nom']; ?></td>
                 <td><?= $match['equipe_deux_nom']; ?></td>
                 <td><?= $match['parcours_nom']; ?></td>
+                <td><?= $match['equipeChole'] ?? "N/A"; ?></td>
+                <td><?= $match['resultatRencontre'] ?? "N/A"; ?></td>
                 <td>
                     <form action="../Controller/ControllerMatch.php" method="POST">
                         <input type="hidden" name="action" value="deleteRencontre">
-                        <input type="hidden" name="idRencontre" value="<?= $match['idRencontre']; ?>"> <!-- Ajout de l'ID de la rencontre -->
+                        <input type="hidden" name="idRencontre" value="<?= $match['idRencontre']; ?>">
                         <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
                     </form>
                     <form action="../Controller/ControllerMatch.php" method="POST" style="display: inline-block;">
@@ -128,10 +121,6 @@ if (isset($_SESSION['success'])) {
         </tbody>
 
     </table>
-    <form action="../Controller/ControllerMatch.php" method="POST">
-        <input type="hidden" name="action" value="generateMatchesTable">
-        <button type="submit" class="btn btn-success">Générer le Tableau des Rencontres</button>
-    </form>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
