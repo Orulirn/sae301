@@ -1,4 +1,4 @@
-function createAddFieldsForTeamMates(quantity, container, usersData=[],userTeam=[], selects){
+function createAddFieldsForTeamMates(quantity, container, usersData=[],userTeam=[]){
     // Supprimer tous les sélecteurs existants à l'intérieur de maDiv
     while (container.children.length>quantity) {
         if (container.lastChild.lastChild.checked == true){
