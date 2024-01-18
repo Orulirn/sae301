@@ -17,7 +17,7 @@ class User {
     private $role,$firstname,$lastname,$log;
 //function to connect to the site
     
-    public function __construct(){
+    private function __construct(){
         $this->firstname='john';
         $this->lastname='doe';
         $this->role=1;
@@ -46,7 +46,7 @@ class User {
         $sql=$db->prepare("SELECT password FROM users WHERE  mail = :userMail ");
         $sql->execute(array('userMail'=>$mail));
         $res=$sql->fetch();
-        
+
         if (password_verify($password, $res[0])){
             $sql=$db->prepare("SELECT idRole,firstname,lastname,users.idUser FROM Users JOIN users_role ON users.idUser = users_role.idUser WHERE mail= :userMail ORDER BY idRole ASC LIMIT 1 ");
             $sql->execute(array('userMail'=>$mail));
@@ -55,10 +55,8 @@ class User {
             $this->firstname=$res[1];
             $this->lastname=$res[2];
             $this->log=true;
-            $this->idRole=$res[3];
             $this->idUser=$res["idUser"];
             return true;
-            header("Location : ../Controller/HomePageController.php");
         }
         return false;
     }

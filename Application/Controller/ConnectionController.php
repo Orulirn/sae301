@@ -10,7 +10,7 @@ if (isset($_POST['connect'])) {
     $email = $_POST['mail'];
     $password = $_POST['pwd'];
 
-    $user = new User();
+    $user = User::GetInstance();
     if ($user->login($email, $password)) {
         $_SESSION['user_id'] = $user->getIdUser();
         header("Location: ../Controller/HomePageController.php");
