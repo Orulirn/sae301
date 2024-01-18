@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../Model/UsersModel.php";
 include "../View/index.php";
 include "../View/ContributionConsultView.html";

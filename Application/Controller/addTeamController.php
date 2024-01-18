@@ -5,7 +5,7 @@
  * @author MASSE Océane <oceane.masse2@uphf.fr>
  * @author LERMIGEAUX Nathan <nathan.lermigeaux@uphf.fr>
  */
-
+session_start();
 
 
 include_once ('../Model/DatabaseConnection.php');

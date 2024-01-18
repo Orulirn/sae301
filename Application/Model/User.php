@@ -20,16 +20,14 @@ class User {
     private function __construct(){
         $this->firstname='john';
         $this->lastname='doe';
-        $this->role=0;
+        $this->role=1;
         $this->log=false;
         $this->idUser=null;
     }
 
     public static function GetInstance(){
         if(is_null(self::$instance)){
-
             self::$instance=new User();
-
         }
         return self::$instance;
     }
@@ -46,20 +44,19 @@ class User {
         $sql=$db->prepare("SELECT password FROM users WHERE  mail = :userMail ");
         $sql->execute(array('userMail'=>$mail));
         $res=$sql->fetch();
-        
+
         if (password_verify($password, $res[0])){
-            $sql=$db->prepare("SELECT idRole,firstname,lastname,users.idUser FROM Users JOIN users_role ON users.idUser = users_role.idUser WHERE mail= :userMail");
+            $sql=$db->prepare("SELECT idRole,firstname,lastname,users.idUser FROM Users JOIN users_role ON users.idUser = users_role.idUser WHERE mail= :userMail ORDER BY idRole ASC LIMIT 1 ");
             $sql->execute(array('userMail'=>$mail));
             $res=$sql->fetch();
-            var_dump($res);
             $this->role=$res[0];
             $this->firstname=$res[1];
             $this->lastname=$res[2];
             $this->log=true;
-            $this->idRole=$res[3];
-            header('Location: ../Controller/HomepageController.php');
+            $this->idUser=$res["idUser"];
+            return true;
         }
-        
+        return false;
     }
 
     public function ResetUser(){
@@ -86,6 +83,4 @@ class User {
         return $this->role;
     }
 }
-session_start();
-$_SESSION['user'] = User::GetInstance();
 ?>

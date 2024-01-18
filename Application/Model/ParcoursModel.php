@@ -67,7 +67,7 @@ function selectParticularParcours($name){
 
 function deleteParcoursByID($idParcours){
     global $db;
-    try {
+    try{
         $db->beginTransaction();
 
         // Supprimer les marqueurs
@@ -75,11 +75,11 @@ function deleteParcoursByID($idParcours){
         $sqlDeleteMarkers->execute(array("idParcours" => $idParcours));
 
         // Supprimer le parcours
-        $sqlDeleteParcours = $db->prepare("DELETE CASCADE FROM parcours WHERE id = :idParcours");
-        $sqlDeleteParcours->execute(array("idParcours" => $idParcours));
-
+        $sql = $db->prepare("DELETE FROM parcours WHERE id = :idParcours");
+        $sql->execute(array("idParcours"=> $idParcours));
         $db->commit();
-    } catch (PDOException $e) {
+    }
+    catch( PDOException $e) {
         $db->rollBack();
         echo($e->getMessage());
     }
@@ -110,25 +110,5 @@ function insertParcours($name,$city,$nbDecholeMax,$markerData){
         }
 
         $No += 1;
-    }
-}
-
-function deleteParcoursByID($idParcours){
-    global $db;
-    try{
-        $db->beginTransaction();
-
-        // Supprimer les marqueurs
-        $sqlDeleteMarkers = $db->prepare("DELETE FROM marker WHERE idParcours = :idParcours");
-        $sqlDeleteMarkers->execute(array("idParcours" => $idParcours));
-
-        // Supprimer le parcours
-        $sql = $db->prepare("DELETE FROM parcours WHERE id = :idParcours");
-        $sql->execute(array("idParcours"=> $idParcours));
-        $db->commit();
-    }
-    catch( PDOException $e) {
-        $db->rollBack();
-        $_SESSION['error'] = "Une donnée saisie est erronée";
     }
 }
