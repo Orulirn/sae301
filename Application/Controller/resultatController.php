@@ -8,12 +8,15 @@ include_once '../Model/DatabaseConnection.php';
 
 
 $userId = $_SESSION['user_id'];
-$idRencontre = $_SESSION['idRencontre'];
-$rencontre = getRencontreById($idRencontre);
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idRencontre'])) {
     $_SESSION['idRencontre'] = $_POST['idRencontre'];
+
 }
+
 $idRencontre = $_SESSION['idRencontre'];
+
+$rencontre = getRencontreById($idRencontre);
+
 $equipe1Id = $rencontre['idTeamUn'];
 $equipe2Id = $rencontre['idTeamDeux'];
 
