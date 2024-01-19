@@ -85,6 +85,10 @@ include_once "index.php";
 
     $(document).ready(function() {
         updateCoursesList();
+
+        $('#tournamentId').on('change', function() {
+            updateCoursesList();
+        });
     });
 </script>
 
