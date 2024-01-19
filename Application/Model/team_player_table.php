@@ -46,10 +46,11 @@ function selectAllPlayerWithTeam(){
 
 function selectCaptainWithUser($player){
     global $db;
-    $sql = $db->prepare("SELECT isCaptain FROM team_player WHERE player = :player");
+    $sql = $db->prepare("SELECT isCaptain FROM team_player WHERE player = :player ORDER BY isCaptain DESC LIMIT 1");
     $sql->execute(array('player' => $player));
-    return $sql->fetchAll(PDO::FETCH_ASSOC);
+    return $sql->fetch(PDO::FETCH_ASSOC);
 }
+
 
 function selectTeamWithCaptain($player){
     global $db;

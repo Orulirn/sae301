@@ -28,14 +28,13 @@
 
         dataTeam = document.getElementById("dataTeam").outerText;
         dataTeam = JSON.parse(dataTeam);
-        console.log(dataTeam);
-        dataTeam.forEach(team => {
+        
             let labelTeamName = document.createElement('label');
             labelTeamName.name="idTeam";
-            labelTeamName.value=team['idTeam'];
-            labelTeamName.innerText = team['idTeam'];
+            labelTeamName.value=dataTeam['idTeam'];
+            labelTeamName.innerText = dataTeam['idTeam'];
             myDiv.appendChild(labelTeamName);
-        });
+    
         const myDivTournament = document.getElementById('idTournoi');
         
         let div = document.createElement('div');
