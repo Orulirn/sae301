@@ -24,7 +24,7 @@ function getMatchesTable($idTournoi) {
     }
 }
 
-function getTeamNameById($teamId) {
+function getTeamNameById($teamId){
     global $db;
 
     try {
