@@ -13,6 +13,13 @@ function insertPariE1($pari,$idRencontre){
     $sql->execute(array('pari' => $pari, 'idRencontre' => $idRencontre));
 }
 
+function selectMaxDechole($idRencontre){
+    global $db;
+    $sql = $db->prepare("SELECT nbDecholeMax FROM rencontre JOIN parcours on rencontre.idParcours = parcours.id WHERE idRencontre = :idRencontre");
+    $sql->execute(array('idRencontre' => $idRencontre));
+    return $sql->fetch(PDO::FETCH_ASSOC);
+}
+
 function insertPariE2($pari,$idRencontre){
     global $db;
     $sql = $db->prepare("UPDATE estimation set pariE2 = :pari WHERE idRencontre = :idRencontre");

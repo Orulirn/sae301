@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH MODIF TOURNOI">
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH ADD TEAM TO TOURNOI ADMIN">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Controller/addTeamTournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/addTeamTournamentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/EstimationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/EstimationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/EstimationModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/EstimationModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/View/EstimationView.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/EstimationView.php" afterDir="false" />
     </list>
     <list id="77cb4bc5-39c5-46ec-b912-6c82722e91bd" name="Changes by leoha" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -216,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705656802971</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="PATCH ADD TEAM TO TOURNOI ADMIN">
+      <option name="closed" value="true" />
+      <created>1705657472694</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1705657472694</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,6 +260,7 @@
     <MESSAGE value="Modification d'un tournoi fin" />
     <MESSAGE value="Estimation est désormais modulable attention pour l'instant c'est pas possible sur toute les page donc l'id reste set dans un premier temps ligne 8" />
     <MESSAGE value="PATCH MODIF TOURNOI" />
-    <option name="LAST_COMMIT_MESSAGE" value="PATCH MODIF TOURNOI" />
+    <MESSAGE value="PATCH ADD TEAM TO TOURNOI ADMIN" />
+    <option name="LAST_COMMIT_MESSAGE" value="PATCH ADD TEAM TO TOURNOI ADMIN" />
   </component>
 </project>

@@ -9,6 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idRencontre'])) {
     $_SESSION['idRencontre'] = $_POST['idRencontre'];
 }
 
+
+
 $userId = $_SESSION['user_id'];
 
 $idRencontre = $_SESSION['idRencontre'];
@@ -17,7 +19,7 @@ $nomParcours = selectParcoursById($rencontre['idParcours']);
 $data = selectParticularParcours($nomParcours['nom']);
 $equipe1Id = $rencontre['idTeamUn'];
 $equipe2Id = $rencontre['idTeamDeux'];
-
+$nbmax = selectMaxDechole($idRencontre)["nbDecholeMax"];
 
 $commence = selectEquipeChole($idRencontre)["equipeChole"];
 
