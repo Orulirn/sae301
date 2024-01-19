@@ -127,17 +127,17 @@
         }
         
         function formIsValid(){
-            //if (regexPassword.test(password.value) && regexMail.test(mail.value)){
+            if (regexPassword.test(password.value) && regexMail.test(mail.value)){
                 if (verify.value === password.value && formCompleted()){
                 register.removeAttribute('disabled');
                 }
                 else{
                     register.setAttribute('disabled',true);
                 }
-            /*}
+            }
             else{
                 register.setAttribute('disabled',true);
-            }*/
+            }
         }
 
         if (JSON.parse(document.getElementById('userRole').outerText)!=="0"){
