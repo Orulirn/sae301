@@ -21,7 +21,7 @@ $dataNumberTeamMates = selectNumberOfTeamMates($dataTeam["idTeam"]);
 $dataCotisation = GetCotisationForTeam($dataTeam["idTeam"]);
 
 echo ("<p id='dataTeam' visibility='hidden' style= 'display :none;'>".json_encode($dataTeam)."</p>");
-echo ("<p id='dataAllTeams' visibility='hidden' style= 'display :none;'>".json_encode(array($dataAllTeams))."</p>");
+echo ("<p id='dataAllTeams' visibility='hidden' style= 'display :none;'>".json_encode($dataAllTeams)."</p>");
 echo ("<p id='dataTournament' visibility='hidden' style= 'display :none;'>".json_encode($dataTournament)."</p>");
 echo ("<p id='dataCotisation' visibility='hidden' style= 'display :none;'>".json_encode($dataCotisation)."</p>");
 echo ("<p id='dataNumberTeamMates' visibility='hidden' style= 'display :none;'>".json_encode($dataNumberTeamMates)."</p>");

@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Estimation est désormais modulable attention pour l'instant c'est pas possible sur toute les page donc l'id reste set dans un premier temps ligne 8">
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH MODIF TOURNOI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Controller/EstimationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/EstimationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Controller/resultatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/resultatController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/ModelMatchPlayer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/ModelMatchPlayer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/View/MatchViewPlayer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/MatchViewPlayer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/addTeamTournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/addTeamTournamentController.php" afterDir="false" />
     </list>
-    <list id="77cb4bc5-39c5-46ec-b912-6c82722e91bd" name="Changes by leoha" comment="">
-      <change beforePath="$PROJECT_DIR$/Application/Controller/EstimationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/EstimationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/EstimationModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/EstimationModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/View/MatchViewPlayer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/MatchViewPlayer.php" afterDir="false" />
-    </list>
+    <list id="77cb4bc5-39c5-46ec-b912-6c82722e91bd" name="Changes by leoha" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,27 +31,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/Application/Controller/EstimationController.php">
-      <ranges>
-        <range start1="2" end1="3" start2="2" end2="4" changelist="99f85847-024d-4a90-8bf2-168521488443" />
-        <range start1="7" end1="7" start2="8" end2="12" changelist="77cb4bc5-39c5-46ec-b912-6c82722e91bd" />
-        <range start1="11" end1="11" start2="16" end2="18" changelist="99f85847-024d-4a90-8bf2-168521488443" />
-        <range start1="12" end1="12" start2="19" end2="21" changelist="99f85847-024d-4a90-8bf2-168521488443" />
-        <range start1="13" end1="13" start2="22" end2="23" changelist="99f85847-024d-4a90-8bf2-168521488443" />
-        <range start1="34" end1="36" start2="44" end2="46" changelist="77cb4bc5-39c5-46ec-b912-6c82722e91bd" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/Application/View/MatchViewPlayer.php">
-      <ranges>
-        <range start1="7" end1="7" start2="7" end2="8" changelist="77cb4bc5-39c5-46ec-b912-6c82722e91bd" />
-        <range start1="25" end1="25" start2="26" end2="27" changelist="99f85847-024d-4a90-8bf2-168521488443" />
-        <range start1="30" end1="32" start2="32" end2="52" changelist="99f85847-024d-4a90-8bf2-168521488443" />
-        <range start1="34" end1="34" start2="54" end2="57" changelist="99f85847-024d-4a90-8bf2-168521488443" />
-        <range start1="37" end1="37" start2="60" end2="78" changelist="99f85847-024d-4a90-8bf2-168521488443" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -236,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705612249914</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="PATCH MODIF TOURNOI">
+      <option name="closed" value="true" />
+      <created>1705656802971</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1705656802971</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,6 +249,7 @@
     <MESSAGE value="Modification d'un tournoi" />
     <MESSAGE value="Modification d'un tournoi fin" />
     <MESSAGE value="Estimation est désormais modulable attention pour l'instant c'est pas possible sur toute les page donc l'id reste set dans un premier temps ligne 8" />
-    <option name="LAST_COMMIT_MESSAGE" value="Estimation est désormais modulable attention pour l'instant c'est pas possible sur toute les page donc l'id reste set dans un premier temps ligne 8" />
+    <MESSAGE value="PATCH MODIF TOURNOI" />
+    <option name="LAST_COMMIT_MESSAGE" value="PATCH MODIF TOURNOI" />
   </component>
 </project>
