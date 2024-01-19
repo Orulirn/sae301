@@ -32,7 +32,7 @@ echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_en
             </li>
             <?php if ($userLoggedIn): ?>
             <li class="nav-item mt-auto">
-                <a class="nav-link fw-bold" href="../Controller/ControllerMatchPlayer">Les matchs</a>
+                <a class="nav-link fw-bold" href="../Controller/ControllerMatchPlayer.php">Les matchs</a>
             </li>
             <li class="nav-item mt-auto">
                 <a class="nav-link fw-bold" href="../Controller/teamsController.php">Équipes</a>

@@ -32,7 +32,8 @@ session_start();
                 <td><?= htmlspecialchars($match['parcours_nom']); ?></td>
                 <td>
                     <?php if (isset($match['equipeChole'])): ?>
-                        <?= htmlspecialchars($match['equipeChole']); ?>
+                    <?php $name = getTeamNameById($match['equipeChole']); ?>
+                        <?= htmlspecialchars($name); ?>
                     <?php else: ?>
                         <form action="../Controller/EstimationController.php" method="post">
                             <input type="hidden" name="idRencontre" value="<?= htmlspecialchars($match['idRencontre']); ?>">
@@ -42,7 +43,8 @@ session_start();
                 </td>
                 <td>
                     <?php if (isset($match['resultatRencontre'])): ?>
-                        <?= htmlspecialchars($match['resultatRencontre']); ?>
+                        <?php $name = getTeamNameById($match['resultatRencontre']); ?>
+                        <?= htmlspecialchars($name); ?>
                     <?php else: ?>
                         <form action="../Controller/resultatController.php" method="post">
                             <input type="hidden" name="idRencontre" value="<?= htmlspecialchars($match['idRencontre']); ?>">
