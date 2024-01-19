@@ -9,6 +9,7 @@ session_start();
 include_once ("../View/index.php");
 include_once ("../Model/User.php");
 include_once ("../Model/UsersModel.php");
+include_once ("../Model/addTeamTournamentController.php");
 include_once ("../Model/teams_table.php");
 include_once ("../Model/team_player_table.php");
 include_once ("../Model/team_tournament_table.php");
@@ -42,7 +43,7 @@ if(isset($_POST['submit'])) {
     switch (GetRole($_SESSION['user_id'])[0]["idRole"]){
     case "1":
         if (selectCaptainWithUser($_SESSION['user_id'])[0]["isCaptain"]){
-            addTeamToTournament($dataTeam["idTeam"],$_POST['selectTournament']);
+            addTeamToTournamentPlayer($dataTeam["idTeam"],$_POST['selectTournament']);
         }
         break;
     case "0":
