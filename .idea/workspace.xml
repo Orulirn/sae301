@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="Modification d'un tournoi fin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Controller/tournamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/tournamentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/tournamentModificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/tournamentModificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/View/tournamentModificationView.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/tournamentModificationView.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +53,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;creerUnTournoi&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/leoha/PhpstormProjects/sae301&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -87,6 +88,7 @@
       <workItem from="1703239959226" duration="1616000" />
       <workItem from="1704970533745" duration="1805000" />
       <workItem from="1705388793333" duration="9895000" />
+      <workItem from="1705655320745" duration="1145000" />
     </task>
     <task id="LOCAL-00001" summary="Installation bootstrap">
       <option name="closed" value="true" />
@@ -224,6 +226,7 @@
     <MESSAGE value="PATCH Créer tournoi avec parcours" />
     <MESSAGE value="Modification d'un tournoi" />
     <MESSAGE value="Modification d'un tournoi fin" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modification d'un tournoi fin" />
+    <MESSAGE value="PATCH REGISTER" />
+    <option name="LAST_COMMIT_MESSAGE" value="PATCH REGISTER" />
   </component>
 </project>

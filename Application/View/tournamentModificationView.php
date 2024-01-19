@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include "index.php";
+include_once "index.php";
 ?>
 
 
@@ -52,7 +52,7 @@ include "index.php";
             <label for="courseId" class="form-label">Parcours:</label>
             <select name="courseId" id="courseId" class="form-select">
                 <?php foreach ($courses as $course): ?>
-                    <option value="<?= $course['id'] ?>"><?= $course['name'] ?></option>
+                    <option value="<?= $course['id'] ?>"><?= $course['nom'] ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -75,7 +75,7 @@ include "index.php";
                 for (var i = 0; i < courses.length; i++) {
                     html += '<div class="form-check">';
                     html += '<input class="form-check-input" type="checkbox" name="courseIds[]" value="' + courses[i].id + '">';
-                    html += '<label class="form-check-label">' + courses[i].name + '</label>';
+                    html += '<label class="form-check-label">' + courses[i].nom + '</label>';
                     html += '</div>';
                 }
                 $('#tournamentCourses').html(html);
