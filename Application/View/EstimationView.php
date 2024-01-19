@@ -130,14 +130,14 @@ session_start();
     <div class="row">
         <div class="col-md-6 text-center">
             <form action="../Controller/EstimationController.php" method="post">
-                <input type="number" id="input1" name="input1" max="20" required minlength="1" maxlength="2" />
+                <input type="number" id="input1" name="input1"  required max="<?php $nbmax ?>" minlength="1" maxlength="2" />
                 <button class="btn btn-primary" type="submit" name="submit_button1" id="button1">Parier</button>
             </form>
         </div>
         <div class="col-md-6 text-center">
 
             <form action="../Controller/EstimationController.php" method="post">
-                <input type="number" id="input2" name="input2" max="20" required minlength="1" maxlength="2"/>
+                <input type="number" id="input2" name="input2"  required max="<?php $nbmax ?>" minlength="1" maxlength="2"/>
                 <button class="btn btn-primary" type="submit" name="submit_button2" id="button2">Parier</button>
             </form>
         </div>
