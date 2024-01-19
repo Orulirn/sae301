@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="homepage finale">
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH ADD TEAM TO TOURNOI ADMIN">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/View/HomepageView.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/HomepageView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/ModelMatchPlayer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/ModelMatchPlayer.php" afterDir="false" />
     </list>
-    <list id="77cb4bc5-39c5-46ec-b912-6c82722e91bd" name="Changes by leoha" comment="" />
+    <list id="77cb4bc5-39c5-46ec-b912-6c82722e91bd" name="Changes by leoha" comment="">
+      <change beforePath="$PROJECT_DIR$/Application/Controller/ControllerMatchPlayer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/ControllerMatchPlayer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Model/ModelMatchPlayer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/ModelMatchPlayer.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +34,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/Application/Model/ModelMatchPlayer.php">
+      <ranges>
+        <range start1="26" end1="27" start2="26" end2="27" changelist="99f85847-024d-4a90-8bf2-168521488443" />
+        <range start1="42" end1="42" start2="42" end2="64" changelist="77cb4bc5-39c5-46ec-b912-6c82722e91bd" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -259,7 +270,6 @@
     <MESSAGE value="Estimation est désormais modulable attention pour l'instant c'est pas possible sur toute les page donc l'id reste set dans un premier temps ligne 8" />
     <MESSAGE value="PATCH MODIF TOURNOI" />
     <MESSAGE value="PATCH ADD TEAM TO TOURNOI ADMIN" />
-    <MESSAGE value="homepage finale" />
-    <option name="LAST_COMMIT_MESSAGE" value="homepage finale" />
+    <option name="LAST_COMMIT_MESSAGE" value="PATCH ADD TEAM TO TOURNOI ADMIN" />
   </component>
 </project>

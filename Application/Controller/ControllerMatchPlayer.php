@@ -3,7 +3,7 @@
 include_once "../View/index.php";
 include_once '../Model/ModelMatchPlayer.php';
 
-$idTournoi = 1; // Obtenez l'ID du tournoi selon la logique de votre application
+$idTournoi =  getTournamentIdByCurrentYear();
 $matchesTable = getMatchesTable($idTournoi);
 
-include('../View/MatchViewPlayer.php'); // Dirige vers la vue
+include('../View/MatchViewPlayer.php');
