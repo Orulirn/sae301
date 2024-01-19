@@ -25,13 +25,19 @@ class ModelMatch
                 $equipe1 = $equipes[$i];
                 $equipe2 = $equipes[$i + 1];
 
-                // Insérez la rencontre dans la base de données
-                $this->insertRencontre($idTournoi, $equipe1['idTeam'], $equipe2['idTeam'], $parcours['id']);
+                // Insérez des des données dans rencontre et estimation
+                $idRencontre = $this->insertRencontre($idTournoi, $equipe1['idTeam'], $equipe2['idTeam'], $parcours['id']);
+                if ($idRencontre) {
+                    $this->insertIntoEstimation($idRencontre);
+                }
             }
-
-            // Si une équipe était en repos, réinsérez-la
+            // Si une équipe était en repos, la réinsérer
             if ($equipeRepos !== null) {
-                $this->insertRencontre($idTournoi, $equipeRepos['idTeam'], null, $parcours['id']);
+                $idRencontre =  $this->insertRencontre($idTournoi, $equipeRepos['idTeam'], null, $parcours['id']);
+
+                if($idRencontre){
+                    $this>$this->insertIntoEstimation($idRencontre);
+                }
             }
         }
 
@@ -310,6 +316,44 @@ class ModelMatch
         } catch (PDOException $e) {
             echo "Erreur lors de la récupération des matches : " . $e->getMessage();
             return [];
+        }
+    }
+    public function getTournamentIdByCurrentYear()
+    {
+        $currentYear = date("Y");
+        $db = Database::getInstance();
+
+        try {
+            $sql = "SELECT idTournoi FROM tournoi WHERE year = " . $currentYear;
+            $stmt = $db->prepare($sql);
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result) {
+                return $result['idTournoi'];
+            } else {
+                $_SESSION['error'] = "Il n'y a pas de tournoi cette année";
+                return null;
+            }
+        } catch (PDOException $e) {
+            echo "Erreur lors de la récupération de l'ID du tournoi : " . $e->getMessage();
+            return null;
+        }
+    }
+    public function insertIntoEstimation($idRencontre)
+    {
+        $db = Database::getInstance();
+
+        try {
+            $sql = "INSERT INTO estimation (idRencontre, pariE1, pariE2) VALUES (:idRencontre, NULL, NULL)";
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':idRencontre', $idRencontre);
+            $stmt->execute();
+
+            return true;
+        } catch (PDOException $e) {
+            echo "Erreur lors de l'insertion dans estimation : " . $e->getMessage();
+            return false;
         }
     }
 }

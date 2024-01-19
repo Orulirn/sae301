@@ -15,8 +15,7 @@ class ControllerMatch
     {
         session_start();
 
-        $idTournoi = 1;
-
+        $idTournoi = $this->matchModel->getTournamentIdByCurrentYear();
         $equipes = $this->matchModel->getEquipesFromDatabase();
         $parcoursDisponibles = $this->matchModel->getAvailableParcours();
 

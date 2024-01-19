@@ -6,7 +6,7 @@ function getMatchesTable($idTournoi) {
     $db = Database::getInstance();
 
     try {
-        $sql = "SELECT e1.name AS equipe_un_nom, e2.name AS equipe_deux_nom, p.nom AS parcours_nom, r.equipeChole, r.resultatRencontre
+        $sql = "SELECT r.idRencontre, e1.name AS equipe_un_nom, e2.name AS equipe_deux_nom, p.nom AS parcours_nom, r.equipeChole, r.resultatRencontre
                 FROM rencontre r
                 INNER JOIN teams e1 ON r.idTeamUn = e1.idTeam
                 INNER JOIN teams e2 ON r.idTeamDeux = e2.idTeam
@@ -21,5 +21,22 @@ function getMatchesTable($idTournoi) {
     } catch (PDOException $e) {
         echo "Erreur lors de la récupération des matches : " . $e->getMessage();
         return [];
+    }
+}
+
+function getTeamNameById($teamId) {
+    global $db;
+
+    try {
+        $sql = "SELECT name FROM teams WHERE idTeam = :teamId";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':teamId', $teamId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ? $result['name'] : null;
+    } catch (PDOException $e) {
+        echo "Erreur lors de la récupération du nom de l'équipe : " . $e->getMessage();
+        return null;
     }
 }
