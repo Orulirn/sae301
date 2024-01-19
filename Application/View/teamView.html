@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../View/bootstrap-5.3.1-dist/css/bootstrap.css">
     <title>Page d'équipe</title>
+    <style>
+
+        /* Ajoutez du CSS pour styliser votre tableau */
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+
+        tr{
+            border: solid 2px #000000;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            
+        }
+    </style>
 </head>
 <body>
-    <h1>Voici les équipes</h1>
+    <h1 class="container-fluid p-3 bg-white text-dark text-center">Voici les équipes</h1>
+    <div class="container py-3 d-flex justify-content-center">
     <table id="teams" class="table table-bordered">
         <thead>
             <tr>
@@ -15,10 +34,11 @@
             </tr>
           </thead>
     </table>
+</div>
     
-    <div>
-          <button id="button">Ajouter une équipe</button>
-          <button id="modification">Modifier une équipe</button>
+    <div class="col text-center">
+          <button id="button" class="btn btn-primary btn-lg">Ajouter une équipe</button>
+          <button id="modification" class="btn btn-primary btn-lg">Modifier une équipe</button>
     </div>
     <script>
         let x = document.getElementById("button");
