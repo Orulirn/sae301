@@ -43,8 +43,7 @@ session_start();
                 </td>
                 <td>
                     <?php if (isset($match['resultatRencontre'])): ?>
-                        <?php $name = getTeamNameById($match['resultatRencontre']); ?>
-                        <?= htmlspecialchars($name); ?>
+                        <?= $match['resultatRencontre']; ?>
                     <?php else: ?>
                         <form action="../Controller/resultatController.php" method="post">
                             <input type="hidden" name="idRencontre" value="<?= htmlspecialchars($match['idRencontre']); ?>">
