@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,14 +18,22 @@
             location.reload();
         }
 
+        let userId;
+
         document.addEventListener('DOMContentLoaded', (event) => {
-            const userId = <?= $userId ?>; // ID de l'utilisateur connecté
+            <?php if ($userId != null):?>
+                userId = <?= $userId ?>; // ID de l'utilisateur connecté
+            <?php else:?>
+                userId = null;
+            <?php endif;?>
+
 
             const input1 = document.getElementById('input1');
             const input2 = document.getElementById('input2');
             const button1 = document.getElementById('button1');
             const button2 = document.getElementById('button2');
 
+            console.log(userId);
 
             if (userId === <?= $capitaineE1 ?>) {
                 input1.disabled = false;
@@ -118,14 +130,14 @@
     <div class="row">
         <div class="col-md-6 text-center">
             <form action="../Controller/EstimationController.php" method="post">
-                <input type="number" id="input1" name="input1" max="20" required minlength="1" maxlength="2" />
+                <input type="number" id="input1" name="input1"  required max="<?php $nbmax ?>" minlength="1" maxlength="2" />
                 <button class="btn btn-primary" type="submit" name="submit_button1" id="button1">Parier</button>
             </form>
         </div>
         <div class="col-md-6 text-center">
 
             <form action="../Controller/EstimationController.php" method="post">
-                <input type="number" id="input2" name="input2" max="20" required minlength="1" maxlength="2"/>
+                <input type="number" id="input2" name="input2"  required max="<?php $nbmax ?>" minlength="1" maxlength="2"/>
                 <button class="btn btn-primary" type="submit" name="submit_button2" id="button2">Parier</button>
             </form>
         </div>

@@ -32,10 +32,7 @@ echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_en
             </li>
             <?php if ($userLoggedIn): ?>
             <li class="nav-item mt-auto">
-                <a class="nav-link fw-bold" href="#">Les matchs</a>
-            </li>
-            <li class="nav-item mt-auto">
-                <a class="nav-link fw-bold" href="../Controller/teamsController.php">Équipes</a>
+                <a class="nav-link fw-bold" href="../Controller/ControllerMatchPlayer.php">Les matchs</a>
             </li>
             <?php endif; ?>
         </ul>
@@ -43,20 +40,20 @@ echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_en
     <div class="p-xl-4">
         <ul class="navbar-nav">
             <?php if (!$userLoggedIn): ?>
-                <!-- Afficher seulement si l'utilisateur n'est pas connecté -->
                 <li class="nav-item p-xl-1">
                     <button name="Connexion" id="Connexion" class="btn btn-primary" >Connexion</button>
                 </li>
                 <li class="nav-item p-xl-1">
-                    <!-- Bouton ou lien vers la page d'inscription -->
                     <a href="../Controller/RegisterController.php" class="btn btn-primary">Inscription</a>
                 </li>
             <?php else: ?>
-                <!-- Afficher seulement si l'utilisateur est connecté -->
                 <li class="nav-item p-xl-1">
                     <form method="post">
                         <input name="Deconnexion" type="submit" value="Deconnexion" class="btn btn-danger">
                     </form>
+                </li>
+                <li class="nav-item p-xl-1">
+                    <a href="../Controller/RegisterController.php" class="btn btn-primary">Inscription</a>
                 </li>
             <?php endif; ?>
         </ul>
@@ -130,6 +127,89 @@ echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_en
         menu.setAttribute("class","nav-link fw-bold");
         menu.innerText = "Gérer Parcours";
         menu.setAttribute("href","../Controller/ParcoursController.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
+
+        li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Mail";
+        menu.setAttribute("href","../Controller/ControllerMailing.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
+        
+        li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Modifier les rencontres";
+        menu.setAttribute("href","../Controller/ControllerMatch.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
+
+        li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Les Equipes";
+        menu.setAttribute("href","../Controller/teamsController.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
+
+        li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Créer Tournoi";
+        menu.setAttribute("href","../Controller/tournamentController.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
+        
+        li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Modifier Tournoi";
+        menu.setAttribute("href","../Controller/tournamentModificationController.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
+
+        li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Modifier Equipes sur les tournois";
+        menu.setAttribute("href","../Controller/verifyTeamTournamentController.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
+        
+        li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Inscrire équipe au tournoi";
+        menu.setAttribute("href","../Controller/addTeamTournamentController.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
+    }
+    else if (role == "1"){
+        
+        li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Mes Equipes";
+        menu.setAttribute("href","../Controller/myTeamController.php");
+        li.appendChild(menu);
+        navbar.appendChild(li);
+
+        li = document.createElement("li");
+        li.setAttribute("class","nav-item mt-auto");
+        menu = document.createElement("a");
+        menu.setAttribute("class","nav-link fw-bold");
+        menu.innerText = "Inscrire équipe au tournoi";
+        menu.setAttribute("href","../Controller/addTeamTournamentController.php");
         li.appendChild(menu);
         navbar.appendChild(li);
     }

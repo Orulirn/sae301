@@ -13,6 +13,13 @@ function insertPariE1($pari,$idRencontre){
     $sql->execute(array('pari' => $pari, 'idRencontre' => $idRencontre));
 }
 
+function selectMaxDechole($idRencontre){
+    global $db;
+    $sql = $db->prepare("SELECT nbDecholeMax FROM rencontre JOIN parcours on rencontre.idParcours = parcours.id WHERE idRencontre = :idRencontre");
+    $sql->execute(array('idRencontre' => $idRencontre));
+    return $sql->fetch(PDO::FETCH_ASSOC);
+}
+
 function insertPariE2($pari,$idRencontre){
     global $db;
     $sql = $db->prepare("UPDATE estimation set pariE2 = :pari WHERE idRencontre = :idRencontre");
@@ -39,6 +46,13 @@ function selectEquipeChole($idRencontre){
     return $sql->fetch();
 }
 
+function selectParcoursById($idParcours){
+    global $db;
+    $sql = $db->prepare("SELECT nom FROM parcours WHERE id = :idParcours");
+    $sql->execute(array('idParcours' => $idParcours));
+    return $sql->fetch();
+}
+
 function checkDechole($idRencontre){
     $pari = selectPari($idRencontre);
     if ($pari["pariE1"]>$pari["pariE2"]){
@@ -57,3 +71,38 @@ function equipeDechole($idRencontre){
     insertEquipeChole($chole,$idRencontre);
     return $chole;
 }
+
+function getRencontreById($idRencontre){
+    global $db;
+
+    try {
+        $sql = "SELECT * FROM rencontre WHERE idRencontre = :idRencontre";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':idRencontre', $idRencontre);
+        $stmt->execute();
+
+        $rencontre = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $rencontre;
+    } catch (PDOException $e) {
+        echo "Erreur lors de la récupération de la rencontre : " . $e->getMessage();
+        return null;
+    }
+}
+function getTeamNameById($teamId) {
+    global $db;
+
+    try {
+        $sql = "SELECT name FROM teams WHERE idTeam = :teamId";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':teamId', $teamId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ? $result['name'] : null;
+    } catch (PDOException $e) {
+        echo "Erreur lors de la récupération du nom de l'équipe : " . $e->getMessage();
+        return null;
+    }
+}
+

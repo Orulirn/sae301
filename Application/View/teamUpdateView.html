@@ -11,7 +11,7 @@
         <div class="border p-5 rounded bg-light">
                         <div>
                             <h1>Modifier une équipe</h1>
-                            <form method="POST">
+                            <form method="POST" id="formulaire">
                                 <label for="teamName">Ecrire le nom de l'équipe à modifier :</label><br>
                                 <div id="team"></div><br>
                                 <h2>Ajouter des joueurs</h2>
@@ -19,7 +19,7 @@
                                 <input type="number" id="nbMember" name="nbMember" min="3" max="5" value="3" ><br>
                                 <label>Choissez les joueurs pour cette équipe :</label><br>
                                 <div id="member"></div>
-                                <input type="submit" name="submit" class="btn btn-primary" value="Modifier">
+                                <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Modifier" disabled>
                             </form>
                             <button class="btn btn-primary" id="button">Retour</button>
         </div></div></div>
@@ -106,15 +106,22 @@ function createAddFieldsForTeamMates(container, dataUser, dataTeam){
                 select.appendChild(option);
             }
             else{
-                option.innerText = 'rien';
+                option.innerText = 'Selectionnez';
                 option.value = null;
                 select.appendChild(option);
             }
             dataUser.forEach(item => {
                 option = document.createElement('option');
+                if (item.idUser != dataTeam[i]['idUser']){
                 option.innerText = item.lastname + '\t' + item.firstname;
                 option.value = item.idUser;
+                }
+                else {
+                    option.innerText = 'Selectionnez';
+                    option.value = null;
+                }
                 select.appendChild(option);
+
             });
             div.appendChild(select);
             
@@ -130,14 +137,27 @@ function createAddFieldsForTeamMates(container, dataUser, dataTeam){
             
             div.setAttribute('class',"mb-2");
             container.appendChild(div);
+            console.log(i);
         }
 } 
 
-function modifyTeam(quantity, container, dataUser, dataTeam){
+function modifyTeam(quantity, container, usersData=[], userTeam=[]){
     // Supprimer tous les sélecteurs existants à l'intérieur de maDiv
         while (container.children.length>quantity) {
-            container.removeChild(maDiv.lastChild);
+            if (container.lastChild.lastChild.checked == true){
+            container.removeChild(container.lastChild);
+            container.lastChild.lastChild.checked = true;
+            }else{
+                container.removeChild(container.lastChild);
         }
+        }
+
+        if(quantity < userTeam.length){
+            quantity=userTeam.length;
+        }
+
+        let options = makeAnOptionsList(usersData);
+
         for (let i = container.children.length; i < quantity; i++) {
             let div = document.createElement('div');
             let select = document.createElement('select');
@@ -146,20 +166,25 @@ function modifyTeam(quantity, container, dataUser, dataTeam){
             
             let option = document.createElement('option');
             if(i<dataTeam.length){
-                option.innerText = dataTeam[i].lastname + '\t' + dataTeam[i].firstname;
-                option.value = dataTeam[i].idUser;
+                option.innerText = userTeam[i].lastname + '\t' + userTeam[i].firstname;
+                option.value = userTeam[i].idUser;
                 select.appendChild(option);
             }
             else{
-                option.innerText = 'rien';
+                option.innerText = 'Selectionnez';
                 option.value = null;
                 select.appendChild(option);
             }
-            dataUser.forEach(item => {
-                option = document.createElement('option');
-                option.innerText = item.lastname + '\t' + item.firstname;
-                option.value = item.idUser;
-                select.appendChild(option);
+            options.forEach(option => {
+                if(option.value != userTeam[i]){
+                select.appendChild(option.cloneNode(true));
+                }
+                else{
+                    let opt = document.createElement('option');
+                    opt.innerText = 'Selectionnez';
+                    opt.value = null;
+                    select.appendChild(opt);
+                }
             });
             
             div.appendChild(select);
@@ -175,6 +200,47 @@ function modifyTeam(quantity, container, dataUser, dataTeam){
             container.appendChild(div);
         }
 }
+
+function makeAnOptionsList(usersData){
+    let options = [] ;
+    usersData.forEach( userData => {
+        let option = document.createElement('option');
+        option.innerText = userData.lastname + '\t' + userData.firstname;
+        option.value = userData.idUser;
+        options.push(option);
+    });
+    return options;
+}
+
+function selectsIsValid(selects) {
+    for (let i = 0; i < selects.length; i++) {
+        if (selects[i].value != "null") {
+            for (let j = i+1; j < selects.length; j++) {
+                if (selects[i].value == selects[j].value || selects[j].value == "null") {
+                    return false;
+                }
+            }
+        } else { 
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+const submit = document.getElementById('submit');
+const form = document.getElementById('formulaire');
+form.addEventListener('change', function (){
+    let selects = maDiv.querySelectorAll('select');
+    let valid = selectsIsValid(selects);
+    
+    if(valid == true){
+        submit.removeAttribute('disabled');
+    }
+    else {
+        submit.setAttribute('disabled',true);
+    }
+    })
 
 let nb = document.getElementById("nbMember");
 nb.addEventListener('input', function() {
