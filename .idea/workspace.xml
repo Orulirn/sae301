@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH ADD TEAM TO TOURNOI ADMIN">
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="homepage finale">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Controller/EstimationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/EstimationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/EstimationModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/EstimationModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/View/EstimationView.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/EstimationView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/View/HomepageView.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/HomepageView.html" afterDir="false" />
     </list>
     <list id="77cb4bc5-39c5-46ec-b912-6c82722e91bd" name="Changes by leoha" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -261,6 +259,7 @@
     <MESSAGE value="Estimation est désormais modulable attention pour l'instant c'est pas possible sur toute les page donc l'id reste set dans un premier temps ligne 8" />
     <MESSAGE value="PATCH MODIF TOURNOI" />
     <MESSAGE value="PATCH ADD TEAM TO TOURNOI ADMIN" />
-    <option name="LAST_COMMIT_MESSAGE" value="PATCH ADD TEAM TO TOURNOI ADMIN" />
+    <MESSAGE value="homepage finale" />
+    <option name="LAST_COMMIT_MESSAGE" value="homepage finale" />
   </component>
 </project>
