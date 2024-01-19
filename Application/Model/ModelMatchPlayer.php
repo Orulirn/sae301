@@ -40,3 +40,24 @@ function getTeamNameById($teamId){
         return null;
     }
 }
+function getTournamentIdByCurrentYear(){
+    $currentYear = date("Y");
+    $db = Database::getInstance();
+
+    try {
+        $sql = "SELECT idTournoi FROM tournoi WHERE year = " . $currentYear;
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result) {
+            return $result['idTournoi'];
+        } else {
+            $_SESSION['error'] = "Il n'y a pas de tournoi cette année";
+            return null;
+        }
+    } catch (PDOException $e) {
+        echo "Erreur lors de la récupération de l'ID du tournoi : " . $e->getMessage();
+        return null;
+    }
+}
