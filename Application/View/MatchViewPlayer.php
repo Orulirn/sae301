@@ -45,10 +45,17 @@ session_start();
                     <?php if (isset($match['resultatRencontre'])): ?>
                         <?= $match['resultatRencontre']; ?>
                     <?php else: ?>
-                        <form action="../Controller/resultatController.php" method="post">
-                            <input type="hidden" name="idRencontre" value="<?= htmlspecialchars($match['idRencontre']); ?>">
-                            <button type="submit">N/A</button>
-                        </form>
+                        <?php if (isset($match['equipeChole'])):?>
+                            <form action="../Controller/resultatController.php" method="post">
+                                <input type="hidden" name="idRencontre" value="<?= htmlspecialchars($match['idRencontre']); ?>">
+                                <button type="submit">N/A</button>
+                            </form>
+                        <?php else: ?>
+                            <form action="../Controller/resultatController.php" method="post">
+                                <input type="hidden" name="idRencontre" value="<?= htmlspecialchars($match['idRencontre']); ?>">
+                                <button type="submit" disabled>N/A</button>
+                            </form>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </td>
             </tr>

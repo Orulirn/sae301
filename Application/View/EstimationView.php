@@ -55,7 +55,7 @@ session_start();
 
             <?php if ($pari1 != null):?>
                 const pariE1 = <?= $pari1 ?>;
-                input1.value = pariE1;
+                //input1.value = pariE1;
                 input1.disabled = true;
                 button1.disabled = true;
                 <?php if ($pari2 == null):?>
@@ -68,7 +68,7 @@ session_start();
 
             <?php if ($pari2 != null):?>
                 const pariE2 = <?= $pari2 ?>;
-                input2.value = pariE2;
+                //input2.value = pariE2;
                 input2.disabled = true;
                 button2.disabled = true;
                 <?php if ($pari1 == null):?>
