@@ -14,6 +14,23 @@ include_once ("../Model/team_tournament_table.php");
 $dataTeams = selectAllTeamTournament();
 echo ("<p id='dataTeams' visibility='hidden' style= 'display :none;'>".json_encode($dataTeams)."</p>");
 
+function getTeamName($idTeam){
+    $teamName = selectTeamNameById($idTeam);
+    return $teamName;
+}
+
+function getTeamNameForTournament($dataTeams){
+    $listName = array();
+    foreach ($dataTeams as $team){
+        $name = getTeamName($team['idTeam']);
+        array_push($listName,$name);
+    }
+    return $listName;
+}
+
+$listName = getTeamNameForTournament($dataTeams);
+echo ("<p id='teamName' visibility='hidden' style= 'display :none;'>".json_encode($listName)."</p>");
+
 if(isset($_POST['submit'])) {
     $i=$_POST['submit'];
     switch (GetRole($_SESSION['user_id'])[0]["idRole"]){
@@ -23,4 +40,12 @@ if(isset($_POST['submit'])) {
     } 
 }
 
-include "../View/verifyTeamTournamentView.html";
+function getTournamentName(){
+    return selectTournamentName();
+}
+
+$tournamentName = getTournamentName();
+echo ("<p id='tournamentName' visibility='hidden' style= 'display :none;'>".json_encode($tournamentName)."</p>");
+
+
+include "../View/verifyTeamTournamentView.php";

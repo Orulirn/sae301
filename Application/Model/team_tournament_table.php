@@ -48,4 +48,17 @@
     }
  }
 
- 
+function selectTeamNameById($id){
+     global $db;
+     $sql = $db->prepare("SELECT name FROM `teams` WHERE idTeam = :idTeam");
+     $sql->execute(array('idTeam'=>$id));
+     return $sql->fetch();
+}
+
+function selectTournamentName(){
+     global $db;
+
+     $sql = $db->prepare("SELECT * FROM tournoi");
+     $sql->execute();
+     return $sql->fetchAll();
+}
