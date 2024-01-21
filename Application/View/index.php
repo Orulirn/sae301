@@ -34,6 +34,9 @@ echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_en
             <li class="nav-item mt-auto">
                 <a class="nav-link fw-bold" href="../Controller/ControllerMatchPlayer.php">Les matchs</a>
             </li>
+            <li class="nav-item mt-auto">
+                <a class="nav-link fw-bold" href="../Controller/ModificationController.php">Modifier Joueur</a>
+            </li>
             <?php endif; ?>
         </ul>
     </div>
@@ -100,15 +103,6 @@ echo ("<p id='currentRole' visibility='hidden' style= 'display :none;'>".json_en
         menu.setAttribute("class","nav-link fw-bold");
         menu.innerText = "Vérifier Joueur";
         menu.setAttribute("href","../Controller/valideInscriptionController.php");
-        li.appendChild(menu);
-        navbar.appendChild(li);
-
-        li = document.createElement("li");
-        li.setAttribute("class","nav-item mt-auto");
-        menu = document.createElement("a");
-        menu.setAttribute("class","nav-link fw-bold");
-        menu.innerText = "Modifier Joueur";
-        menu.setAttribute("href","../Controller/ModificationController.php");
         li.appendChild(menu);
         navbar.appendChild(li);
 

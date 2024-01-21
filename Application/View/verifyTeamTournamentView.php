@@ -6,6 +6,7 @@
     <title>Page d'équipe inscrite</title>
     <style>
 
+
         table {
             width: 50%;
             border-collapse: collapse;
@@ -46,6 +47,13 @@
         let i = 0;
         dataTeams = document.getElementById("dataTeams").outerText;
         dataTeams = JSON.parse(dataTeams);
+
+        teamName = document.getElementById("teamName").outerText;
+        teamName = JSON.parse(teamName);
+
+        tournamentNames = document.getElementById("tournamentName").outerText;
+        tournamentNames = JSON.parse(tournamentNames);
+
         dataTeams.forEach(team => {
             let body = document.createElement("tbody");
             let section = document.createElement("tr");
@@ -55,10 +63,15 @@
             let cell4 = document.createElement("input");
             let cell5 = document.createElement("input");
 
-            cell1.innerText= team.idTeam; 
+            cell1.innerText= teamName[i]['name'];
             cell4.setAttribute("name","team"+i);
             cell4.setAttribute("value",team.idTeam);
-            cell2.innerText = team.idTournoi;
+            tournamentNames.forEach(tournamentName => {
+                if (team.idTournoi === tournamentName.idTournoi){
+                    name = tournamentName.place +" " + tournamentName.year;
+                }
+            })
+            cell2.innerText = name;
             cell5.setAttribute("name","tournoi"+i);
             cell5.setAttribute("value",team.idTournoi);
             cell3.setAttribute("type","submit");
