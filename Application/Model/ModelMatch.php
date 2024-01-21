@@ -7,38 +7,50 @@ class ModelMatch
     {
         $parcoursDisponibles = $this->getAvailableParcours();
         $equipes = $this->getEquipesFromDatabase();
+        $nombreParcours = count($parcoursDisponibles);
+        $nombreEquipes = count($equipes);
+
+        $matches = [];
+        $equipesUtilisees = [];
 
         foreach ($parcoursDisponibles as $parcours) {
-            // Vérifiez si le nombre d'équipes est impair
-            $equipeRepos = null;
-            if (count($equipes) % 2 != 0) {
-                // Sélectionnez une équipe pour le repos (par exemple, la dernière équipe)
-                $equipeRepos = array_pop($equipes);
-            }
+            $matchesParcours = [];
+            $equipesUtiliseesParcours = [];
 
-            // Mélangez la liste des équipes
-            shuffle($equipes);
+            $toutesLesPaires = $this->genererToutesLesPaires($equipes);
 
-            // Répartissez les équipes dans le parcours actuel
-            $nombreEquipes = count($equipes);
-            for ($i = 0; $i < $nombreEquipes; $i += 2) {
-                $equipe1 = $equipes[$i];
-                $equipe2 = $equipes[$i + 1];
+            while (count($toutesLesPaires) > 0) {
+                $index = rand(0, count($toutesLesPaires) - 1);
+                $paire = $toutesLesPaires[$index];
 
-                // Insérez des des données dans rencontre et estimation
-                $idRencontre = $this->insertRencontre($idTournoi, $equipe1['idTeam'], $equipe2['idTeam'], $parcours['id']);
-                if ($idRencontre) {
-                    $this->insertIntoEstimation($idRencontre);
+                if (!in_array($paire[0], $equipesUtiliseesParcours) && !in_array($paire[1], $equipesUtiliseesParcours) && !$this->equipesSeSontDejaAffrontees($matchesParcours, $paire) && !$this->equipesSeSontDejaAffronteesSurParcours($matches, $paire)) {
+                    // Insérez des données dans rencontre et estimation
+                    $idRencontre = $this->insertRencontre($idTournoi, $paire[0]['idTeam'], $paire[1]['idTeam'], $parcours['id']);
+                    if ($idRencontre) {
+                        $this->insertIntoEstimation($idRencontre);
+                        $matchesParcours[] = $paire;
+                        $equipesUtiliseesParcours[] = $paire[0];
+                        $equipesUtiliseesParcours[] = $paire[1];
+                        unset($toutesLesPaires[$index]); // Enlever la paire de la liste
+                        $toutesLesPaires = array_values($toutesLesPaires); // Réorganiser les index du tableau
+                    }
+
+                    // Vérifier si toutes les équipes ont joué au moins une fois
+                    if (count(array_unique($equipesUtiliseesParcours)) == $nombreEquipes) {
+                        break;
+                    }
+                } else {
+                    unset($toutesLesPaires[$index]); // Enlever la paire de la liste
+                    $toutesLesPaires = array_values($toutesLesPaires); // Réorganiser les index du tableau
+                }
+
+                // Gérer le nombre impair d'équipes
+                if (count($equipesUtiliseesParcours) == $nombreEquipes - 1 && count(array_unique($equipesUtiliseesParcours)) != $nombreEquipes) {
+                    break;
                 }
             }
-            // Si une équipe était en repos, la réinsérer
-            if ($equipeRepos !== null) {
-                $idRencontre =  $this->insertRencontre($idTournoi, $equipeRepos['idTeam'], null, $parcours['id']);
 
-                if($idRencontre){
-                    $this>$this->insertIntoEstimation($idRencontre);
-                }
-            }
+            $matches[] = $matchesParcours; // Ajoutez les rencontres pour ce parcours
         }
 
         $_SESSION['success'] = "Rencontres générées avec succès!";
@@ -46,25 +58,38 @@ class ModelMatch
         exit();
     }
 
-
-    public function getParcoursCount()
+    private function genererToutesLesPaires($equipes)
     {
-        $db = Database::getInstance();
-
-        try {
-            $sql = "SELECT COUNT(*) AS parcours_count FROM parcours";
-            $stmt = $db->prepare($sql);
-            $stmt->execute();
-
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $row['parcours_count'];
-        } catch (PDOException $e) {
-            echo "Erreur lors de la récupération du nombre de parcours : " . $e->getMessage();
-            return 0;
+        $paires = [];
+        for ($i = 0; $i < count($equipes); $i++) {
+            for ($j = $i + 1; $j < count($equipes); $j++) {
+                $paires[] = [$equipes[$i], $equipes[$j]];
+            }
         }
+        return $paires;
     }
 
+    private function equipesSeSontDejaAffrontees($matchesParcours, $paire)
+    {
+        foreach ($matchesParcours as $rencontre) {
+            if (($rencontre[0]['idTeam'] == $paire[0]['idTeam'] && $rencontre[1]['idTeam'] == $paire[1]['idTeam']) || ($rencontre[0]['idTeam'] == $paire[1]['idTeam'] && $rencontre[1]['idTeam'] == $paire[0]['idTeam'])) {
+                return true;
+            }
+        }
+        return false;
+    }
 
+    private function equipesSeSontDejaAffronteesSurParcours($matches, $paire)
+    {
+        foreach ($matches as $matchesParcours) {
+            foreach ($matchesParcours as $rencontre) {
+                if (($rencontre[0]['idTeam'] == $paire[0]['idTeam'] && $rencontre[1]['idTeam'] == $paire[1]['idTeam']) || ($rencontre[0]['idTeam'] == $paire[1]['idTeam'] && $rencontre[1]['idTeam'] == $paire[0]['idTeam'])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     public function getEquipesFromDatabase()
     {
         $db = Database::getInstance();
