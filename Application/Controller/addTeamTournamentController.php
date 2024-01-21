@@ -27,14 +27,15 @@ echo ("<p id='dataTournament' visibility='hidden' style= 'display :none;'>".json
 echo ("<p id='dataCotisation' visibility='hidden' style= 'display :none;'>".json_encode($dataCotisation)."</p>");
 echo ("<p id='dataNumberTeamMates' visibility='hidden' style= 'display :none;'>".json_encode($dataNumberTeamMates)."</p>");
 
+var_dump($_POST["selectTournament"]);
 
 switch (GetRole($_SESSION['user_id'])[0]["idRole"]){
     case "0":
-        require "../View/addTeamTournamentViewAdmin.html";
+        require "../View/addTeamTournamentViewAdmin.php";
         break;
 case "1":
-    if (selectCaptainWithUser(GetRole($_SESSION['user_id'])[0]["idRole"])["isCaptain"]){
-        require "../View/addTeamTournamentView.html";
+    if (selectCaptainWithUser($_SESSION['user_id'])["isCaptain"]){
+        require "../View/addTeamTournamentView.php";
         }
         break;
     };
@@ -42,8 +43,8 @@ case "1":
 if(isset($_POST['submit'])) {
     switch (GetRole($_SESSION['user_id'])[0]["idRole"]){
     case "1":
-        if (selectCaptainWithUser($_SESSION['user_id'])[0]["isCaptain"]){
-            addTeamToTournamentPlayer($dataTeam["idTeam"],$_POST['selectTournament']);
+        if (selectCaptainWithUser($_SESSION['user_id'])["isCaptain"]){
+            addTeamToTournamentPlayer($dataTeam["idTeam"],$_POST["selectTournament"]);
         }
         break;
     case "0":

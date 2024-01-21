@@ -64,7 +64,7 @@
         dataNameTeam = document.getElementById("dataNameTeam").outerText;
         dataNameTeam = JSON.parse(dataNameTeam);
         let labelTeamName = document.createElement('h5');
-        labelTeamName.innerText = dataNameTeam[0]["name"];
+        labelTeamName.innerText = dataNameTeam["name"];
         divTeamName.appendChild(labelTeamName);
 
         const divCaptain = document.getElementById("infoCaptain");

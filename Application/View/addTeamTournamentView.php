@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../View/bootstrap-5.3.1-dist/css/bootstrap.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Page d'ajout d'équipe dans un tournois</title>
 </head>
 <body>
@@ -44,16 +45,11 @@
         select.name = 'selectTournament';
         select.id= 'selectTournament' ;
 
-        let option = document.createElement('option');
-        option.innerText = 'Selectionnez';
-        option.value = null;
-        select.appendChild(option);
-
         dataTournament = document.getElementById("dataTournament").outerText;
         dataTournament = JSON.parse(dataTournament);
         dataTournament.forEach(item => {
             let option = document.createElement('option');
-            option.innerText = item.idTournoi + '\t' + item.place;
+            option.innerText = item.idTournoi + '.' + '\t' + item.place + '\t' + item.year;
             option.value = item['idTournoi'];
             select.appendChild(option);
         });
@@ -87,5 +83,14 @@
         }
         divCoti.appendChild(labelCoti);
         myDivCotisation.appendChild(divCoti);
+
+        <?php if (isset($_POST['submit'])):?>
+        
+        Swal.fire({
+                        title: "Succès !",
+                        text: "Vous avez bien ajouté votre équipe au tournoi",
+                        icon: "info"
+                    });
+        <?php endif;?>
     </script>
 </body>
