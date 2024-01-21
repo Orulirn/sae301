@@ -34,6 +34,20 @@
     }
  }
 
+ function addTeamToTournamentPlayer($idTeam, $idTournoi){
+    global $db;
+    try{
+        $db->beginTransaction();
+        $sql = $db->prepare("INSERT INTO valid_team_tournoi(id, idTeam, idTournoi) VALUES (default,:idTeam,:idTournoi)");
+        $sql->execute(array('idTeam' => $idTeam, 'idTournoi' => $idTournoi));
+        $db->commit();
+    }
+    catch( PDOException $e) {
+        $db->rollBack();
+        echo($e->getMessage());
+    }
+ }
+
  function deleteTeamToTournament($idTeam, $idTournoi){
     global $db;
     try{
