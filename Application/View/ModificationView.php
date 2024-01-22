@@ -1,7 +1,6 @@
 <?php 
 
 include_once "index.php";
-echo(GetRole($_SESSION['user_id'])[0]["idRole"]);
 
 function setTab($dataAllUsers)
 {
