@@ -214,19 +214,25 @@ class ModelMatch
 
     public function deleteRencontre($idRencontre)
     {
-
         $db = Database::getInstance();
 
         try {
+            // Supprimer la ligne de rencontre
             $sql = "DELETE FROM rencontre WHERE idRencontre = :idRencontre";
             $stmt = $db->prepare($sql);
             $stmt->bindParam(':idRencontre', $idRencontre);
             $stmt->execute();
 
-            // Vérifier le nombre de lignes affectées
+            // Supprimer la ligne d'estimation correspondante
+            $sql = "DELETE FROM estimation WHERE idRencontre = :idRencontre";
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':idRencontre', $idRencontre);
+            $stmt->execute();
+
+            return true;
         } catch (PDOException $e) {
             echo "Erreur lors de la suppression de la rencontre : " . $e->getMessage();
-            return 0;
+            return false;
         }
     }
 
