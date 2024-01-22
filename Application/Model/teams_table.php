@@ -28,7 +28,7 @@ function lastIdTeam(){
     $sql = $db->prepare("SELECT idTeam FROM teams ORDER BY idTeam DESC LIMIT 1  ");
     $sql->execute();
     return $sql->fetch()[0];
-}
+};
 
 function selectAllTeams(){
     global $db;
@@ -42,4 +42,11 @@ function selectAllTeamsWithCaptain(){
     $sql = $db->prepare("SELECT teams.idTeam, teams.name, users.firstname, users.lastname FROM teams JOIN team_player on teams.idTeam = team_player.idTeam JOIN users on team_player.player = users.idUser where team_player.isCaptain = 1");
     $sql->execute();
     return $sql->fetchAll(PDO::FETCH_ASSOC);
+};
+
+function selectNameWithIdTeam($idTeam){
+    global $db;
+    $sql = $db->prepare("SELECT name FROM teams WHERE idTeam = :idTeam");
+    $sql->execute(array('idTeam' => $idTeam));
+    return $sql->fetch(PDO::FETCH_ASSOC);
 };

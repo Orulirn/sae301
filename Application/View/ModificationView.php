@@ -1,5 +1,6 @@
-<?php include "index.php";
+<?php 
 
+include_once "index.php";
 
 function setTab($dataAllUsers)
 {
@@ -9,6 +10,7 @@ function setTab($dataAllUsers)
         echo'<td>'.$row['lastname'].'</td>';
         echo'<td>'.$row['mail'].'</td>';
         echo'<td>'.$row['cotisation'].'</td>';
+        if (GetRole($_SESSION['user_id'])[0]["idRole"] == "0"){
         if ($row['nbRole'] == 1) {
             $resultatRole = GetRole($row['idUser']);
             foreach($resultatRole as $row2){
@@ -22,13 +24,14 @@ function setTab($dataAllUsers)
         }
         else {
             echo'<td><button id="'; echo $row["idUser"]; echo '" type="button" class="btn btn-white border-black border-1" name="revAdmin">Révoquer Administrateur</button></td>';
-        }
+        }}
         echo'<td><button id="'; echo $row["idUser"] ; echo '" type="button" class="btn btn-white border-black border-1" name="editButton">Edit</button></td>';
 
         echo'<td><button id="'; echo $row["idUser"] ; echo '" type="button" class="btn btn-white border-black border-1" name="deleteButton">Supprimer</button></td>';
         echo'</tr>';
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +85,9 @@ function setTab($dataAllUsers)
             <th>Nom</th>
             <th>Email</th>
             <th>Cotisation</th>
+            <?php if (GetRole($_SESSION['user_id'])[0]["idRole"] == "0"):  ?>
             <th>Admin</th>
+            <?php endif; ?>
             <th>Edit</th>
             <th>Supprimer</th>
 

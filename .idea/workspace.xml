@@ -4,43 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH popup">
-    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="commit à delete">
-      <change afterPath="$PROJECT_DIR$/Application/Model/CreerParcours.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Model/client_secret_354475587396-9h5ais7ceqirim0cso3fttbrq4ildjs4.apps.googleusercontent.com.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Model/creerparcours.html" afterDir="false" />
+    <list default="true" id="99f85847-024d-4a90-8bf2-168521488443" name="Changes" comment="PATCH ADD TEAM TO TOURNOI ADMIN">
+      <change beforePath="$PROJECT_DIR$/.idea/sae301.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sae301.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Controller/updateDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/updateDataController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/UsersModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/UsersModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/Mailing.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/Mailing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/autoload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/ClassLoader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/InstalledVersions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_files.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_namespaces.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_real.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/installed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/installed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Model/vendor/composer/platform_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Model/vendor/composer/platform_check.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/getTournamentCourses.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/getTournamentCourses.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Controller/tournamentModificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Controller/tournamentModificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/View/tournamentModificationView.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/View/tournamentModificationView.php" afterDir="false" />
     </list>
+    <list id="77cb4bc5-39c5-46ec-b912-6c82722e91bd" name="Changes by leoha" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
-    <execution />
   <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
-    <execution>
-      <executable path="composer" />
-    </execution>
+    <execution />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -52,31 +30,15 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
-        <entry key="$PROJECT_DIR$" value="equipe" />
+        <entry key="$PROJECT_DIR$" value="creerUnTournoi" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Orulirn&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="e542a386-2ee6-49fc-9d8a-e011fe19499f" />
-        <option name="url" value="https://github.com/Orulirn/sae301.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\MAMP\bin\php\php8.0.1\php.exe" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -88,32 +50,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;test&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/leoha/PhpstormProjects/sae301&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;creerUnTournoi&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/MAMP/bin/php/php8.0.1/php.ini&quot;,
-
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,
-
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "develop",
+    "last_opened_file_path": "C:/Users/leoha/PhpstormProjects/sae301",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "JavaScript.Libraries",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\floco\PhpstormProjects\sae301\Application\Controller" />
       <recent name="C:\Users\ewenc\PhpstormProjects\sae301\Application\View\img" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-php-predefined-ba97393d7c68-74080bdb84d3-com.jetbrains.php.sharedIndexes-PS-233.11799.297" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -129,17 +94,11 @@
       <workItem from="1694779451952" duration="2961000" />
       <workItem from="1695020582869" duration="11882000" />
       <workItem from="1695276784267" duration="3558000" />
-
-      <workItem from="1699255567069" duration="9034000" />
-      <workItem from="1699280300969" duration="220000" />
-      <workItem from="1699280919183" duration="3898000" />
-      <workItem from="1699347416752" duration="1381000" />
-      <workItem from="1699348825438" duration="236000" />
-      <workItem from="1699349072878" duration="1110000" />
-      <workItem from="1699350200149" duration="30944000" />
-      <workItem from="1699969524427" duration="7511000" />
-      <workItem from="1699255191009" duration="6808000" />
-
+      <workItem from="1697186776891" duration="22281000" />
+      <workItem from="1697551688033" duration="703000" />
+      <workItem from="1703239959226" duration="1616000" />
+      <workItem from="1704970533745" duration="1805000" />
+      <workItem from="1705388793333" duration="9895000" />
     </task>
     <task id="LOCAL-00001" summary="Installation bootstrap">
       <option name="closed" value="true" />
@@ -197,40 +156,79 @@
       <option name="project" value="LOCAL" />
       <updated>1695114524884</updated>
     </task>
-    <task id="LOCAL-00008" summary="MAJ pour afficher un retour à l'utilisateur">
+    <task id="LOCAL-00008" summary="Création d'un tournoi">
       <option name="closed" value="true" />
-      <created>1699256796185</created>
+      <created>1702915052962</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1699256796185</updated>
+      <updated>1702915052962</updated>
     </task>
-    <task id="LOCAL-00009" summary="PATCH Role sur validation">
+    <task id="LOCAL-00009" summary="Création d'un tournoi">
       <option name="closed" value="true" />
-      <created>1699258196907</created>
+      <created>1703240027837</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1699258196907</updated>
+      <updated>1703240027837</updated>
     </task>
-    <task id="LOCAL-00010" summary="PATCH Role sur modif">
+    <task id="LOCAL-00010" summary="PATCH Créer tournoi">
       <option name="closed" value="true" />
-      <created>1699259317079</created>
+      <created>1704797460778</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1699259317079</updated>
+      <updated>1704797460778</updated>
     </task>
-    <task id="LOCAL-00011" summary="PATCH popup">
+    <task id="LOCAL-00011" summary="PATCH Créer tournoi avec parcours">
       <option name="closed" value="true" />
-      <created>1699260959781</created>
+      <created>1704798627110</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1699260959781</updated>
+      <updated>1704798627110</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
-
+    <task id="LOCAL-00012" summary="Modification d'un tournoi">
+      <option name="closed" value="true" />
+      <created>1705390900777</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1705390900777</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Modification d'un tournoi fin">
+      <option name="closed" value="true" />
+      <created>1705398215655</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1705398215655</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Estimation est désormais modulable attention pour l'instant c'est pas possible sur toute les page donc l'id reste set dans un premier temps ligne 8">
+      <option name="closed" value="true" />
+      <created>1705612249914</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1705612249914</updated>
+    </task>
+    <task id="LOCAL-00015" summary="PATCH MODIF TOURNOI">
+      <option name="closed" value="true" />
+      <created>1705656802971</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1705656802971</updated>
+    </task>
+    <task id="LOCAL-00016" summary="PATCH ADD TEAM TO TOURNOI ADMIN">
+      <option name="closed" value="true" />
+      <created>1705657472694</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1705657472694</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,18 +254,19 @@
     <MESSAGE value="patch pour refaire marcher la connexion." />
     <MESSAGE value="ajout d'un pop up pour informer l'utilisateur que son mdp n'est pas correct" />
     <MESSAGE value="Patch de la View pour la connexion" />
-    <MESSAGE value="MAJ pour afficher un retour à l'utilisateur" />
-    <MESSAGE value="PATCH Role sur validation" />
-    <MESSAGE value="PATCH Role sur modif" />
-
-    <MESSAGE value="PATCH popup" />
-    <option name="LAST_COMMIT_MESSAGE" value="PATCH popup" />
-    <MESSAGE value="commit à delete" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit à delete" />
+    <MESSAGE value="Installation phpMailer + création d'une classe qui permet l'envoi de mail de manière non sécurisé" />
+    <MESSAGE value="Création d'un tournoi" />
+    <MESSAGE value="PATCH Créer tournoi" />
+    <MESSAGE value="PATCH Créer tournoi avec parcours" />
+    <MESSAGE value="Modification d'un tournoi" />
+    <MESSAGE value="Modification d'un tournoi fin" />
+    <MESSAGE value="Estimation est désormais modulable attention pour l'instant c'est pas possible sur toute les page donc l'id reste set dans un premier temps ligne 8" />
+    <MESSAGE value="PATCH MODIF TOURNOI" />
+    <MESSAGE value="PATCH ADD TEAM TO TOURNOI ADMIN" />
+    <option name="LAST_COMMIT_MESSAGE" value="PATCH ADD TEAM TO TOURNOI ADMIN" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
-
   </component>
 </project>
