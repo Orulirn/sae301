@@ -48,5 +48,5 @@ function selectNameWithIdTeam($idTeam){
     global $db;
     $sql = $db->prepare("SELECT name FROM teams WHERE idTeam = :idTeam");
     $sql->execute(array('idTeam' => $idTeam));
-    return $sql->fetchAll(PDO::FETCH_ASSOC);
+    return $sql->fetch(PDO::FETCH_ASSOC);
 };

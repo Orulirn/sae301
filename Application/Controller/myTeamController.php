@@ -12,7 +12,7 @@ include_once ("../Model/team_player_table.php");
 include_once ("../Model/User.php");
 include_once ("../Model/teams_table.php");
 
-$team = selectTeamWithCaptain($_SESSION["user_id"]);
+$team = selectTeamWithCaptain($_SESSION["user_id"])["idTeam"];
 $data = selectAllPlayersWithIdTeam($team);
 $dataCaptain = selectCaptainNameWithTeam($team);
 $dataNameTeam = selectNameWithIdTeam($team);
