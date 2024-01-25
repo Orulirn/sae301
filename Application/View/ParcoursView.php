@@ -27,7 +27,8 @@
                 <div class="mb-3 flex-grow-1">
                     <select id="parcoursList" name="parcours" class="form-select w-100">
                         <?php
-                        $parcoursNames = selectNameInParcours();
+                        //récupération de l'ensemble des noms pour les visualiser dans la vue
+                        $parcoursNames = GetNameParcours();
                         foreach ($parcoursNames as $parcours) {
                             $selected = '';
                             if (isset($_POST['parcours']) && $_POST['parcours'] === $parcours['nom']) {

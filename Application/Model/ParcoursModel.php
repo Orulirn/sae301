@@ -3,7 +3,7 @@
 include 'DatabaseConnection.php';
 
 function selectInParcours(){
-    /* Cette fonction récupère toutes les informations d'un parcours
+    /** Cette fonction récupère toutes les informations d'un parcours
      *
      * Return l'ensemble des infos de la table parcours de la base de données
      * */
@@ -15,7 +15,7 @@ function selectInParcours(){
 }
 
 function selectNameInParcours(){
-    /* Cette fonction va chercher le nom des parcours dans la base de données
+    /** Cette fonction va chercher le nom des parcours dans la base de données
      *
      * Return l'ensemble des noms de parcours
      * */
@@ -27,7 +27,7 @@ function selectNameInParcours(){
 }
 
 function selectParcoursByName($name){
-    /* Cette fonction récupère les données liées au parcours en fonction de son nom
+    /** Cette fonction récupère les données liées au parcours en fonction de son nom
      *
      * args :
      *     name (str) : le nom du parcours dont on souhaite récupérer les infos
@@ -42,7 +42,7 @@ function selectParcoursByName($name){
 }
 
 function selectMarkersByParcours($idParcours){
-    /* Cette fonction récupère les coordonnées de markers en fonction de l'id d'un parcours
+    /** Cette fonction récupère les coordonnées de markers en fonction de l'id d'un parcours
      *
      * args :
      *     idParcours (int) : l'identifiant du parcours dont on souhaite récupérer les markers
@@ -57,7 +57,7 @@ function selectMarkersByParcours($idParcours){
 }
 
 function selectParcoursName(){
-    /* Cette fonction récupère les ids ainsi que les noms de l'ensemble des parcours présents dans la base.
+    /** Cette fonction récupère les ids ainsi que les noms de l'ensemble des parcours présents dans la base.
      *
      * Return les données récupérées.
      * */
@@ -69,7 +69,7 @@ function selectParcoursName(){
 }
 
 function selectParticularParcours($name){
-    /* Récupère toutes les données liées à un parcours ainsi que les markers qui lui sont associé
+    /** Récupère toutes les données liées à un parcours ainsi que les markers qui lui sont associé
      *
      * args :
      *     name (str) : le nom du parcours dont on souhaite récupérer les données.
@@ -99,7 +99,7 @@ function selectParticularParcours($name){
 }
 
 function deleteParcoursByID($idParcours){
-    /* Cette fonction permet de supprimer un parcours et les markers lié à ce parcours
+    /** Cette fonction permet de supprimer un parcours et les markers lié à ce parcours
      *
      * args :
      *     idParcours (int) : l'identifiant du parcours que l'on souhaite récupérer
@@ -124,7 +124,7 @@ function deleteParcoursByID($idParcours){
 
 
 function insertParcours($name,$city,$nbDecholeMax,$markerData){
-    /* Cette fonction permet d'insérer un parcours ainsi que les markers qui y sont associés
+    /** Cette fonction permet d'insérer un parcours ainsi que les markers qui y sont associés
      *
      * args :
      *     name (str) : le nom du parcours
@@ -156,4 +156,60 @@ function insertParcours($name,$city,$nbDecholeMax,$markerData){
 
         $No += 1;
     }
+}
+
+function saveParcours(){
+    /** Cette fonction permet de sauvegarder un parcours
+     *
+     * Return void
+     * */
+
+    // Récupérer les données du formulaire
+    $city = $_GET["city"];
+    $name = $_GET["name"];
+    $nbDecholeMax = $_GET["NombreDechole"];
+    $nbMarkers =  (count($_GET)-3)/2 ; // on récupère le nombre d'éléments dans le get, on le divise par deux car il y a 2 éléments par marker. On retire 3 pour les trois informations lié au parcours en lui même
+    $markers = array(); //liste qui va contenir tous les makers
+    for ($i = 0;$i<$nbMarkers;$i++){
+        $newMarker = array(//on met dans une liste les deux coordonnées d'un markers, on pushera la liste pas la suite dans la liste des markers
+            "lat" => $_GET['LAT' . $i],
+            "lng" => $_GET['LNG' . $i]
+        );
+        array_push($markers,$newMarker);
+    }
+    //Gestion d'un cookie pour éviter la création de parcours doublons lors du rechargement de la page.
+    $cookieName = "addedParcours";
+    $addedParcours = isset($_COOKIE[$cookieName]) ? json_decode($_COOKIE[$cookieName], true) : array();
+
+    if (!in_array($name, $addedParcours)) {//on vérifie si le nom est dans le cookie
+        insertParcours($name, $city, $nbDecholeMax, $markers);// Ajouter le parcours à la base de données
+
+        $addedParcours[] = $name; // Mettre à jour le cookie ou le stockage local
+        setcookie($cookieName, json_encode($addedParcours), time() + 3600);
+    }
+
+    $_GET = array();
+}
+
+function saveModification(){
+    /** Cette fonction permet de sauvegarder un parcours dans la base de données
+     *
+     * Return void
+     * */
+    deleteParcoursByID($_GET["idParcours"]);//on va supprimer le parcours
+    //récupération des données
+    $city = $_GET["cityModif"];
+    $name = $_GET["nameModif"];
+    $nbDecholeMax = $_GET["NombreDecholeModif"];
+
+    $nbMarkers =  (count($_GET)-4)/2 ;// on récupère le nombre d'éléments dans le get, on le divise par deux car il y a 2 éléments par marker. On retire 4 pour les trois informations lié au parcours en lui même
+    $markers = array(); //création d'une liste qui contiendra des listes de coordonnées pour les markers (liste de deux éléments)
+    for ($i = 0;$i<$nbMarkers;$i++){
+        $newMarker = array( //création de la liste qu'on pushera dans la liste markers
+            "lat" => $_GET['LAT' . $i],
+            "lng" => $_GET['LNG' . $i]
+        );
+        array_push($markers,$newMarker);
+    }
+    insertParcours($name, $city, $nbDecholeMax, $markers);
 }

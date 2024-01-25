@@ -8,64 +8,21 @@ include "../View/index.php";
 
 $data = null;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['loadSelectedParcours'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['loadSelectedParcours'])) { //lorsque l'on charge un parcours
     $selectedParcours = $_POST['parcours'];
     $data = selectParticularParcours($selectedParcours);
 }
 
-if (isset($_GET['city'])) {
-    saveParcoursController();
+if (isset($_GET['city'])) { // lorsque l'on sauvegarde le parcours
+    saveParcours();
 }
 
-if (isset($_GET['cityModif'])){
+if (isset($_GET['cityModif'])){ // lorsque l'on modifie le parcours
     saveModification();
 }
 
-function saveParcoursController(){
-    // Récupérer les données du formulaire
-    $city = $_GET["city"];
-    $name = $_GET["name"];
-    $nbDecholeMax = $_GET["NombreDechole"];
-    $nbMarkers =  (count($_GET)-3)/2 ;
-    $markers = array();
-    for ($i = 0;$i<$nbMarkers;$i++){
-        $newMarker = array(
-            "lat" => $_GET['LAT' . $i],
-            "lng" => $_GET['LNG' . $i]
-        );
-        array_push($markers,$newMarker);
-    }
-    $cookieName = "addedParcours";
-    $addedParcours = isset($_COOKIE[$cookieName]) ? json_decode($_COOKIE[$cookieName], true) : array();
-
-    if (!in_array($name, $addedParcours)) {
-        // Ajouter le parcours à la base de données
-        insertParcours($name, $city, $nbDecholeMax, $markers);
-
-        // Mettre à jour le cookie ou le stockage local
-        $addedParcours[] = $name;
-        setcookie($cookieName, json_encode($addedParcours), time() + 3600); // Vous pouvez ajuster la durée du cookie
-    }
-
-    // Réinitialiser $_GET pour éviter de recréer le parcours à chaque rechargement
-    $_GET = array();
-}
-
-function saveModification(){
-    deleteParcoursByID($_GET["idParcours"]);
-    $city = $_GET["cityModif"];
-    $name = $_GET["nameModif"];
-    $nbDecholeMax = $_GET["NombreDecholeModif"];
-    $nbMarkers =  (count($_GET)-4)/2 ;
-    $markers = array();
-    for ($i = 0;$i<$nbMarkers;$i++){
-        $newMarker = array(
-            "lat" => $_GET['LAT' . $i],
-            "lng" => $_GET['LNG' . $i]
-        );
-        array_push($markers,$newMarker);
-    }
-    insertParcours($name, $city, $nbDecholeMax, $markers);
+function GetNameParcours(){
+    return selectNameInParcours();
 }
 
 function dataTransfert($data)
