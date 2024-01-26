@@ -7,7 +7,13 @@
  */
 
 include_once ('../Model/DatabaseConnection.php');
-
+/**
+ * Ajoute un tournoi dans la base de données.
+ *
+ * @param string $place Lieu du tournoi.
+ * @param int $year Année du tournoi.
+ * @return int Identifiant du tournoi ajouté.
+ */
 function addTournament($place, $year){
     global $db;
     try{
@@ -22,7 +28,13 @@ function addTournament($place, $year){
     }
     return $db->lastInsertID();
 };
-
+/**
+ * Ajoute un parcours à un tournoi.
+ *
+ * @param int $tournamentId Identifiant du tournoi.
+ * @param int $courseId Identifiant du parcours.
+ * @return array Renvoie le statut de l'opération et un message associé.
+ */
 function addCourseToTournament($tournamentId, $courseId) {
     global $db;
     try {
@@ -46,7 +58,13 @@ function addCourseToTournament($tournamentId, $courseId) {
 
 
 
-// Supprimer un parcours d'un tournoi
+/**
+ * Supprime un parcours d'un tournoi.
+ *
+ * @param int $tournamentId Identifiant du tournoi.
+ * @param int $courseId Identifiant du parcours.
+ * @return array Renvoie le statut de l'opération et un message associé.
+ */
 function removeCourseFromTournament($tournamentId, $courseId) {
     global $db;
     try {
@@ -64,7 +82,12 @@ function removeCourseFromTournament($tournamentId, $courseId) {
 }
 
 
-// Récupérer les parcours associés à un tournoi spécifique
+/**
+ * Récupère les parcours associés à un tournoi spécifique.
+ *
+ * @param int $tournamentId Identifiant du tournoi.
+ * @return array Renvoie les parcours associés au tournoi.
+ */
 function getCoursesForTournament($tournamentId) {
     global $db;
     try {
@@ -77,7 +100,11 @@ function getCoursesForTournament($tournamentId) {
 }
 
 
-// Récupérer tous les tournois
+/**
+ * Récupère tous les tournois.
+ *
+ * @return array Renvoie tous les tournois.
+ */
 function getAllTournaments() {
     global $db;
     try {
@@ -88,7 +115,11 @@ function getAllTournaments() {
     }
 }
 
-// Récupérer tous les parcours
+/**
+ * Récupère tous les parcours.
+ *
+ * @return array Renvoie tous les parcours.
+ */
 function getAllCourses() {
     global $db;
     try {

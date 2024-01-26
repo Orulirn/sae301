@@ -10,10 +10,11 @@
 include_once ("../Model/ChargerParcoursModel.php");
 include_once ("../Model/tournamentModel.php");
 
-
+// Gestion de l'ajout d'un tournoi
 if(isset($_POST['submit'])) {
-    $year = date('Y');
+    $year = date('Y'); // Récupération de l'année courante
     $id = addTournament($_POST['place'], $year);
+    // Boucle pour ajouter des parcours au tournoi
     for ($i=0;$i<$_POST['nbParcours'];$i++){
         addCourseToTournament($id,$_POST['selectParcours'].$i);
     }
