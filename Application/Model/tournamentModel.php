@@ -38,7 +38,7 @@ function addTournament($place, $year){
 function addCourseToTournament($tournamentId, $courseId) {
     global $db;
     try {
-        // Vérifier si le parcours est déjà associé au tournoi
+        // Vérifie si le parcours est déjà associé au tournoi
         $checkSql = $db->prepare("SELECT COUNT(*) FROM tournoi_parcours WHERE idTournoi = :tournamentId AND idParcours = :courseId");
         $checkSql->execute(['tournamentId' => $tournamentId, 'courseId' => $courseId]);
         $exists = $checkSql->fetchColumn();
