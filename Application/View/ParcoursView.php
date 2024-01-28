@@ -27,7 +27,8 @@
                 <div class="mb-3 flex-grow-1">
                     <select id="parcoursList" name="parcours" class="form-select w-100">
                         <?php
-                        $parcoursNames = selectNameInParcours();
+                        //récupération de l'ensemble des noms pour les visualiser dans la vue
+                        $parcoursNames = GetNameParcours();
                         foreach ($parcoursNames as $parcours) {
                             $selected = '';
                             if (isset($_POST['parcours']) && $_POST['parcours'] === $parcours['nom']) {
@@ -98,6 +99,11 @@
     const Creer = document.getElementById("Creer");
 
     function addMarker(latlng) {
+        /**Cette fonction permet d'ajouter un marker à un parcours
+         *
+         * args :
+         *     latlng (lst) : liste contenant 2 éléments, la latitude et la longitude du marker
+         * */
         if (addMarkerMode) {
             var marker = L.marker(latlng).addTo(map);
             markers.push(marker);
@@ -109,6 +115,11 @@
     }
 
     function removeMarker(marker) {
+        /**Cette fonction permet de supprimer un marker d'un parcours
+         *
+         * args :
+         *     marker (Marker) : le marker que l'on souhaite supprimer du parcours
+         * */
         map.removeLayer(marker);
         var index = markers.indexOf(marker);
         if (index > -1) {
@@ -118,6 +129,10 @@
     }
 
     function removeLastMarker() {
+        /**Cette fonction permet de retirer le dernier marker
+         *
+         * Return void
+         * */
         if (markers.length > 0) {
             var lastMarker = markers.pop();
             map.removeLayer(lastMarker);
@@ -126,6 +141,10 @@
     }
 
     function updateRoute() {
+        /**Cette fonction permet d'update la route du parcours
+         *
+         * Return void
+         * */
         if (routingControl) {
             map.removeControl(routingControl);
         }
